@@ -1,0 +1,21 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+#    GradeService:
+#        class: AppBundle\Service\GradeService
+#        arguments: 
+#            entityManager: "@doctrine.orm.entity_manager"
+
+    markdown:
+        class:     Aptoma\Twig\Extension\MarkdownEngine\MichelfMarkdownEngine
+        public:    false
+
+    app.twig.app_extension:
+        class:     Aptoma\Twig\Extension\MarkdownExtension
+        arguments: ['@markdown']
+        public:    false
+        tags:
+            - { name: twig.extension }

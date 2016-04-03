@@ -1,0 +1,60 @@
+{% macro banner(page) %}
+
+	{% if page.banner is not empty %}
+		{% set banner = page.banner %}
+		{% if banner.media|length == 1 %}
+			{% set image = banner.media[0] %}		
+			  <div class="courses_banner" style="background: url({{ image.path }}) no-repeat center top; background-size: cover;">
+			  	<div class="container">
+			  		<h3>{{ banner.name }}</h3>
+			  		<p class="description">
+						{{ banner.description }}
+			        </p>
+			  	</div>
+			  </div>
+		{% elseif banner.media|length > 1 %}
+		<div class="banner">
+			<script src="/js/responsiveslides.min.js"></script>
+			 <script>
+				$(function () {
+				  $("#slider3").responsiveSlides({
+					auto: true,
+					pager: true,
+					nav: true,
+					speed: 500,
+					namespace: "callbacks",
+					before: function () {
+					  $('.events').append("<li>before event fired.</li>");
+					},
+					after: function () {
+					  $('.events').append("<li>after event fired.</li>");
+					}
+				  });
+				});
+			  </script>
+			<div  id="top" class="callbacks_container">
+				<ul class="rslides" id="slider3">
+				{% for image in banner.media %}
+					<li>
+						<div class="banner-bg" style="background: url({{ image.path }}) no-repeat center top; background-size: cover;">
+							<div class="container">
+								<div class="banner-info">
+									<h3>{{ banner.name }}</h3>
+									<p>
+								  		{% if page.language.code == 'ru' %} 
+								        	{{ image.description }}
+								        {% else %}
+								        	{{ image.englishName }}
+								        {% endif %}
+									</p>
+								</div>
+							</div>
+						</div>
+					</li>			
+				{% endfor %}
+				</ul>
+			</div>
+		</div>
+		{% endif %}
+	{% endif %}
+{% endmacro %}

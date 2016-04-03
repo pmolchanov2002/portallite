@@ -1,0 +1,45 @@
+{% extends 'base/en/base.html.twig' %}
+
+{% block title %}Saint Sergius Learning Center{% endblock %}
+
+{% block body %}
+
+
+<!-- banner -->
+{% import 'base/banner.html.twig' as banner_macro %}			
+{{ banner_macro.banner(page) }}
+<!-- //banner -->
+
+
+
+<div class="features">
+	<div class="container">
+		<h1>{{ page.title }}</h1>
+		<p style="text-align:center;">{{ page.subTitle }} </p>
+		
+		{% for article in page.articles.slice(0,page.articlesPerPage) %}
+		{% set originalPage = article.pages[0] %}
+			<div class="blog_box1">
+				<dl class="item_info_dl">
+					<h2>
+						<a href="/page/{{ originalPage.id}}/{{ article.id}}">{{ article.title }}</a>
+					</h2>
+					<dd>
+						<address class="item_createdby">
+							Author: {{ article.author.englishName }}
+						</address>
+					</dd>
+					<dd>
+						<time datetime="2015-05-01 19:45" class="item_published">
+							Date: {{ article.created|date('m-d-Y') }} </time>
+					</dd>
+				</dl>
+				<p>
+					{{ article.description|markdown }}
+				</p>
+				<a href="/page/{{ originalPage.id}}/{{ article.id}}" class="radial_but">More</a>
+			</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

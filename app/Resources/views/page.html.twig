@@ -1,0 +1,51 @@
+{# app/Resources/views/period.html.twig #}
+{% extends 'base-admin.html.twig' %}
+
+{% block pageTitle %}Page{% endblock %}
+{% block title %}Web pages{% endblock %}
+{% block script %}
+	$(document).ready(function() {
+	    $('#results').DataTable({
+	    	paging: false
+	    });
+	    $('.delete_row').click(function(){
+    		return confirm("Are you sure you want to delete?");
+		});
+	} );
+{% endblock %}
+
+{% block body %}
+    <div style="margin-bottom:10px;">
+    	<a class="btn btn-default" href="/admin/web/page/create" role="button">New web-site page</a>
+	</div>
+	<table id="results" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Name(id)</th>
+                <th>Language</th>
+                <th>Title</th>
+                <th>SubTitle</th>
+                <th>Type</th>
+                <th># atricles</th>
+                <th>Banner</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+	    {% for page in pages %}
+	    	<tr>
+	        	<td data-sort="{{page.id}}">{{ page.id }}</td>
+	        	<td>{{ page.language.name }}</td>
+	        	<td>{{ page.title }}</td>
+	        	<td>{{ page.subTitle }}</td>
+	        	<td>{{ page.type.name }}</td>
+	        	<td>{{ page.articlesPerPage }}</td>
+	        	<td>{{ page.banner.name | default("Not assigned") }}</td>
+	        	<td width="10"><a href='/admin/web/page/edit/{{ page.id }}'>Edit</a></td>
+	        	<td class="delete_row" width="10"><a href='/admin/web/page/delete/{{ page.id }}'>Delete</a></td>
+	        </tr>
+	    {% endfor %}
+    	</tbody>        
+    </table>
+{% endblock %}

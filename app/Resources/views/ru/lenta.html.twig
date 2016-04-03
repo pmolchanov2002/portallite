@@ -1,0 +1,44 @@
+{% extends 'base/ru/base.html.twig' %} {% block title %}Школа Святого
+Сергия Радонежского{% endblock %} {% block body %}
+
+
+<!-- banner -->
+{% import 'base/banner.html.twig' as banner_macro %}			
+{{ banner_macro.banner(page) }}
+<!-- //banner -->
+
+
+
+<div class="features">
+	<div class="container">
+		<h1>{{ page.title }}</h1>
+		<p style="text-align:center;">{{ page.subTitle }} </p>
+		
+		{% for article in page.articles.slice(0,page.articlesPerPage) %}
+			<div class="blog_box1">
+				<dl class="item_info_dl">
+					<h2>
+						<a href="/page/{{ page.id}}/{{ article.id}}">{{ article.title }}</a>
+					</h2>
+					<dd>
+						<address class="item_createdby">
+							Автор: {{ article.author.firstName }} {{ article.author.lastName }}
+						</address>
+					</dd>
+					<dd>
+						<time datetime="2015-05-01 19:45" class="item_published">
+							Дата: {{ article.created|date('m-d-Y') }} </time>
+					</dd>
+				</dl>
+				{% if article.icon is not empty %}
+					<img src="{{ article.icon.path }}" class="img-responsive" alt=""/>
+				{% endif %}
+				<p>
+					{{ article.description|markdown }}
+				</p>
+				<a href="/page/{{ page.id}}/{{ article.id}}" class="radial_but">Подробнее</a>
+			</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

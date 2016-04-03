@@ -1,0 +1,62 @@
+{% extends 'base/en/base.html.twig' %} {% block title %}Saint Sergius
+Learning Center{% endblock %} {% block body %}
+<!-- banner -->
+	{% import 'base/banner.html.twig' as banner_macro %}			
+	{{ banner_macro.banner(page) }}
+<!-- //banner -->
+<!-- page content -->
+	<div class="features">
+	   <div class="container">
+	   	  <h1>How to find us</h1>
+	   	  <div class="map">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3005.445757238272!2d-73.93369934866273!3d41.12479407918761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2c18b9893828f%3A0x365ed5f2e878176d!2s104+Lake+Rd%2C+Valley+Cottage%2C+NY+10989!5e0!3m2!1sen!2sin!4v1457666794337" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>		  <p>Take route 95 South to 287 West 87 North across the Tappan Zee Bridge.
+Exit at Exit 12 (Rte 303 North West Nyack) and follow signs to Rte 303 North. You will pass the Valley Cottage Library on your right; at the next light take a right (dedicated turn lane) onto Lake Road. (At the turn, choose the middle road, which is Lake Road).
+Stay on Lake Road for approximately one mile after passing the TF Nursing Home, the Foundation entrance is the next driveway on your left (a Russian Orthodox Church is on your right upon entering).
+		</p>
+		  <div class="wrapper">
+				<div class="col_1">
+					<i class="fa fa-home  icon2"></i>
+					<div class="box">
+						<p class="marTop9">104 Lake Rd.,<br>Valley Cottage, NY, 10989</p>
+					</div>
+				</div>
+
+				<div class="col_2">
+					<i class="fa fa-phone  icon2"></i>
+					<div class="box">
+						<p class="marTop9">+1 (845) 267-8397</p>
+					</div>
+				</div>
+
+				<div class="col_2">
+					<i class="fa fa-envelope icon2"></i>
+					<div class="box">
+						<p class="m_6"><a href="/mail"><img src="/images/mail.png"></img></a></p>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+		 </div>
+<!-- 
+		 <form class="contact_form">
+		 	<h2>Contact form</h2>
+			<div class="col-md-6 grid_6">
+				<input type="text" class="text" value="Name" placeholder="name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
+				<input type="text" class="text" value="Email" placeholder="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
+				<input type="text" class="text" value="Phone" placeholder="phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}">
+			</div>
+	
+			<div class="col-md-6 grid_6">
+				<textarea value="Message" placeholder="message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message</textarea>
+			</div>
+            <div class="clearfix"> </div>
+            <div class="btn_3">
+			  <a href="#" class="more_btn" data-type="submit">Send message</a>
+		    </div>
+		 </form>
+-->					
+						
+	  </div>
+	</div>
+<!-- page content -->
+
+{% endblock %}

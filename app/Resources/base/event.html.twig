@@ -1,0 +1,11 @@
+{% macro event(events) %}
+	{% for event in events %}
+		<li>
+			{% if event.article is not empty %}
+				<a href="/page/{{ event.page.id }}/{{ event.article.id }}">{{ event.name }}</a>
+			{% else %}
+				<a href="/page/{{ event.page.id }}">{{ event.name }}</a>
+			{% endif %}
+		</li>
+	{% endfor %}
+{% endmacro %}

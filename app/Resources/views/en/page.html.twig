@@ -1,0 +1,43 @@
+{% extends 'base/en/base.html.twig' %} 
+{% block title %}Saint Sergius Learning Center (stsergiuslc){% endblock %} 
+{% block body %}
+
+<!-- banner -->
+{% import 'base/banner.html.twig' as banner_macro %}			
+{{ banner_macro.banner(page) }}
+<!-- //banner -->
+
+<!-- page content -->
+	<div class="admission">
+	   <div class="container">
+   	  	{% if page.articles|length > 0 %}
+	   	  	{% if articleId == 0 %}
+	   	  		{%set article = page.articles[articleId] %}
+   	  				{% import 'base/article.html.twig' as article_macro %}
+   	  				{{ article_macro.article(article, "Download Documents:") }}
+	   	  	{% else %}
+	   	  		{% for article in page.articles %}
+	   	  			{% if article.id == articleId %}
+	   	  				{% import 'base/article.html.twig' as article_macro %}
+	   	  				{{ article_macro.article(article, "Download Documents:") }}
+	   	  				
+	   	  				<dl class="item_info_dl">
+							<dd>
+								<address class="item_createdby">
+									Author: {{ article.author.englishName }}
+								</address>
+							</dd>
+							<dd>
+								<time datetime="2015-05-01 19:45" class="item_published">
+									Date: {{ article.created|date('m-d-Y') }} </time>
+							</dd>
+						</dl>
+	   	  			{% endif %}
+	   	  		{% endfor %}
+	   	  	{% endif %}
+	   	  {% endif %}
+	   </div>
+	 </div>
+<!-- page content -->
+
+{% endblock %}

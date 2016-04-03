@@ -1,0 +1,47 @@
+{# app/Resources/views/period.html.twig #}
+{% extends 'base-admin.html.twig' %}
+
+{% block pageTitle %}Menu{% endblock %}
+{% block title %}Web menus{% endblock %}
+{% block script %}
+	$(document).ready(function() {
+	    $('#results').DataTable({
+	    	paging: false
+	    });
+	    $('.delete_row').click(function(){
+    		return confirm("Are you sure you want to delete?");
+		});
+	} );
+{% endblock %}
+
+{% block body %}
+    <div style="margin-bottom:10px;">
+    	<a class="btn btn-default" href="/admin/web/menu/create" role="button">New web-site menu</a>
+	</div>
+	<table id="results" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Language</th>
+                <th>Page</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+	    {% for menu in menus %}
+	    	<tr>
+	        	<td data-sort="{{menu.language.name}}">{{ menu.title }}<br/><small>{{ menu.parent.title|default("Top") }}</small></td>
+	        	<td>{{ menu.language.name }}</td>
+	        	<td>{{ menu.page.id | default("Not assigned") }}</td>
+	        	<td>{{ menu.menuType.name }}</td>
+	        	<td>{{ menu.status.name }}</td>
+	        	<td width="10"><a href='/admin/web/menu/edit/{{ menu.id }}'>Edit</a></td>
+	        	<td class="delete_row" width="10"><a href='/admin/web/menu/delete/{{ menu.id }}'>Delete</a></td>
+	        </tr>
+	    {% endfor %}
+    	</tbody>        
+    </table>
+{% endblock %}

@@ -1,0 +1,47 @@
+{# app/Resources/views/period.html.twig #}
+{% extends 'base-admin.html.twig' %}
+
+{% block pageTitle %}Banner{% endblock %}
+{% block title %}Web page banners{% endblock %}
+{% block script %}
+	$(document).ready(function() {
+	    $('#results').DataTable({
+	    	paging: false
+	    });
+	    $('.delete_row').click(function(){
+    		return confirm("Are you sure you want to delete?");
+		});
+	} );
+{% endblock %}
+
+{% block body %}
+    <div style="margin-bottom:10px;">
+    	<a class="btn btn-default" href="/admin/web/banner/create" role="button">New banner</a>
+	</div>
+	<table id="results" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Media</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+	    {% for banner in banners %}
+	    	<tr>
+	        	<td data-sort="{{banner.id}}">{{ banner.name }}</td>
+	        	<td>{{ banner.description }}</td>
+	        	<td>
+	        		{% for media in banner.media %}
+	        			{{ media.description | default("No description") }}<br/>
+	        		{% endfor %}
+				</td>
+	        	<td width="10"><a href='/admin/web/banner/edit/{{ banner.id }}'>Edit</a></td>
+	        	<td class="delete_row" width="10"><a href='/admin/web/banner/delete/{{ banner.id }}'>Delete</a></td>
+	        </tr>
+	    {% endfor %}
+    	</tbody>        
+    </table>
+{% endblock %}
