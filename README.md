@@ -1,10 +1,6 @@
 # Portal Lite
 Portal Lite is a simple content management system to support simple web portals.
 
-## Purpose
-
-Portal Lite project designed and developed to support slim and simple content management system. 
-
 ## Foundation
 
 Application is based on the Symfony 2.x framework.
