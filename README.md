@@ -9,8 +9,8 @@ Front end is powered by Bootstrap and is nicely resized on both mobile (Android,
 
 ## Maintenence
 
-Minimum maintenance is required. Code can be easily adjusted for specific school needs with minimum knowledge of PHP/ORM/MySQL.
-Some reports are in Russian!
+Minimum maintenance is required. Code can be easily adjusted for specific organization needs with minimum knowledge of PHP/ORM/MySQL.
+Code is HTML5 complient and was checked against HTML5 standard specifications. No error found.
 
 ## Demo
 
