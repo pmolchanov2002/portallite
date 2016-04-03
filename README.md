@@ -3,7 +3,7 @@ Portal Lite is a simple content management system to support simple web portals.
 
 ## Foundation
 
-Application is based on the Symfony 2.x framework.
+Application is based on the PHP Symfony 2.x framework.
 It's powered by MySQL database and Doctrine ORM (which is part of the Symfony 2.x framework)
 Front end is powered by Bootstrap and is nicely resized on both mobile (Android, iPhone, iPad) and desktop (Windows, Mac, Linux) screens.
 
