@@ -1,6 +1,18 @@
 {% extends 'base/en/base.html.twig' %}
 
-{% block title %}Saint Sergius Learning Center{% endblock %}
+{% block title %}
+	Russian Othodox St. Serguis Assembly & Learning Center at the Tolstoy Foundation, New York.
+	{% for article in page.articles %}
+		{{ article.title }}
+	{% endfor %} 
+{% endblock %}
+
+{% block description %}
+	Russian Othodox Learning Center at the Tolstoy Foundation, New York.
+	{% for article in page.articles.slice(0,page.articlesPerPage) %}	
+		{{ article.description|markdown|striptags }}
+	{% endfor %} 
+{% endblock %}
 
 {% block body %}
 
@@ -25,7 +37,7 @@
 					</h2>
 					<dd>
 						<address class="item_createdby">
-							Author: {{ article.author.englishName }}
+							Published by: {{ article.author.englishName }}
 						</address>
 					</dd>
 					<dd>

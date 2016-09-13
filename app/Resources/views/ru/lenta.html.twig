@@ -1,5 +1,20 @@
-{% extends 'base/ru/base.html.twig' %} {% block title %}Школа Святого
-Сергия Радонежского{% endblock %} {% block body %}
+{% extends 'base/ru/base.html.twig' %} 
+
+{% block title %}
+	Русская Православная Школа Сергия Радонежского при Фонде Толстого Нью Йорк.
+	{% for article in page.articles.slice(0,page.articlesPerPage) %}
+		{{ article.title }}
+	{% endfor %} 
+{% endblock %}
+
+{% block description %}
+	Русская Православная Школа Сергия Радонежского при Фонде Толстого Нью Йорк.
+	{% for article in page.articles.slice(0,page.articlesPerPage) %}
+		{{ article.description|markdown|striptags }}
+	{% endfor %} 
+{% endblock %}
+ 
+{% block body %}
 
 
 <!-- banner -->
@@ -22,7 +37,7 @@
 					</h2>
 					<dd>
 						<address class="item_createdby">
-							Автор: {{ article.author.firstName }} {{ article.author.lastName }}
+							Публикация: {{ article.author.firstName }} {{ article.author.lastName }}
 						</address>
 					</dd>
 					<dd>

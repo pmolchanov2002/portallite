@@ -1,5 +1,19 @@
 {% extends 'base/en/base.html.twig' %} 
-{% block title %}Saint Sergius Learning Center (stsergiuslc){% endblock %} 
+
+{% block title %}
+	St. Serguis Assembly & Learning Center at the Tolstoy Foundation, New York.
+	{% for article in page.articles %}
+		{{ article.title }}
+	{% endfor %} 
+{% endblock %}
+
+{% block description %}
+	St. Serguis Assembly & Learning Center at the Tolstoy Foundation, New York.
+	{% for article in page.articles.slice(0,page.articlesPerPage) %}	
+		{{ article.description|markdown|striptags }}
+	{% endfor %} 
+{% endblock %}
+
 {% block body %}
 
 <!-- banner -->
@@ -24,7 +38,7 @@
 	   	  				<dl class="item_info_dl">
 							<dd>
 								<address class="item_createdby">
-									Author: {{ article.author.englishName }}
+									Published by: {{ article.author.englishName }}
 								</address>
 							</dd>
 							<dd>
