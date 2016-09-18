@@ -106,7 +106,7 @@ class ArticleController extends Controller
             return $this->redirectToRoute($this->displayRoute);
         }    
 
-        return $this->render('forms/article.html.twig', array(
+        return $this->render('admin/form/article.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -201,7 +201,7 @@ class ArticleController extends Controller
             return $this->redirectToRoute($this->displayRoute);
         }    
 
-        return $this->render('forms/article.html.twig', array(
+        return $this->render('admin/form/article.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -231,6 +231,6 @@ class ArticleController extends Controller
     	->createQueryBuilder('a')
     	->orderBy('a.id', 'DESC')
     	->getQuery()->execute();
-        return $this->render('views/article.html.twig',  array('articles' => $articles));
+        return $this->render('admin/view/article.html.twig',  array('articles' => $articles));
     }
 }

@@ -46,7 +46,7 @@ class MediaController extends Controller
             return $this->redirectToRoute($this->displayRoute);
         }    
 
-        return $this->render('forms/media.html.twig', array(
+        return $this->render('admin/form/media.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -60,7 +60,11 @@ class MediaController extends Controller
     	$form = $this->createFormBuilder($media)
     	->add('description', 'text', array('label' => 'Description:'))
     	->add('englishName', 'text', array('label' => 'English:'))
-    	->add('path', 'file', array('label' => 'File:'))
+    	->add('path', 'file', array(
+    			'label' => 'File:',
+    			'multiple' => false, 
+            	'data_class' => null
+    	))
     	->add('type', 'entity', array(
     			'multiple' => false,
     			'class' => 'AppBundle:MediaType',
@@ -87,7 +91,7 @@ class MediaController extends Controller
     		return $this->redirectToRoute($this->displayRoute);
    		}
     
-    	return $this->render('forms/media.html.twig', array(
+    	return $this->render('admin/form/media.html.twig', array(
    				'form' => $form->createView(),
     	));
     }
@@ -123,7 +127,7 @@ class MediaController extends Controller
             return $this->redirectToRoute($this->displayRoute);
         }    
 
-        return $this->render('forms/media.html.twig', array(
+        return $this->render('admin/form/media.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -151,6 +155,6 @@ class MediaController extends Controller
         $medias = $this->getDoctrine()
         ->getRepository('AppBundle:Media')
         ->findAll();
-        return $this->render('views/media.html.twig',  array('medias' => $medias));
+        return $this->render('admin/view/media.html.twig',  array('medias' => $medias));
     }
 }

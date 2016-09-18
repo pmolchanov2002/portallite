@@ -25,6 +25,21 @@ class Event
     protected $name;
     
     /**
+     * @ORM\Column(name="likeCount")
+     * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
+     */
+    protected $likeCount;    
+    
+    /**
+     * @ORM\Column(unique=true)
+     * @ORM\Column(type="date")
+     * @Assert\NotBlank()
+     */    
+    
+    protected $date;
+    
+    /**
      * @ORM\ManyToOne(targetEntity="Language")
      * @ORM\JoinColumn(name="Lang", referencedColumnName="code")
      **/
@@ -34,13 +49,7 @@ class Event
      * @ORM\ManyToOne(targetEntity="Status")
      * @ORM\JoinColumn(name="Status", referencedColumnName="code")
      **/
-    protected $status;   
-    
-    /**
-     * @ORM\Column(name="SortOrder")
-     * @Assert\NotBlank()
-     */
-    protected $sortOrder;
+    protected $status;
     
     /**
      * @ORM\ManyToOne(targetEntity="Page")
@@ -53,7 +62,6 @@ class Event
      * @ORM\JoinColumn(name="ArticleId", referencedColumnName="id")
      **/
     protected $article;
-
 
 
     /**
@@ -90,26 +98,118 @@ class Event
     }
 
     /**
-     * Set sortOrder
+     * Set englishName
      *
-     * @param string $sortOrder
+     * @param string $englishName
      * @return Event
      */
-    public function setSortOrder($sortOrder)
+    public function setEnglishName($englishName)
     {
-        $this->sortOrder = $sortOrder;
+        $this->englishName = $englishName;
 
         return $this;
     }
 
     /**
-     * Get sortOrder
+     * Get englishName
      *
      * @return string 
      */
-    public function getSortOrder()
+    public function getEnglishName()
     {
-        return $this->sortOrder;
+        return $this->englishName;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Event
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set englishDescription
+     *
+     * @param string $englishDescription
+     * @return Event
+     */
+    public function setEnglishDescription($englishDescription)
+    {
+        $this->englishDescription = $englishDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get englishDescription
+     *
+     * @return string 
+     */
+    public function getEnglishDescription()
+    {
+        return $this->englishDescription;
+    }
+
+    /**
+     * Set likeCount
+     *
+     * @param string $likeCount
+     * @return Event
+     */
+    public function setLikeCount($likeCount)
+    {
+        $this->likeCount = $likeCount;
+
+        return $this;
+    }
+
+    /**
+     * Get likeCount
+     *
+     * @return string 
+     */
+    public function getLikeCount()
+    {
+        return $this->likeCount;
+    }
+
+    /**
+     * Set date
+     *
+     * @param string $date
+     * @return Event
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return string 
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 
     /**
@@ -156,51 +256,5 @@ class Event
     public function getStatus()
     {
         return $this->status;
-    }
-
-    /**
-     * Set page
-     *
-     * @param \AppBundle\Entity\Page $page
-     * @return Event
-     */
-    public function setPage(\AppBundle\Entity\Page $page = null)
-    {
-        $this->page = $page;
-
-        return $this;
-    }
-
-    /**
-     * Get page
-     *
-     * @return \AppBundle\Entity\Page 
-     */
-    public function getPage()
-    {
-        return $this->page;
-    }
-
-    /**
-     * Set article
-     *
-     * @param \AppBundle\Entity\Article $article
-     * @return Event
-     */
-    public function setArticle(\AppBundle\Entity\Article $article = null)
-    {
-        $this->article = $article;
-
-        return $this;
-    }
-
-    /**
-     * Get article
-     *
-     * @return \AppBundle\Entity\Article 
-     */
-    public function getArticle()
-    {
-        return $this->article;
     }
 }

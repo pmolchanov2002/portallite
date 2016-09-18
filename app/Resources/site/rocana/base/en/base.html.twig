@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>{% block title %}{% endblock %}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="{% block description %}{% endblock %}">
+<meta name="keywords"
+	content="Russian, Russian School, Russian Orthodox School, New York, Valley Cottage, Rockland, Westchester, Sergius Learning Center, cheap, education" />
+<script type="application/x-javascript">
+	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+</script>
+<link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/responsive/1.0.7/css/responsive.bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript"
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!-- Custom Theme files -->
+<link href="/css/style.css" rel='stylesheet' type="text/css" />
+<link href="/css/jquery.countdown.css" rel="stylesheet" type="text/css" />
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700'
+	rel='stylesheet' type='text/css'>
+
+<link href="/css/font-awesome.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/css/blueimp-gallery.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<script>
+$(document).ready(function(){
+    $(".dropdown").hover(            
+        function() {
+            $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+            $(this).toggleClass('open');        
+        },
+        function() {
+            $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+            $(this).toggleClass('open');       
+        }
+    );
+});
+
+{% block script %}{% endblock %}
+</script>
+</head>
+<body>
+	<div style="width: 100%;">
+		<img src="/images/en/top_logo.jpg" alt="Save russian language and culture" style="width: 100%; border: 0px;"/>
+	</div>
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<img src="/images/logo_complete_en.png" alt="Learning Center logo" style="border: 0px;"/>
+			</div>
+			<!--/.navbar-header-->
+			<form action="/page/search.en" method="get">
+				<div class="navbar-collapse collapse"
+					id="bs-example-navbar-collapse-1" style="height: 1px;">
+					<ul class="nav navbar-nav">
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown"><i class="fa fa-calendar"></i><span>Events</span></a>
+							<ul class="dropdown-menu">
+								{% import '@site/base/event.html.twig' as event_macro %}			
+								{{ event_macro.event(events) }}
+							</ul></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown"><i class="fa fa-globe"></i><span>Language/Язык</span></a>
+							<ul class="dropdown-menu">
+								<li><a href="/page/home.en"><span><i class="flags us"></i><span>English</span></span></a></li>
+								<li><a href="/page/home.ru"><span><i class="flags russia"></i><span>Русский</span></span></a></li>
+							</ul></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown"><i class="fa fa-search"></i><span>Search</span></a>
+							<div class="dropdown-menu search-form">
+									<input type="text" class="search-text" name="s"
+										placeholder="Search...">
+									<button type="submit" class="search-submit">
+										<i class="fa fa-search"></i>
+									</button>
+							</div></li>
+					</ul>
+				</div>
+			</form>
+			<div class="clearfix"></div>
+		</div>
+		<!--/.navbar-collapse-->
+	</nav>
+	<nav class="navbar nav_bottom">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header nav_2">
+				<button type="button" class="navbar-toggle collapsed navbar-toggle1"
+					data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+					More information <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"></a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+			
+			{% import '@site/base/menu.html.twig' as menu_macro %}			
+			{{ menu_macro.menu(menus) }}
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+	</nav>
+
+	{% block body %}{% endblock %}
+	<div class="footer">
+		<div itemscope itemtype="http://schema.org/LocalBusiness" class="container">
+			<div class="col-md-3 grid_4">
+				<h3>About us</h3>
+				<p><span itemprop="name">The Russian Orthodox St. Serguis Assembly & Learning Center</span> was founded at the Tolstoy Foundation Inc in 2007 in Valley Cottage, NY, USA. Our Center helps to preserve Russian culture and language, welcomes new students and organizes wonderful cultural events.</p>
+ 				<ul class="social-nav icons_2 clearfix">
+<!--					<li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+-->
+					<li><a href="https://www.facebook.com/stsergiuslc" class="facebook"> <i
+							class="fa fa-facebook"></i></a></li>
+<!--				<li><a href="#" class="google-plus"><i
+							class="fa fa-google-plus"></i></a></li>
+-->
+				</ul>
+			</div>
+			<div class="col-md-3 grid_4">
+				<h3>Quick Links</h3>
+				<ul class="footer_list">
+					<li><a href="/page/about.en">- About The Center </a></li>
+					<li><a href="/page/lessons.en">- Schedule</a></li>
+					<li><a href="/page/admissions.en">- Admissions</a></li>
+					<li><a href="/page/calendar.en">- Calendar</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 grid_4">
+				<h3>Contact Us</h3>
+				<address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+					<span itemprop="streetAddress">104 Lake Rd</span><br>
+					<span itemprop="addressLocality">Valley Cottage</span><br>
+					<span itemprop="addressRegion">New York</span>, 
+					<span itemprop="postalCode">10989</span><br>
+					<span itemprop="addressCountry">USA</span>
+					<br><br> 
+					<i class="fa fa-phone"></i>
+					<abbr>Telephone : </abbr><span itemprop="telephone">(845) 267-8397</span><br>
+					<i class="fa fa-envelope"></i>
+					<abbr>Email : </abbr>
+					<a href="/mail"><img  alt="mail"  src="/images/mail.png"/></a>
+				</address>
+			</div>
+			<div class="col-md-3 grid_4">
+				<h3>Hours In Session</h3>
+				<table class="table_working_hours">
+					<tbody>
+						<tr class="opened_1">
+							<td class="day_label">saturday</td>
+							<td class="day_value">9:00 am - 1:30 pm</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="clearfix"></div>
+			<div class="copy">
+				<p>Copyright © 2000-{{ "now"|date("Y") }} St. Sergius Learning Center.</p>
+				<p>All Rights Reserved.</p>
+				<p>Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a></p>
+				<p>Automation by <a href="http://windlovers.blogspot.com/" target="_blank">Pavel Molchanov</a></p>
+				<p>Translation by <a href="#" target="_blank">Scott Moss</a></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

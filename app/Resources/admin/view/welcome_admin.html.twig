@@ -1,0 +1,55 @@
+{# app/Resources/views/welcome_admin.html.twig #}
+{% extends 'admin/view/base-admin.html.twig' %}
+
+{% block title %}Welcome, {{ app.user.firstName }} {{app.user.lastName }}{% endblock %}
+
+{% block body %}
+   <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Article</h2>
+          <p>Web-site articles for all users</p>
+          <p><a class="btn btn-default" href="/admin/web/article" role="button">Articles &raquo;</a></p>
+        </div>
+        <div class="col-md-6">
+          <h2>Page</h2>
+          <p>Web-site pages</p>
+          <p><a class="btn btn-default" href="/admin/web/page" role="button">Pages &raquo;</a></p>
+       </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Menu</h2>
+          <p>Web-site menu</p>
+          <p><a class="btn btn-default" href="/admin/web/menu" role="button">Menus &raquo;</a></p>
+        </div>
+        <div class="col-md-6">
+          <h2>Event</h2>
+          <p>Web-site events</p>
+          <p><a class="btn btn-default" href="/admin/web/event" role="button">Events &raquo;</a></p>
+       </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Banner</h2>
+          <p>Banners on web pages</p>
+          <p><a class="btn btn-default" href="/admin/web/banner" role="button">Banners &raquo;</a></p>
+        </div>
+        <div class="col-md-6">
+          <h2>Media</h2>
+          <p>Media files (images, video and documents)</p>
+          <p><a class="btn btn-default" href="/admin/web/media" role="button">Media &raquo;</a></p>
+       </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Users</h2>
+          <p>Create/modify/delete users</p>
+          <p><a class="btn btn-default" href="/admin/user" role="button">Users &raquo;</a></p>
+        </div>
+        <div class="col-md-6">
+        </div>
+      </div>
+   </div>
+{% endblock %} 

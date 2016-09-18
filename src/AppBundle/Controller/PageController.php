@@ -58,7 +58,7 @@ class PageController extends Controller
             return $this->redirectToRoute($this->displayRoute);
         }    
 
-        return $this->render('forms/page.html.twig', array(
+        return $this->render('admin/form/page.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -106,7 +106,7 @@ class PageController extends Controller
             return $this->redirectToRoute($this->displayRoute);
         }    
 
-        return $this->render('forms/page.html.twig', array(
+        return $this->render('admin/form/page.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -134,6 +134,6 @@ class PageController extends Controller
         $pages = $this->getDoctrine()
         ->getRepository('AppBundle:Page')
         ->findAll();
-        return $this->render('views/page.html.twig',  array('pages' => $pages));
+        return $this->render('admin/view/page.html.twig',  array('pages' => $pages));
     }
 }

@@ -51,7 +51,7 @@ class BannerController extends Controller
             return $this->redirectToRoute($this->displayRoute);
         }    
 
-        return $this->render('forms/banner.html.twig', array(
+        return $this->render('admin/form/banner.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -92,7 +92,7 @@ class BannerController extends Controller
             return $this->redirectToRoute($this->displayRoute);
         }    
 
-        return $this->render('forms/banner.html.twig', array(
+        return $this->render('admin/form/banner.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -120,6 +120,6 @@ class BannerController extends Controller
         $banners = $this->getDoctrine()
         ->getRepository('AppBundle:Banner')
         ->findAll();
-        return $this->render('views/banner.html.twig',  array('banners' => $banners));
+        return $this->render('admin/view/banner.html.twig',  array('banners' => $banners));
     }
 }

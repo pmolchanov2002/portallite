@@ -76,7 +76,7 @@ class MenuController extends Controller
             return $this->redirectToRoute($this->displayRoute);
         }    
 
-        return $this->render('forms/menu.html.twig', array(
+        return $this->render('admin/form/menu.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -143,7 +143,7 @@ class MenuController extends Controller
             return $this->redirectToRoute($this->displayRoute);
         }    
 
-        return $this->render('forms/menu.html.twig', array(
+        return $this->render('admin/form/menu.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -171,6 +171,6 @@ class MenuController extends Controller
         $menus = $this->getDoctrine()
         ->getRepository('AppBundle:Menu')
         ->findAll();
-        return $this->render('views/menu.html.twig',  array('menus' => $menus));
+        return $this->render('admin/view/menu.html.twig',  array('menus' => $menus));
     }
 }

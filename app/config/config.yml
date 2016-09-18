@@ -1,5 +1,5 @@
 imports:
-    - { resource: parameters.yml }
+    - { resource: parameters_rocana.yml }
     - { resource: security.yml }
     - { resource: services.yml }
 
@@ -40,6 +40,8 @@ twig:
         resources:
             - 'bootstrap_3_layout.html.twig'
             - 'OrnjMarkdownBundle:Form:fields.html.twig'
+    paths:
+        "%kernel.root_dir%/Resources/site/%site%": site
 
 # Assetic Configuration
 assetic:

@@ -1,0 +1,61 @@
+{% extends '@site/base/ru/base.html.twig' %} 
+
+
+{% block title %}
+Школа Сергия Радонежского при Фонде Толстого.
+Где мы находимся.
+{% endblock %} 
+{% block description %}
+Школа Сергия Радонежского при Фонде Толстого. 
+Где мы находимся.
+{% endblock %}
+
+{% block body %}
+
+<!-- banner -->
+{% import '@site/base/banner.html.twig' as banner_macro %}			
+{{ banner_macro.banner(page) }}
+<!-- //banner -->
+
+<!-- page content -->
+	<div class="features">
+	   <div class="container">
+	   	  <h1>Где мы находимся</h1>
+	   	  <div class="map">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3005.445757238272!2d-73.93369934866273!3d41.12479407918761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2c18b9893828f%3A0x365ed5f2e878176d!2s104+Lake+Rd%2C+Valley+Cottage%2C+NY+10989!5e0!3m2!1sen!2sin!4v1457666794337" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>		  <p>Наша школа находится на 12-ом съезде с трассы 287. 
+		  	Рядом со съездом расположен торговый комплес Palisades. 
+		  	На съезде надо повенуть направо и проехать по 303 шоссе до перекрестка с Lake Rd. 
+		  	На перекрестке повернуть направо и проехать до здания русской церкви на территории Фонда Толстого. 
+		  	Припарковаться можно перед церквью. 
+		  	Здание школы легко найти рядом с постройками Фонда Толстого.</p>
+		  <div class="wrapper">
+				<div class="col_1">
+					<i class="fa fa-home  icon2"></i>
+					<div class="box">
+						<p class="marTop9">104 Lake Rd.,<br>Valley Cottage, NY, 10989</p>
+					</div>
+				</div>
+
+				<div class="col_2">
+					<i class="fa fa-phone  icon2"></i>
+					<div class="box">
+						<p class="marTop9">+1 (845) 267-8397</p>
+					</div>
+				</div>
+
+				<div class="col_2">
+					<i class="fa fa-envelope icon2"></i>
+					<div class="box">
+						<p class="m_6"><a href="/mail"><img src="/images/mail.png"></img></a></p>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+		 </div>							
+						
+	  </div>
+	</div>
+<!-- page content -->
+    
+
+
+{% endblock %}

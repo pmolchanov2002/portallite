@@ -176,4 +176,27 @@ class Media
     {
         return $this->type;
     }
+
+    /**
+     * Set englishName
+     *
+     * @param string $englishName
+     * @return Media
+     */
+    public function setEnglishName($englishName)
+    {
+        $this->englishName = $englishName;
+
+        return $this;
+    }
+
+    /**
+     * Get englishName
+     *
+     * @return string 
+     */
+    public function getEnglishName()
+    {
+        return $this->englishName;
+    }
 }

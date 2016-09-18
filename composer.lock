@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b1bf2533cdbf55e5e1506ade885decee",
-    "content-hash": "75ba545273a9cb2b6177bcc0f8997cf8",
+    "content-hash": "79949e4b92b6ecdce301d1bdbbbedaad",
     "packages": [
         {
             "name": "aptoma/twig-markdown",
@@ -807,6 +806,7 @@
                 "html2pdf",
                 "pdf"
             ],
+            "abandoned": "spipu/html2pdf",
             "time": "2015-11-10 12:08:45"
         },
         {
@@ -820,7 +820,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/OwlyCode/EnseparHtml2pdfBundle/zipball/37ddcd51ad8ffe64c181597af963f899fb3ca1f4",
+                "url": "https://api.github.com/repos/OwlyCode/EnseparHtml2pdfBundle/zipball/edc625af9b19604cff42c25e8a5290ed33a2f880",
                 "reference": "edc625af9b19604cff42c25e8a5290ed33a2f880",
                 "shasum": ""
             },
@@ -957,6 +957,59 @@
                 "sql"
             ],
             "time": "2014-01-12 16:20:24"
+        },
+        {
+            "name": "kartik-v/bootstrap-fileinput",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
+                "reference": "6fe98f761ffb160f3226dcf7acffd9b648f3009f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/6fe98f761ffb160f3226dcf7acffd9b648f3009f",
+                "reference": "6fe98f761ffb160f3226dcf7acffd9b648f3009f",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\plugins\\fileinput\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "An enhanced HTML 5 file input for Bootstrap 3.x with features for file preview for many file types, multiple selection, ajax uploads, and more.",
+            "homepage": "https://github.com/kartik-v/bootstrap-fileinput",
+            "keywords": [
+                "ajax",
+                "bootstrap",
+                "delete",
+                "file",
+                "image",
+                "input",
+                "jquery",
+                "multiple",
+                "preview",
+                "progress",
+                "upload"
+            ],
+            "time": "2016-09-09 07:29:00"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -1953,7 +2006,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "ensepar/html2pdf-bundle": 20,
-        "ornj/markdown-bundle": 20
+        "ornj/markdown-bundle": 20,
+        "kartik-v/bootstrap-fileinput": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

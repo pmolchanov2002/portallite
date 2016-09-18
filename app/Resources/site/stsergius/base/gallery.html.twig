@@ -1,0 +1,37 @@
+{% macro gallery(article) %}
+
+	{% if article.images is not empty %}
+	
+		<!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+		<div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel">
+		    <div class="slides"></div>
+		    <h3 class="title"></h3>
+		    <a class="prev">‹</a>
+		    <a class="next">›</a>
+		    <a class="play-pause"></a>
+		    <ol class="indicator"></ol>
+		</div>
+		
+		<script src="/js/blueimp-gallery.min.js"></script>
+		
+		<script>
+			blueimp.Gallery([     	   
+	       			{% for image in article.images %}
+	       				{
+			       			title: '{{ image.description }}',
+			       			href: '{{ image.path }}',
+			       			type: '{{ image.type.mimeType }}'
+	       				}
+	       				{% if not loop.last %}
+	       				,
+	       				{% endif %}
+	    		    {% endfor %}
+			], {
+		        container: '#blueimp-gallery-carousel',
+		        carousel: true
+		    });
+		</script>
+	
+	{% endif %}
+
+{% endmacro %}

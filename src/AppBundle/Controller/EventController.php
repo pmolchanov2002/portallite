@@ -46,8 +46,7 @@ class EventController extends Controller
             		'multiple' => false,
             		'class' => 'AppBundle:Status',
             		'choice_label' => 'name',
-            		'label' => 'Status: '))
-            ->add('sortOrder', 'integer', array('label' => 'Sort order:'))            
+            		'label' => 'Status: '))           
             ->add('save', 'submit', array('label' => 'Create'))
             ->getForm();
 
@@ -61,7 +60,7 @@ class EventController extends Controller
             return $this->redirectToRoute($this->displayRoute);
         }    
 
-        return $this->render('forms/event.html.twig', array(
+        return $this->render('admin/form/event.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -98,7 +97,6 @@ class EventController extends Controller
             		'class' => 'AppBundle:Status',
             		'choice_label' => 'name',
             		'label' => 'Status: '))
-            ->add('sortOrder', 'integer', array('label' => 'Sort order:'))  
             ->add('save', 'submit', array('label' => 'Save'))
             ->getForm();
 
@@ -112,7 +110,7 @@ class EventController extends Controller
             return $this->redirectToRoute($this->displayRoute);
         }    
 
-        return $this->render('forms/event.html.twig', array(
+        return $this->render('admin/form/event.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -140,6 +138,6 @@ class EventController extends Controller
         $events = $this->getDoctrine()
         ->getRepository('AppBundle:Event')
         ->findAll();
-        return $this->render('views/event.html.twig',  array('events' => $events));
+        return $this->render('admin/view/event.html.twig',  array('events' => $events));
     }
 }

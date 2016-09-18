@@ -33,7 +33,7 @@ class DefaultController extends Controller
     public function welcomeAdmin()
     {
     	// replace this example code with whatever you need
-    	return $this->render('views/welcome_admin.html.twig');
+    	return $this->render('admin/view/welcome_admin.html.twig');
     }
     
     /**
@@ -47,12 +47,13 @@ class DefaultController extends Controller
      * @Route("/error", name="error")
      */
     public function errorPage(Request $request) {
+    	$site = $this->getParameter('site');
     	$lang = $request->getPreferredLanguage(array('en', 'ru'));
     	$parameters = array(
     			'menus' => $this->loadMenu($lang),
     			'events' => $this->loadEvents($lang)
     	);
-    	return $this->render('views/'.$lang.'/error.html.twig', $parameters);
+    	return $this->render('site/'.$site.'/views/'.$lang.'/error.html.twig', $parameters);
     }
     
     /**
@@ -80,6 +81,7 @@ class DefaultController extends Controller
      */
     public function displayPage($pageId, Request $request)
     {
+    	$site = $this->getParameter('site');
     	$em = $this->getDoctrine ()->getManager();
     	$lang = $request->getPreferredLanguage(array('en', 'ru'));
     	
@@ -116,7 +118,7 @@ class DefaultController extends Controller
     		}
     	}
     	
-	   	return $this->render('views/'.$lang.'/'.$pageType.'.html.twig', $parameters);
+	   	return $this->render('site/'.$site.'/views/'.$lang.'/'.$pageType.'.html.twig', $parameters);
     }
     
     /**
@@ -124,6 +126,7 @@ class DefaultController extends Controller
      */
     public function displayPageWithArticle($pageId, $articleId)
     {
+    	$site = $this->getParameter('site');
     	$em = $this->getDoctrine ()->getManager();
     	 
     	$page = $em->getRepository ( 'AppBundle:Page' )->find($pageId);
@@ -137,7 +140,7 @@ class DefaultController extends Controller
     		'articleId' => $articleId
     	);
     	 
-    	return $this->render('views/'.$lang.'/'.$pageType.'.html.twig', $parameters);
+    	return $this->render('site/'.$site.'/views/'.$lang.'/'.$pageType.'.html.twig', $parameters);
     }
  
     private function loadMenu($lang) {
@@ -161,8 +164,7 @@ class DefaultController extends Controller
     	$q = $em->getRepository ( 'AppBundle:Event' )
     	->createQueryBuilder ( 'm' )
     	->where('m.language = :lang')
-    	->setParameter ( "lang", $lang )
-    	->orderBy('m.sortOrder', 'ASC');
+    	->setParameter ( "lang", $lang );
     	 
     	$events = $q->getQuery ()->execute();
     	 
