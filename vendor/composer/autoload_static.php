@@ -168,6 +168,21 @@ class ComposerStaticInit01cef6ce158a8c7ba54bafa02445e6ae
                 0 => __DIR__ . '/..' . '/ensepar/html2pdf',
             ),
         ),
+        'G' => 
+        array (
+            'Gregwar\\ImageBundle' => 
+            array (
+                0 => __DIR__ . '/..' . '/gregwar/image-bundle',
+            ),
+            'Gregwar\\Image' => 
+            array (
+                0 => __DIR__ . '/..' . '/gregwar/image',
+            ),
+            'Gregwar\\Cache' => 
+            array (
+                0 => __DIR__ . '/..' . '/gregwar/cache',
+            ),
+        ),
         'E' => 
         array (
             'Ensepar\\Html2pdfBundle' => 

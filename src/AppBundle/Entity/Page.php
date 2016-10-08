@@ -49,6 +49,16 @@ class Page
      * @ORM\OrderBy({"id" = "DESC"})
      **/
     protected $articles;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Faq")
+     * @ORM\JoinTable(name="Page_Faq",
+     *      joinColumns={@ORM\JoinColumn(name="PageId", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="FaqId", referencedColumnName="id")}
+     *      )
+     * @ORM\OrderBy({"ordinal" = "ASC"})
+     **/
+    protected $faqs;
 
     /**
      * @ORM\ManyToOne(targetEntity="Language")
@@ -305,5 +315,38 @@ class Page
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Add faqs
+     *
+     * @param \AppBundle\Entity\Faq $faqs
+     * @return Page
+     */
+    public function addFaq(\AppBundle\Entity\Faq $faqs)
+    {
+        $this->faqs[] = $faqs;
+
+        return $this;
+    }
+
+    /**
+     * Remove faqs
+     *
+     * @param \AppBundle\Entity\Faq $faqs
+     */
+    public function removeFaq(\AppBundle\Entity\Faq $faqs)
+    {
+        $this->faqs->removeElement($faqs);
+    }
+
+    /**
+     * Get faqs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFaqs()
+    {
+        return $this->faqs;
     }
 }

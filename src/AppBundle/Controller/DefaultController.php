@@ -14,7 +14,8 @@ class DefaultController extends Controller
 			2 => 'lenta',
 			3 => 'contact',
 			4 => 'schedule',
-			5 => 'results'
+			5 => 'results',
+			6 => 'faq'
 	);
 	
     /**
@@ -39,8 +40,14 @@ class DefaultController extends Controller
     /**
      * @Route("/mail", name="mail")
      */
-    public function mail() {
-    	return $this->redirect('mailto:info@stsergiuslc.com');
+    public function mail(Request $request) {
+    	$lang = $request->getPreferredLanguage(array('en', 'ru'));
+    	$emailSetting = $this->getEmailSetting($lang);
+    	if($emailSetting != null) {
+    		return $this->redirect('mailto:'.$emailSetting->getValue());
+    	} else {
+    		return $this->redirect('/');
+    	}
     }
     
     /**
@@ -51,6 +58,7 @@ class DefaultController extends Controller
     	$lang = $request->getPreferredLanguage(array('en', 'ru'));
     	$parameters = array(
     			'menus' => $this->loadMenu($lang),
+    			'settings' => $this->loadSettings($lang),
     			'events' => $this->loadEvents($lang)
     	);
     	return $this->render('site/'.$site.'/views/'.$lang.'/error.html.twig', $parameters);
@@ -99,6 +107,7 @@ class DefaultController extends Controller
     	$parameters = array(
     			'menus' => $this->loadMenu($lang),
     			'events' => $this->loadEvents($lang),
+    			'settings' => $this->loadSettings($lang),
     			'page' => $page,
     			'articleId' => 0
     	);
@@ -136,6 +145,7 @@ class DefaultController extends Controller
     	$parameters = array(
     		'menus' => $this->loadMenu($lang),
     		'events' => $this->loadEvents($lang),
+    		'settings' => $this->loadSettings($lang),
     		'page' => $page,
     		'articleId' => $articleId
     	);
@@ -158,6 +168,21 @@ class DefaultController extends Controller
     	return $menus;
     }
     
+    private function getEmailSetting($lang) {
+    	$em = $this->getDoctrine ()->getManager();
+    
+    	$q = $em->getRepository ( 'AppBundle:Setting' )
+    	->createQueryBuilder ( 's' )
+    	->join('s.type', 't')
+    	->where('t.id = 8')
+    	->andWhere('s.language = :lang')
+    	->setParameter('lang', $lang);
+    	 
+    	$email = $q->getQuery ()->getSingleResult();
+    		 
+    	return $email;
+    }
+    
     private function loadEvents($lang) {
     	$em = $this->getDoctrine ()->getManager();
     
@@ -169,7 +194,20 @@ class DefaultController extends Controller
     	$events = $q->getQuery ()->execute();
     	 
     	return $events;
-    }    
+    }
+    
+    private function loadSettings($lang) {
+    	$em = $this->getDoctrine ()->getManager();
+    
+    	$q = $em->getRepository ( 'AppBundle:Setting' )
+    	->createQueryBuilder ( 's' )
+    	->where('s.language = :lang')
+    	->setParameter ( "lang", $lang );
+    
+    	$settings = $q->getQuery ()->execute();
+    
+    	return $settings;
+    }
     
     private function loadClassesForStudents() {
     	$classesForLesson = $this->getDoctrine()

@@ -1,0 +1,44 @@
+{% extends '@site/base/en/base.html.twig' %}
+
+{% block title %}
+	{% for faq in page.faqs %}
+		{{ faq.title }}
+	{% endfor %} 
+{% endblock %}
+
+{% block body %}
+
+
+<!-- banner -->
+{% import '@site/base/banner.html.twig' as banner_macro %}			
+{{ banner_macro.banner(page) }}
+<!-- //banner -->
+
+<div class="uk-container uk-container-center">
+    <div class="uk-grid" data-uk-grid-match data-uk-grid-margin>
+        <div class="tm-main uk-width-medium-4-4 tm-middle">
+            <main class="tm-content">
+                <section>
+                    <div id="primary" class="site-content">
+                        <div id="content" role="main">
+                            <h2>{{ page.title }}</h2>
+                            <div class="uk-grid uk-accordion tm-accordion" data-uk-accordion>
+							{% for faq in page.faqs.slice(0,page.articlesPerPage) %}
+								<div class="uk-width-1-1">
+									<h3 class="uk-panel-header uk-accordion-title tm-accordion-title">{{ faq.title }}</h3>
+                                	<div class="uk-accordion-content">
+                                		{{ faq.content|markdown }}
+                                	</div>
+                                </div>		
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
+	</div>
+	</div>
+	
+
+{% endblock %}

@@ -257,4 +257,50 @@ class Event
     {
         return $this->status;
     }
+
+    /**
+     * Set page
+     *
+     * @param \AppBundle\Entity\Page $page
+     * @return Event
+     */
+    public function setPage(\AppBundle\Entity\Page $page = null)
+    {
+        $this->page = $page;
+
+        return $this;
+    }
+
+    /**
+     * Get page
+     *
+     * @return \AppBundle\Entity\Page 
+     */
+    public function getPage()
+    {
+        return $this->page;
+    }
+
+    /**
+     * Set article
+     *
+     * @param \AppBundle\Entity\Article $article
+     * @return Event
+     */
+    public function setArticle(\AppBundle\Entity\Article $article = null)
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    /**
+     * Get article
+     *
+     * @return \AppBundle\Entity\Article 
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
 }

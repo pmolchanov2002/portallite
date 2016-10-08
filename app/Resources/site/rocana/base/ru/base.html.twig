@@ -1,193 +1,243 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-<title>{% block title %}{% endblock %}</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords"
-	content="русский, русская школа, Нью-Йорк, Rockland, Westchester, православие, литература, история, Тостой, представления, спектакли, занятия, Масленица, Блины, Пельмени, дешево, образование" />
-<meta name="description" content="{%block description %}{% endblock %}">
-<script type="application/x-javascript">
-	
-	
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="description" content="
+{% for setting in settings %}
+	{% if setting.type.id == 4 %}
+		{{ setting.value }}
+	{% endif %}
+{% endfor %}
+" />
+<meta name="keywords" content="
+{% for setting in settings %}
+	{% if setting.type.id == 2 %}
+		{{ setting.value }}
+	{% endif %}
+{% endfor %}
+" />
+<title>
+{% for setting in settings %}
+	{% if setting.type.id == 1 %}
+		{{ setting.value }}
+	{% endif %}
+{% endfor %} 
+</title>
 
-
-</script>
-<link rel="stylesheet" type="text/css"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css"
-	href="https://cdn.datatables.net/responsive/1.0.7/css/responsive.bootstrap.min.css">
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script type="text/javascript"
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	
-<!-- Custom Theme files -->
-<link href="/css/style.css" rel='stylesheet' type='text/css' />
-<link rel="stylesheet" href="/css/jquery.countdown.css" />
-
-<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700'
-	rel='stylesheet' type='text/css'>
-
-
-<link href="/css/font-awesome.css" rel="stylesheet">
-<link rel="stylesheet" href="/css/blueimp-gallery.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-<script>
-$(document).ready(function(){
-    $(".dropdown").hover(            
-        function() {
-            $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
-            $(this).toggleClass('open');        
-        },
-        function() {
-            $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
-            $(this).toggleClass('open');       
-        }
-    );
-});
-{% block script %}{% endblock %}
-</script>
+<link href="/css/theme.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<div style="width: 100%;">
-		<img src="/images/ru/top_logo.jpg" alt="Сохраните русский язык и культуру" style="width: 100%;" />
-	</div>
-	<nav class="navbar navbar-default">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<img src="/images/logo_complete.png" alt="Логотип школы" style="border: 0px;"/>
-			</div>
-			<!--/.navbar-header-->
-			<form action="/page/search.ru" method="get">
-				<div class="navbar-collapse collapse"
-					id="bs-example-navbar-collapse-1" style="height: 1px;">
-					<ul class="nav navbar-nav">
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown"><i class="fa fa-calendar"></i><span>События</span></a>
-							<ul class="dropdown-menu">
-								{% import '@site/base/event.html.twig' as event_macro %}			
-								{{ event_macro.event(events) }}
-							</ul>
-						</li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown"><i class="fa fa-globe"></i><span>Language/Язык</span></a>
-							<ul class="dropdown-menu">
-								<li><a href="/page/home.en"><span><i class="flags us"></i><span>English</span></span></a></li>
-								<li><a href="/page/home.ru"><span><i class="flags russia"></i><span>Русский</span></span></a></li>
-							</ul></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown"><i class="fa fa-search"></i><span>Поиск</span></a>
-							<div class="dropdown-menu search-form">
-									<input type="text" class="search-text" name="s"
-										placeholder="Search...">
-									<button type="submit" class="search-submit">
-										<i class="fa fa-search"></i>
-									</button>
-							</div></li>
-					</ul>
-					<div class="dropdown-menu search-form">
+
+<header>
+	 <div class="tm-header-offset">  <!-- Start header offset-->
+		<div class="tm-head-a-box tm-small-padding">
+			<div class="uk-container uk-container-center"> 						
+				<div class="uk-grid">
+					<!-- Start adress widget area -->
+					<div class="uk-width-small-1-1 uk-width-medium-1-3 uk-width-large-1-3 tm-text-left">
+						<div class=" uk-hidden-small tm-p-top-medium widget_text">
+<img src="/images/stvirginmary.jpg" style="height:100px"></img>
+						</div>
 					</div>
+					<!-- End adress widget area -->
+					<!-- Start top-logo widget area -->
+					<div class="uk-width-small-1-1 uk-width-medium-1-3 uk-width-large-1-3 uk-text-center">
+					    <br/>
+					    <a href="#" class="uk-h3">
+{% for setting in settings %}
+	{% if setting.type.id == 3 %}
+		{{ setting.value }}
+	{% endif %}
+{% endfor %}</a>
+					</div>
+					<!-- End top-logo widget area -->
+					<!-- Start social-icons & search widget area -->
+					<div class="uk-width-small-1-1 uk-width-medium-1-3 uk-width-large-1-3 tm-text-right">
+					   <div class=" uk-hidden-small tm-p-top-medium widget_text">
+					   	 <img src="/images/stnicolas.jpg" style="height:100px"></img>
+					   </div>
+					</div>
+					<!-- End social-icons widget area -->
 				</div>
-			</form>
-			<div class="clearfix"></div>
+			</div> 				
 		</div>
-		<!--/.navbar-collapse-->
-	</nav>
-	<nav class="navbar nav_bottom">
-		<div class="container">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header nav_2">
-				<button type="button" class="navbar-toggle collapsed navbar-toggle1"
-					data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-					Подробная информация <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#"></a>
+		<div style="height: 72px;" class="uk-sticky-placeholder">
+			<div style="margin: 0px;" class="tm-fixed-menu" data-uk-sticky="">  <!-- Start fixed menu-->
+				<div class="tm-nav-a-box">				
+					<div class="uk-container uk-container-center">
+						<nav class="uk-navbar">
+							<!--tm-navbar (hide defolt styles) -->
+							<ul class="uk-navbar-nav uk-hidden-small">
+							 	<li>
+							 		<a href="/page/home.en">
+							 		<i class="flags us"></i>
+							 		</a>
+							 	</li>
+							{% import '@site/base/menu.html.twig' as menu_macro %}			
+							{{ menu_macro.menu(menus) }}
+							</ul>						
+							<a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas=""></a>
+						</nav>
+					</div>
+				</div> 			
 			</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-			
-			{% import '@site/base/menu.html.twig' as menu_macro %}			
-			{{ menu_macro.menu(menus) }}
-			</div>
-			<!-- /.navbar-collapse -->
+		</div>  
+		<!-- End fixed menu-->
+		<div class="breadcrumbs">
+			<div class="uk-container uk-container-center breadcrumbs-box"></div>
 		</div>
-	</nav>
+	</div>  <!-- End header offset-->		
+</header>
 
-	{% block body %}{% endblock %}
+<div class="tm-default-header-offset-bg"></div>  <!-- Start header offset-->
 
-	<div class="footer">
-		<div itemscope itemtype="http://schema.org/LocalBusiness" class="container">
-			<div class="col-md-3 grid_4">
-				<h3>О нас</h3>
-				<p><span itemprop="name">Русская Православная Школа Сергия Радонежского</span> была основана при фонде Льва
-					Николаевича Толстого в городе Valley Cottage в штате Нью-Йорк, США.
-					Школа помогает сохранить русскую культуру и язык, радужно встречает
-					новых детей и организует прекрасные творческие мероприятия</p>
- 				<ul class="social-nav icons_2 clearfix">
-<!--					<li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
--->
-					<li><a href="https://www.facebook.com/stsergiuslc" class="facebook"> <i
-							class="fa fa-facebook"></i></a></li>
-<!--				<li><a href="#" class="google-plus"><i
-							class="fa fa-google-plus"></i></a></li>
--->
-				</ul>
+{% block body %}{% endblock %}
 
-			</div>
-			<div class="col-md-3 grid_4">
-				<h3>Ссылки</h3>
-				<ul class="footer_list">
-					<li><a href="/page/about.ru">О школе </a></li>
-					<li><a href="/page/lessons.ru">Рассписание</a></li>
-					<li><a href="/page/admissions.ru">Регистрация новых студентов</a></li>
-					<li><a href="/page/calendar.ru">Календарь</a></li>
-				</ul>
-			</div>
-			<div class="col-md-3 grid_4">
-				<h3>Наши контакты</h3>
-				<address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-					<span itemprop="streetAddress">104 Lake Rd</span><br>
-					<span itemprop="addressLocality">Valley Cottage</span><br>
-					<span itemprop="addressRegion">New York</span>, 
-					<span itemprop="postalCode">10989</span><br>
-					<span itemprop="addressCountry">USA</span>
-					<br><br> 
-					<i class="fa fa-phone"></i>
-					<abbr>Телефон : </abbr><span itemprop="telephone">(845) 267-8397</span><br>
-					<i class="fa fa-envelope"></i>
-					<abbr>Email : </abbr>
-					<a href="/mail"><img  alt="mail"  src="/images/mail.png"/></a>
-				</address>
-			</div>
-			<div class="col-md-3 grid_4">
-				<h3>Часы работы</h3>
-				<table class="table_working_hours">
-					<tbody>
-						<tr class="opened_1">
-							<td class="day_label">Суббота</td>
-							<td class="day_value">8:30 am - 1:30 pm</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="clearfix"></div>
-			<div class="copy">
-				<p>Copyright © 2000-{{ "now"|date("Y") }} Школа Сергия Радонежского. </p>
-				<p>Все права защищены. | Дизайн <a href="http://w3layouts.com/" target="_blank">W3layouts</a></p>
-				<p>Автоматизация <a href="http://windlovers.blogspot.com/" target="_blank">Pavel Molchanov</a></p>
-			</div>
-		</div>
-	</div>
+<div class="tm-footer-top-box tm-dark-bg">
+    <div class="uk-container uk-container-center">
+        <!-- start full width -->
+        <section class="tm-footer-top uk-grid tm-xlarge-padding" data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin>
+            <div class="uk-width-1-1 uk-width-large-1-3">
+                <div class="uk-panel widget_text" >
+                    <h3 class="uk-panel-title">О нас</h3>
+                    <p>
+{% for setting in settings %}
+	{% if setting.type.id == 10 %}
+		{{ setting.value }}
+	{% endif %}
+{% endfor %}
+                    </p></div>
+            </div>
+            <div class="uk-width-1-1 uk-width-large-1-3">
+                <div class="uk-panel widget_text" >
+                    <h3 class="uk-panel-title">Ссылки</h3>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="http://sinod.ruschurchabroad.org/engindex.htm" target="_blank">Synod of Bishops</a>
+                        </li>
+                        <li>
+                            <a href="http://australiaorthodoxroca.org/" target="_blank">Australia & New Zealand Diocese</a>
+                        </li>
+                        <li>
+                            <a href="http://vishegorod.ru/" target="_blank">St. Petersburg Diocese</a>
+                        </li>
+                        <li>
+                            <a href="http://slovestnik.ru/" target="_blank">Diocese of Moldavia</a>
+                        </li>
+                        <li>
+                            <a href="http://www.iglesiarusa.org.ar/" target="_blank">South American Diocese</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="uk-width-1-1 uk-width-large-1-3">
+                <div class="uk-panel widget_text" >
+                    <h3 class="uk-panel-title">Рассылка</h3>
+                    <p>Если вы хотите получать наши письма по e-mail, пожалуйста, предоставьте вам адрес электронной почты:</p>
+                    <div class="subscribe">
+                        <div role="form" class="wpcf7" id="wpcf7-f405-o1" lang="en-US" dir="ltr">
+                            <div class="screen-reader-response"></div>
+                            <form action="/#wpcf7-f405-o1" method="post" class="wpcf7-form" novalidate="novalidate">
+                                <div style="display: none;">
+                                    <input type="hidden" name="_wpcf7" value="405" />
+                                    <input type="hidden" name="_wpcf7_version" value="4.3" />
+                                    <input type="hidden" name="_wpcf7_locale" value="en_US" />
+                                    <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f405-o1" />
+                                    <input type="hidden" name="_wpnonce" value="7eb6dd6d20" />
+                                </div>
+                                <div class="uk-grid uk-grid-small" >
+                                    <div class="uk-grid-width-small-4-6 uk-width-medium-4-6 uk-grid-width-large-4-6">
+                                        <span class="wpcf7-form-control-wrap email-639">
+                                            <input type="email" name="email-639" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="Your email" />
+                                        </span>
+                                    </div>
+                                    <div class="uk-grid-width-small-2-6 uk-width-medium-2-6 uk-grid-width-large-2-6">
+                                        <input type="submit" value="Send" class="wpcf7-form-control wpcf7-submit" />
+                                    </div>
+                                </div>
+                                <div class="wpcf7-response-output wpcf7-display-none"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- end full width -->
+</div>
+
+<footer class="tm-footer-box tm-none-bg tm-none-padding">
+
+    <div class="uk-container uk-container-center">
+        <div class="tm-footer uk-grid">
+            <div class="uk-width-1-1 uk-width-large-1-2">
+                <div class="uk-panel tm-p-medium  widget_text">
+                    <div class="tm-text-left">
+                        © 2016,
+                        {% for setting in settings %}
+                        	{% if setting.type.id == 3 %}
+                        		{{ setting.value }}
+                        	{% endif %}
+                        {% endfor %} 
+                        <br/> Создано Павлом Молчановым
+                    </div>
+                </div>
+            </div>
+
+            <div class="uk-hidden-small uk-hidden-medium uk-width-large-1-2">
+                <div class="uk-panel uk-hidden-medium uk-hidden-small tm-p-medium  widget_text">
+                    <div class="tm-text-right">
+                        <ul class="social-icons">
+                            <li><a href="http://www.facebook.com" target="_blank"><i class="uk-icon-facebook-f"></i></a>
+                            </li>
+                            <li><a href="http://twitter.com/" target="_blank"><i class="uk-icon-twitter"></i></a>
+                            </li>
+                            <li><a href="http://plus.google.com/" target="_blank"><i class="uk-icon-google-plus"></i></a>
+                            </li>
+                            <li><a href="http://www.linkedin.com" target="_blank"><i class="uk-icon-linkedin"></i></a>
+                            </li>
+                            <li><a href="http://www.youtube.com/" target="_blank"><i class="uk-icon-youtube"></i></a>
+                            </li>
+                            <li><a href="http://vk.com/" target="_blank"><i class="uk-icon-vk"></i></a>
+                            </li>
+                            <li><a href="http://instagram.com/" target="_blank"><i class="uk-icon-instagram"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end full width -->
+</footer>
+
+<div id="offcanvas" class="uk-offcanvas">
+    <div class="uk-offcanvas-bar">
+
+ 	<div style="float:clear;"></div>
+        <ul class="uk-nav uk-nav-offcanvas">
+        	<li>
+       	 		<a href="/page/home.ru">English / Английский</a>
+        	</li>
+        	{% import '@site/base/menu_offcanvas.html.twig' as menu_macro %}			
+			{{ menu_macro.menu_offcanvas(menus) }}
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/uikit.js"></script>
+<script type="text/javascript" src="/js/components/slider.js"></script>
+<script type="text/javascript" src="/js/components/slideset.js"></script>
+<script type="text/javascript" src="/js/components/slideshow.js"></script>
+<script type="text/javascript" src="/js/components/slideshow-fx.js"></script>
+<script type="text/javascript" src="/js/components/sticky.js"></script>
+<script type="text/javascript" src="/js/components/lightbox.js"></script>
+<script type="text/javascript" src="/js/components/accordion.js"></script>
+<script type="text/javascript" src="/js/countdown.js"></script>
+<script type="text/javascript" src="/js/components/grid.js"></script>
+<script type="text/javascript" src="/js/components/sortable.js"></script>
+<script type="text/javascript" src="/js/custom.js"></script>
+
 </body>
 </html>

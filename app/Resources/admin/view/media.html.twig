@@ -6,7 +6,7 @@
 {% block script %}
 	$(document).ready(function() {
 	    $('#results').DataTable({
-	    	paging: false
+       		"order": [[ 0, "desc" ]]
 	    });
 	    $('.delete_row').click(function(){
     		return confirm("Are you sure you want to delete?");
@@ -22,6 +22,7 @@
 	<table id="results" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
         <thead>
             <tr>
+            	<th>Id</th>
                 <th>Description</th>
                 <th>Type</th>
                 <th>Path</th>
@@ -32,7 +33,8 @@
         <tbody>
 	    {% for media in medias %}
 	    	<tr>
-	        	<td data-sort="{{media.id}}">{{ media.description }}</td>
+	    		<td>{{ media.id }}</td>
+	        	<td><img src="{{ media.path }}" width="180"></img> {{ media.description }}</td>
 	        	<td>{{ media.type.name | default("Not assigned") }}</td>
 	        	<td><a href="{{ media.path }}" target="_blank">{{ media.path }}</a></td>
 	        	<td width="10"><a href='/admin/web/media/edit/{{ media.id }}'>Edit</a></td>

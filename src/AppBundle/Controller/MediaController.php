@@ -61,9 +61,7 @@ class MediaController extends Controller
     	->add('description', 'text', array('label' => 'Description:'))
     	->add('englishName', 'text', array('label' => 'English:'))
     	->add('path', 'file', array(
-    			'label' => 'File:',
-    			'multiple' => false, 
-            	'data_class' => null
+    			'label' => 'File:'
     	))
     	->add('type', 'entity', array(
     			'multiple' => false,
@@ -78,9 +76,11 @@ class MediaController extends Controller
     	if ($form->isValid()) {
     		$media = $form->getData();
     		$file = $media->getPath();
+    		print_r($file);
     		$fileName = md5(uniqid()).'.'.$file->guessExtension();
     		
-    		$uploadDir = $this->container->getParameter('kernel.root_dir').'/../../public_html/uploads';
+    		//$uploadDir = $this->container->getParameter('kernel.root_dir').'/../../public_html/uploads';
+    		$uploadDir = $this->container->getParameter('kernel.root_dir').'/../web/uploads';
     		$file->move($uploadDir, $fileName);
     		
     		$media->setPath($request->getSchemeAndHttpHost()."/uploads/".$fileName);
@@ -154,7 +154,7 @@ class MediaController extends Controller
     public function display() {
         $medias = $this->getDoctrine()
         ->getRepository('AppBundle:Media')
-        ->findAll();
+        ->findAll([], ['id' => 'ASC']);
         return $this->render('admin/view/media.html.twig',  array('medias' => $medias));
     }
 }

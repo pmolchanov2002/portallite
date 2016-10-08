@@ -1,0 +1,43 @@
+{# app/Resources/views/period.html.twig #}
+{% extends 'admin/view/base-admin.html.twig' %}
+
+{% block pageTitle %}Settings{% endblock %}
+{% block title %}Settings{% endblock %}
+{% block script %}
+	$(document).ready(function() {
+	    $('#results').DataTable({
+	    	paging: false
+	    });
+	    $('.delete_row').click(function(){
+    		return confirm("Are you sure you want to delete?");
+		});
+	} );
+{% endblock %}
+
+{% block body %}
+    <div style="margin-bottom:10px;">
+    	<a class="btn btn-default" href="/admin/web/setting/create" role="button">New setting</a>
+	</div>
+	<table id="results" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Setting</th>
+                <th>Language</th>
+                <th>Value</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+	    {% for setting in settings %}
+	    	<tr>
+	        	<td>{{ setting.type.name }}</td>
+	        	<td>{{ setting.language.name }}</td>
+	        	<td>{{ setting.value }}</td>
+	        	<td width="10"><a href='/admin/web/setting/edit/{{ setting.id }}'>Edit</a></td>
+	        	<td class="delete_row" width="10"><a href='/admin/web/setting/delete/{{ setting.id }}'>Delete</a></td>
+	        </tr>
+	    {% endfor %}
+    	</tbody>        
+    </table>
+{% endblock %}

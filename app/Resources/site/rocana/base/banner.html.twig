@@ -2,59 +2,85 @@
 
 	{% if page.banner is not empty %}
 		{% set banner = page.banner %}
+		<div class="tm-slider-box tm-dark-bg">
+			<section class="tm-slider uk-grid tm-none-padding" data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin="">
+			<!-- start full width -->
+				<div class="uk-width-1-1">
+					<div class="uk-panel top-slider-width CuteChurch">        
+			            <div class="slider-module">
+			            	<div class="uk-slidenav-position" data-uk-slideshow="{height: 'auto', animation: 'fade', duration: '', autoplay: true, autoplayInterval: '4000', videoautoplay: false, videomute: false, kenburns: false}">
 		{% if banner.media|length == 1 %}
-			{% set image = banner.media[0] %}		
-			  <div class="courses_banner" style="background: url({{ image.path }}) no-repeat center top; background-size: cover;">
-			  	<div class="container">
-			  		<h3>{{ banner.name }}</h3>
-			  		<p class="description">
-						{{ banner.description }}
-			        </p>
-			  	</div>
-			  </div>
-		{% elseif banner.media|length > 1 %}
-		<div class="banner">
-			<script src="/js/responsiveslides.min.js"></script>
-			 <script>
-				$(function () {
-				  $("#slider3").responsiveSlides({
-					auto: true,
-					pager: true,
-					nav: true,
-					speed: 500,
-					namespace: "callbacks",
-					before: function () {
-					  $('.events').append("<li>before event fired.</li>");
-					},
-					after: function () {
-					  $('.events').append("<li>after event fired.</li>");
-					}
-				  });
-				});
-			  </script>
-			<div  id="top" class="callbacks_container">
-				<ul class="rslides" id="slider3">
-				{% for image in banner.media %}
-					<li>
-						<div class="banner-bg" style="background: url({{ image.path }}) no-repeat center top; background-size: cover;">
-							<div class="container">
-								<div class="banner-info">
-									<h3>{{ banner.name }}</h3>
-									<p>
-								  		{% if page.language.code == 'ru' %} 
-								        	{{ image.description }}
-								        {% else %}
-								        	{{ image.englishName }}
-								        {% endif %}
-									</p>
+			{% set image = banner.media[0] %}
+			<ul class="uk-slideshow uk-overlay-active">		
+                <li aria-hidden="false" class="uk-cover uk-height-viewport  tm-wrap uk-active">
+                	<div class="uk-cover-background uk-position-cover"></div>
+                	<img src="{{ image.path }}" alt="{{ banner.name }}" class="aligncenter size-full wp-image-631" height="960">
+						<div class="uk-overlay-panel uk-overlay-right uk-overlay-slide-left uk-flex uk-flex-center uk-flex-middle uk-width-1-1">
+							<div class="uk-container uk-container-center tm-full-width">
+								<div class=" tm-wrap">
+									<div class="tm-slide-style-1 uk-width-1-1">
+										<div class="">
+											<div class="imageslider-background"><h3 class="slide-head">
+												{{ banner.name }}
+											</h3></div><br>
+											<div class="imageslider-background"><h3 class="slide-head">
+												{% if page.language.code == 'ru' %} 
+						        					{{ image.description }}
+						        				{% else %}
+						        					{{ image.englishName }}
+						        				{% endif %}
+											</h3></div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
-					</li>			
+				</li>
+			</ul>
+		{% elseif banner.media|length > 1 %}
+			<ul class="uk-slideshow uk-overlay-active">
+				{% for image in banner.media %}
+				{% if loop.first %}
+                	<li aria-hidden="false" class="uk-cover uk-height-viewport  tm-wrap uk-active">
+                {% else %}
+                	<li aria-hidden="true" class="uk-cover uk-height-viewport  tm-wrap">
+                {% endif %}
+                	<div class="uk-cover-background uk-position-cover"></div>
+                	<img src="{{ image.path }}" alt="{{ banner.name }}" class="aligncenter size-full wp-image-631">
+						<div class="uk-overlay-panel uk-overlay-right uk-overlay-slide-left uk-flex uk-flex-center uk-flex-middle uk-width-1-1">
+							<div class="uk-container uk-container-center tm-full-width">
+								<div class=" tm-wrap">
+									<div class="tm-slide-style-4 uk-width-1-1">
+										<div class="">
+											<h3 class="slide-head">
+												{% if page.language.code == 'ru' %} 
+						        					{{ image.description }}
+						        				{% else %}
+						        					{{ image.englishName }}
+						        				{% endif %}
+											</h3>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+				</li>			
 				{% endfor %}
-				</ul>
-			</div>
-		</div>
+			</ul>
+			<a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
+	        <a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next"></a>
+			
+			<ul class="uk-dotnav uk-dotnav-contrast uk-position-bottom uk-flex-center">
+			{% for image in banner.media %}
+				<li data-uk-slideshow-item="{{loop.index0}}"><a href="">{{loop.index0}}</a></li>
+			{% endfor %}
+			</ul>
 		{% endif %}
+	</div>
+	</div>
+	</div>
+	</div>
+	</section>
+	</div>
 	{% endif %}
 {% endmacro %}

@@ -1,72 +1,113 @@
 {% extends '@site/base/en/base.html.twig' %} 
 
 {% block title %}
-St. Serguis Assembly & Learning Center at the Tolstoy Foundation.
-How to find us.
 {% endblock %} 
 {% block description %}
-St. Serguis Assembly & Learning Center at the Tolstoy Foundation.
-How to find us.
 {% endblock %}
 
 {% block body %}
 <!-- banner -->
-	{% import 'base/banner.html.twig' as banner_macro %}			
-	{{ banner_macro.banner(page) }}
+{% import '@site/base/banner.html.twig' as banner_macro %}			
+{{ banner_macro.banner(page) }}
 <!-- //banner -->
-<!-- page content -->
-	<div class="features">
-	   <div class="container">
-	   	  <h1>How to find us</h1>
-	   	  <div class="map">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3005.445757238272!2d-73.93369934866273!3d41.12479407918761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2c18b9893828f%3A0x365ed5f2e878176d!2s104+Lake+Rd%2C+Valley+Cottage%2C+NY+10989!5e0!3m2!1sen!2sin!4v1457666794337" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>		  <p>Take route 95 South to 287 West 87 North across the Tappan Zee Bridge.
-Exit at Exit 12 (Rte 303 North West Nyack) and follow signs to Rte 303 North. You will pass the Valley Cottage Library on your right; at the next light take a right (dedicated turn lane) onto Lake Road. (At the turn, choose the middle road, which is Lake Road).
-Stay on Lake Road for approximately one mile after passing the TF Nursing Home, the Foundation entrance is the next driveway on your left (a Russian Orthodox Church is on your right upon entering).
-		</p>
-		  <div class="wrapper">
-				<div class="col_1">
-					<i class="fa fa-home  icon2"></i>
-					<div class="box">
-						<p class="marTop9">104 Lake Rd.,<br>Valley Cottage, NY, 10989</p>
-					</div>
-				</div>
+<div class="uk-container uk-container-center">
+    <div class="uk-grid" data-uk-grid-match data-uk-grid-margin>
+        <div class="tm-main uk-width-medium-3-4 tm-middle">
+            <main class="tm-content">
+                <section>
+                    <div data-uk-slider class="">
+                        <div class="uk-slider-container post-gallery">
+                            <ul class="uk-slider uk-grid-width-medium-1-1">
+                            </ul>
+                            <a href="" class="tm-slidenav tm-post-gallery-previous" data-uk-slider-item="previous" draggable="false"><i class="uk-icon-angle-left"></i></a>
+                            <a href="" class="tm-slidenav tm-post-gallery-next" data-uk-slider-item="next" draggable="false"><i class="uk-icon-angle-right"></i></a>
+                        </div>
+                    </div>
+                    <div id="primary" class="site-content post-content">
+                        <div class="main-heading">
+                            <h1 class="tm-page-title">HOW TO FIND US</h1>
+                        </div>
+                        <div>
+{% for setting in settings %}
+	{% if setting.type.id == 12 %}
+		{{ setting.value }}
+	{% endif %}
+{% endfor %}                        
+                        </div>
+                        <!-- #content -->
+                    </div>
+                    <!-- #primary -->
+                </section>
+            </main>
+        </div>
+        <aside class="tm-sidebar-b uk-width-medium-1-4 tm-middle">
+            <div class="uk-panel widget_text">
+                <h3 class="uk-panel-title">
+{% for setting in settings %}
+	{% if setting.type.id == 3 %}
+		{{ setting.value }}
+	{% endif %}
+{% endfor %}
+</h3><i class="uk-icon-home">&nbsp;</i>
+{% for setting in settings %}
+	{% if setting.type.id == 6 %}
+		{{ setting.value }}
+	{% endif %}
+{% endfor %}
+                <br />
+                <i class="uk-icon-info-circle">&nbsp;</i>
+{% for setting in settings %}
+	{% if setting.type.id == 7 %}
+		{{ setting.value }}
+	{% endif %}
+{% endfor %}
+                <br />
+                <i class="uk-icon-phone-square">&nbsp;</i>
+{% for setting in settings %}
+	{% if setting.type.id == 5 %}
+		{{ setting.value }}
+	{% endif %}
+{% endfor %}
+                <br />
+                <i class="uk-icon-envelope">&nbsp;</i><a href="/mail">
+{% for setting in settings %}
+	{% if setting.type.id == 8 %}
+		{{ setting.value }}
+	{% endif %}
+{% endfor %}
+</a>
+                <br />
+            </div>
+            <div class="uk-panel widget_text">
+                <h3 class="uk-panel-title">Social icons</h3>
+                <ul class="social-icons">
+                    <li><a href="
+{% for setting in settings %}
+	{% if setting.type.id == 9 %}
+		{{ setting.value }}
+	{% endif %}
+{% endfor %}                    
+                    " target="_blank"><i class="uk-icon-facebook-f"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+</div>
 
-				<div class="col_2">
-					<i class="fa fa-phone  icon2"></i>
-					<div class="box">
-						<p class="marTop9">+1 (845) 267-8397</p>
-					</div>
-				</div>
+<div class="tm-bottom-e-box tm-light-bg">
+    <section class="tm-bottom-e uk-grid tm-none-padding" data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin>
 
-				<div class="col_2">
-					<i class="fa fa-envelope icon2"></i>
-					<div class="box">
-						<p class="m_6"><a href="/mail"><img src="/images/mail.png"></img></a></p>
-					</div>
+        <div class="uk-width-1-1">
+            <div class="uk-panel widget_text">
+                <div class="map-wrap">
+					<iframe class="uk-responsive-width" width="2000" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3005.445757238272!2d-73.93369934866273!3d41.12479407918761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2c18b9893828f%3A0x365ed5f2e878176d!2s104+Lake+Rd%2C+Valley+Cottage%2C+NY+10989!5e0!3m2!1sen!2sin!4v1457666794337" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 				</div>
-				<div class="clearfix"> </div>
-		 </div>
-<!-- 
-		 <form class="contact_form">
-		 	<h2>Contact form</h2>
-			<div class="col-md-6 grid_6">
-				<input type="text" class="text" value="Name" placeholder="name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
-				<input type="text" class="text" value="Email" placeholder="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
-				<input type="text" class="text" value="Phone" placeholder="phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}">
-			</div>
-	
-			<div class="col-md-6 grid_6">
-				<textarea value="Message" placeholder="message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message</textarea>
-			</div>
-            <div class="clearfix"> </div>
-            <div class="btn_3">
-			  <a href="#" class="more_btn" data-type="submit">Send message</a>
-		    </div>
-		 </form>
--->					
-						
-	  </div>
-	</div>
-<!-- page content -->
+            </div>
+        </div>
+    </section>
+</div>
 
 {% endblock %}
+
+

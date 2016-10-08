@@ -1,0 +1,38 @@
+<?php
+
+// src/AppBundle/Entity/Page.php
+namespace AppBundle\Entity;
+
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="Page")
+ */
+class Setting
+{
+	 /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+    
+    /**
+     * @ORM\Column(name="Value")
+     */
+    protected $value;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="SettingType")
+     * @ORM\JoinColumn(name="SettingTypeId", referencedColumnName="id")
+     **/
+    protected $type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Language")
+     * @ORM\JoinColumn(name="Lang", referencedColumnName="code")
+     **/
+    protected $language;
+    
+}

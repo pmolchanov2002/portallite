@@ -4,28 +4,35 @@
 	    {% for menu in menus %}
             {% if menu.children is empty %}
             	{% if menu.page is not empty %}
-	            	<li>
+            		<li>
 	            		<a href="/page/{{ menu.page.id }}">{{ menu.title }}</a>
 	            	</li>
 	            {% elseif menu.url is not empty  %}
-	            	<li>
+            		<li>
 	            		<a href="{{ menu.url }}" target="_blank">{{ menu.title }}</a>
 	            	</li>
 	            {% endif %}	            
             {% else %}
-        		<li class="dropdown">
-            		<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ menu.title }} <span class="caret"></span></a>
-                	<ul class="dropdown-menu" role="menu">
-                    	{{ macros.menu_links(menu.children) }}
-                	</ul>
-            	</li>
+					<li class="uk-parent" data-uk-dropdown="{}" aria-haspopup="true" aria-expanded="false">
+						<a href="#" class="">{{ menu.title }}</a>
+						<div style="" class="uk-dropdown uk-dropdown-navbar uk-dropdown-width-1">
+							<div class="uk-grid uk-dropdown-grid">
+								<div class="uk-width-1-1">
+									<ul class="uk-nav uk-nav-navbar">
+					                    	{{ macros.menu_links(menu.children) }}
+					                </ul>
+					            </div>
+					        </div>
+					    </div>
+					</li>
             {% endif %}
 	    {% endfor %}
 	{% endmacro %}
 	
-	{% import _self as macros %}			
+	{% import _self as macros %}
 
-	<ul class="nav navbar-nav nav_1">
-  			{{ macros.menu_links(menus) }}
-	</ul>
+  	{{ macros.menu_links(menus) }}
+  	
+  	
+  	
 {% endmacro %}

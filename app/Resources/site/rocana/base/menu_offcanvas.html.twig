@@ -1,0 +1,30 @@
+{% macro menu_offcanvas(menus) %}
+	{% macro menu_links(menus) %}
+	    {% import _self as macros %}
+	    {% for menu in menus %}
+            {% if menu.children is empty %}
+            	{% if menu.page is not empty %}
+            		<li>
+	            		<a href="/page/{{ menu.page.id }}">{{ menu.title }}</a>
+	            	</li>
+	            {% elseif menu.url is not empty  %}
+            		<li>
+	            		<a href="{{ menu.url }}" target="_blank">{{ menu.title }}</a>
+	            	</li>
+	            {% endif %}	            
+            {% else %}
+					<li class="uk-parent">
+						<a href="#" class="">{{ menu.title }}</a>
+						<ul class="uk-nav-sub">
+				           {{ macros.menu_links(menu.children) }}
+				        </ul>
+					</li>
+            {% endif %}
+	    {% endfor %}
+	{% endmacro %}
+	
+	{% import _self as macros %}
+
+  	{{ macros.menu_links(menus) }}
+  	
+{% endmacro %}
