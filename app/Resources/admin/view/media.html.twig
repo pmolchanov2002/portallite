@@ -23,6 +23,7 @@
         <thead>
             <tr>
             	<th>Id</th>
+            	<th width="120">Preview</th>
                 <th>Description</th>
                 <th>Type</th>
                 <th>Path</th>
@@ -33,8 +34,13 @@
         <tbody>
 	    {% for media in medias %}
 	    	<tr>
-	    		<td>{{ media.id }}</td>
-	        	<td><img src="{{ media.path }}" width="180"></img> {{ media.description }}</td>
+	    		<td data-sort="{{ media.id }}">{{ media.id }}</td>
+	    		<td>
+	    		{%if not(media.path starts with 'http') %}
+	        		<img src="{{ media.path | imagine_filter('thumbnails') }}"></img>
+	        	{% endif %}
+	        	</td>
+	        	<td>{{ media.description }}</td>
 	        	<td>{{ media.type.name | default("Not assigned") }}</td>
 	        	<td><a href="{{ media.path }}" target="_blank">{{ media.path }}</a></td>
 	        	<td width="10"><a href='/admin/web/media/edit/{{ media.id }}'>Edit</a></td>

@@ -13,6 +13,7 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'Ornj\\Bundle\\MarkdownBundle' => array($vendorDir . '/ornj/markdown-bundle'),
     'Michelf' => array($vendorDir . '/michelf/php-markdown'),
+    'Imagine' => array($vendorDir . '/imagine/imagine/lib'),
     'HTML2PDF' => array($vendorDir . '/ensepar/html2pdf'),
     'Gregwar\\ImageBundle' => array($vendorDir . '/gregwar/image-bundle'),
     'Gregwar\\Image' => array($vendorDir . '/gregwar/image'),

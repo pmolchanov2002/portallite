@@ -86,6 +86,50 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-gregwar_image:
+#gregwar_image:
     # web_dir: %kernel.root_dir%/../../public_html
-    cache_dir:  images_cache
+    # cache_dir:  images_cache
+
+liip_imagine:
+    resolvers:
+        default:
+            web_path: ~
+
+    filter_sets:
+        cache: ~
+
+        banners:
+            quality: 80
+
+            filters:
+                auto_rotate: ~
+
+                # use and setup the "scale" filter
+                downscale: { max: [1000, 2500] }
+
+        articles:
+            quality: 80
+
+            filters:
+                auto_rotate: ~
+
+                # use and setup the "scale" filter
+                downscale: { max: [1300, 2500] }
+
+
+
+        # the name of the "filter set"
+        thumbnails:
+
+            # adjust the image quality to 75%
+            quality: 75
+
+            # list of transformations to apply (the "filters")
+            filters:
+                auto_rotate: ~
+
+                # create a thumbnail: set size to 120x90 and use the "outbound" mode
+                # to crop the image when the size ratio of the input differs
+
+                # use and setup the "thumbnail" filter
+                thumbnail: { size: [120, 90], mode: outbound }

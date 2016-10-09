@@ -13,8 +13,9 @@
 			{% set image = banner.media[0] %}
 			<ul class="uk-slideshow uk-overlay-active">		
                 <li aria-hidden="false" class="uk-cover uk-height-viewport  tm-wrap uk-active">
+                 {%if image.type.id == 1 %}
                 	<div class="uk-cover-background uk-position-cover"></div>
-                	<img src="{{ image.path }}" alt="{{ banner.name }}" class="aligncenter size-full wp-image-631" height="960">
+                	<img src="{{ image.path | imagine_filter('banners') }}" alt="{{ banner.name }}" class="aligncenter size-full wp-image-631" height="960">
 						<div class="uk-overlay-panel uk-overlay-right uk-overlay-slide-left uk-flex uk-flex-center uk-flex-middle uk-width-1-1">
 							<div class="uk-container uk-container-center tm-full-width">
 								<div class=" tm-wrap">
@@ -35,6 +36,10 @@
 								</div>
 							</div>
 						</div>
+				{% elseif image.type.id == 5 %}
+	                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAEOCAYAAABRmsRnAAACDUlEQVR4nO3BMQEAAADCoPVPbQo/oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgZep3AAEMQQcfAAAAAElFTkSuQmCC" alt='' style="width:100%;height:auto;">
+	                <iframe data-uk-cover="{}" style="pointer-events: none; width: 1583px; height: 891px;" class="uk-position-absolute" data-player-id="sw-1" src="{{ image.path }}?autoplay=1&amp;loop=1&amp;controls=0&amp;showinfo=0&amp;start=0&amp;playlist=FoRmhWxmj70&amp;wmode=transparent&amp;vq=hd1080&amp;enablejsapi=1&amp;api=1&amp;player_id=sw-1&amp;enablejsapi=1&amp;api=1" allowfullscreen="" height="270" width="480"></iframe>
+				{% endif %}
 				</li>
 			</ul>
 		{% elseif banner.media|length > 1 %}
@@ -46,7 +51,7 @@
                 	<li aria-hidden="true" class="uk-cover uk-height-viewport  tm-wrap">
                 {% endif %}
                 	<div class="uk-cover-background uk-position-cover"></div>
-                	<img src="{{ image.path }}" alt="{{ banner.name }}" class="aligncenter size-full wp-image-631">
+                	<img src="{{ image.path | imagine_filter('banners') }}" alt="{{ banner.name }}" class="aligncenter size-full wp-image-631">
 						<div class="uk-overlay-panel uk-overlay-right uk-overlay-slide-left uk-flex uk-flex-center uk-flex-middle uk-width-1-1">
 							<div class="uk-container uk-container-center tm-full-width">
 								<div class=" tm-wrap">

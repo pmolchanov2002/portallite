@@ -9,7 +9,7 @@
 <div id="content" role="main">
 	{% if article.icon is not empty %}
 	<div class="uk-width-medium-1-1">
-		<img src="{{ article.icon.path }}" alt="" />
+		<img src="{{ article.icon.path | imagine_filter('articles') }}" alt="" />
 	</div>
 	{% endif %}
 

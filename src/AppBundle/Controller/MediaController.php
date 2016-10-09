@@ -79,11 +79,12 @@ class MediaController extends Controller
     		print_r($file);
     		$fileName = md5(uniqid()).'.'.$file->guessExtension();
     		
-    		//$uploadDir = $this->container->getParameter('kernel.root_dir').'/../../public_html/uploads';
+    		//$uploadDir = $this->container->getParameter('kernel.root_dir').'/../../public_html/test2/uploads';
     		$uploadDir = $this->container->getParameter('kernel.root_dir').'/../web/uploads';
     		$file->move($uploadDir, $fileName);
     		
-    		$media->setPath($request->getSchemeAndHttpHost()."/uploads/".$fileName);
+    		//$media->setPath($request->getSchemeAndHttpHost()."/uploads/".$fileName);
+    		$media->setPath("/uploads/".$fileName);
     		
     		$em = $this->getDoctrine()->getManager();
     		$em->persist($media);

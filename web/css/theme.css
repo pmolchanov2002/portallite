@@ -1,5 +1,5 @@
-@import 'https://fonts.googleapis.com/css?family=Oxygen';
-@import 'https://fonts.googleapis.com/css?family=Montserrat';
+@import 'https://fonts.googleapis.com/css?family=PT Sans Narrow';
+@import 'https://fonts.googleapis.com/css?family=PT Sans Narrow';
 /* ========================================================================
    Component: Base
  ========================================================================== */
@@ -10,7 +10,7 @@
  */
 html {
   /* 1 */
-  font: normal 15px / 23px 'Oxygen';
+  font: normal 15px / 23px 'PT Sans Narrow';
   /* 2 */
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -209,7 +209,7 @@ h4,
 h5,
 h6 {
   margin: 0 0 20px 0;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   font-weight: 300;
   color: #b3b8c5;
   text-transform: none;
@@ -230,17 +230,17 @@ h6 {
  */
 h1,
 .uk-h1 {
-  font-size: 32px;
+  font-size: 36px;
   line-height: 32px;
 }
 h2,
 .uk-h2 {
-  font-size: 24px;
+  font-size: 28px;
   line-height: 24px;
 }
 h3,
 .uk-h3 {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 16px;
 }
 h4,
@@ -1865,8 +1865,8 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
   line-height: 70px;
   /* 2 */
   color: #96a5cd;
-  font-size: 14px;
-  font-family: 'Montserrat';
+  font-size: 18px;
+  font-family: 'PT Sans Narrow';
   font-weight: normal;
 }
 /* Appear not as link */
@@ -9505,7 +9505,7 @@ a.link:hover {
   text-decoration: underline!important;
 }
 a.read-more {
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   font-size: 12px;
   font-weight: 400;
   line-height: 14px;
@@ -9684,7 +9684,7 @@ a.link--logo:hover {
 .link--logo {
   position: relative;
   overflow: hidden;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   font-weight: 400;
   text-transform: none;
   font-size: 40px;
@@ -9880,7 +9880,7 @@ blockquote.white strong {
 .uk-button-primary {
   border-radius: 4px;
   text-transform: uppercase;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   font-size: 13px;
   line-height: 22px;
   background-color: #30333f;
@@ -9899,7 +9899,7 @@ blockquote.white strong {
   border: none;
   overflow: visible;
   font: inherit;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   color: #f0f2f8;
   background: #30333f;
   border-color: #f0f2f8;
@@ -9935,7 +9935,7 @@ blockquote.white strong {
   width: 180px;
   margin: 30px auto;
   padding: 6px 0;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   color: #f0f2f8;
   background: #30333f;
   border-color: #f0f2f8;
@@ -9976,7 +9976,7 @@ blockquote.white strong {
 .tm-button-left {
   display: block;
   width: 140px;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   color: #f0f2f8;
   background: #30333f;
   border-color: #f0f2f8;
@@ -10008,7 +10008,7 @@ blockquote.white strong {
   border: none;
   overflow: visible;
   font: inherit;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   color: #f0f2f8;
   background: #30333f;
   border-color: #f0f2f8;
@@ -10040,7 +10040,7 @@ blockquote.white strong {
   display: inline-block;
   margin-top: 13px;
   border: none;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   color: #ffffff;
   background: #e2bf1d;
   text-transform: uppercase;
@@ -10113,7 +10113,7 @@ h5,
 h6 {
   position: relative;
   text-transform: uppercase;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   color: #30333f;
   margin: 0 0 10px 0;
 }
@@ -10217,7 +10217,7 @@ h6 a:hover {
  ========================================================================== */
 .tm-grey-color {
   color: grey;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
@@ -10484,7 +10484,7 @@ ul.uk-nav-navbar {
   display: block;
   line-height: 70px;
   font-size: 14px;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   font-weight: 400;
   text-align: center;
   text-decoration: none;
@@ -10494,7 +10494,7 @@ ul.uk-nav-navbar {
   text-transform: uppercase;
   line-height: 31px;
   font-size: 11px;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   font-weight: 700;
 }
 @media (max-width: 1440px) {
@@ -10549,8 +10549,8 @@ ul.uk-nav-navbar {
   color: #30333f;
   text-transform: uppercase;
   line-height: 31px;
-  font-size: 11px;
-  font-family: 'Montserrat';
+  font-size: 15px;
+  font-family: 'PT Sans Narrow';
   font-weight: 700;
 }
 .uk-dropdown li a:hover,
@@ -10682,7 +10682,7 @@ form.uk-form {
   vertical-align: middle;
   display: inline-block;
   width: 180px;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   font-size: 13px;
   font-weight: 400;
   line-height: 13px;
@@ -10714,7 +10714,7 @@ form.uk-form {
  ========================================================================== */
 .tm-footer-top-box,
 footer {
-  font-size: 14px;
+  font-size: 17px;
   line-height: 20px;
   color: #aab6d8;
 }
@@ -10732,8 +10732,8 @@ ul.footer-links {
   padding: 0;
 }
 ul.footer-links > li {
-  font-family: 'Oxygen';
-  font-size: 14px;
+  font-family: 'PT Sans Narrow';
+  font-size: 17px;
   font-weight: 400;
   line-height: 20px;
 }
@@ -10852,7 +10852,7 @@ div.wpcf7 img.ajax-loader {
 .wpcf7-form input,
 .wpcf7-form textarea {
   border: 1px solid #aab6d8;
-  font-family: 'Oxygen';
+  font-family: 'PT Sans Narrow';
   color: #6579b7;
   font-size: 13px;
   line-height: 13px;
@@ -10876,7 +10876,7 @@ div.wpcf7-validation-errors,
 span.wpcf7-not-valid-tip {
   font-size: 14px;
   line-height: 20px;
-  font-family: 'Oxygen';
+  font-family: 'PT Sans Narrow';
   font-weight: 400;
   color: #f00;
   border: none;
@@ -10913,7 +10913,7 @@ div.wpcf7-response-output {
   vertical-align: middle;
   display: inline-block;
   width: 180px;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   font-size: 13px;
   font-weight: 400;
   line-height: 13px;
@@ -10963,14 +10963,14 @@ div.wpcf7-response-output {
 /* Text Widget
  ========================================================================== */
 .text-widget-block span {
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   font-size: 18px;
   font-weight: 400;
   line-height: 20px;
 }
 .text-widget-block p {
   margin: 0;
-  font-family: 'Oxygen';
+  font-family: 'PT Sans Narrow';
   font-size: 13px;
   font-weight: 400;
   line-height: 20px;
@@ -11268,7 +11268,7 @@ div.imageslider-background {
 .tm-slide-style-1 .slide-head,
 .tm-slide-style-2 .slide-head {
   text-transform: uppercase;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   font-weight: 400;
   font-size: 45px;
   line-height: 45px;
@@ -11282,7 +11282,7 @@ div.imageslider-background {
 }
 .tm-slide-style-1 .slide-text-primary,
 .tm-slide-style-2 .slide-text-primary {
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   font-size: 20px;
   line-height: 32px;
   color: #e2bf1d;
@@ -11394,13 +11394,13 @@ div.imageslider-background {
   font-size: 12px;
   line-height: 22px;
   font-weight: bold;
-  font-family: 'Oxygen';
+  font-family: 'PT Sans Narrow';
 }
 .wptt_TwitterTweets .tweet_data {
   font-size: 12px;
   line-height: 22px;
   font-weight: bold;
-  font-family: 'Oxygen';
+  font-family: 'PT Sans Narrow';
 }
 /* recent twitts tree items */
 .recent-twitts-tree-items.wptt_TwitterTweets {
@@ -11467,7 +11467,7 @@ div.imageslider-background {
   float: left;
 }
 .tm-category-posts-block .post-date {
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   position: absolute;
   top: 30px;
   right: 0;
@@ -11553,7 +11553,7 @@ div.imageslider-background {
   margin: 0 auto;
   display: block;
   width: 140px;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   color: #f0f2f8;
   background: #30333f;
   border-color: #f0f2f8;
@@ -11660,7 +11660,7 @@ ul.tm-category-posts-list {
   margin-bottom: 30px;
   background-color: #ffffff;
   border: 1px solid #cdd4e8;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 400;
   line-height: 22px;
   text-align: left;
@@ -11729,7 +11729,7 @@ ul.tm-category-posts-list {
 }
 .tm-category-posts-list h3 {
   color: #30333f;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 400;
   line-height: 22px;
   text-align: left;
@@ -11749,7 +11749,7 @@ ul.tm-category-posts-list {
   padding: 0;
 }
 .tm-latest-post-widget .post-date {
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   text-align: center;
   float: left;
   margin: 0;
@@ -11779,7 +11779,7 @@ ul.tm-category-posts-list {
 }
 .tm-latest-post-widget .post-text .grey,
 .tm-latest-post-widget-sidebar .grey {
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   color: rgba(0, 0, 0, 0.3);
   font-size: 12px;
   line-height: 14px;
@@ -11880,7 +11880,7 @@ ul.tm-category-posts-list {
   font-weight: 700px;
 }
 .tm-location-box .tm-location-info p {
-  font-family: 'Oxygen';
+  font-family: 'PT Sans Narrow';
   font-size: 14px;
   line-height: 14px;
   padding-top: 18px;
@@ -12114,7 +12114,7 @@ form[id*=give-form] .give-donation-amount .give-currency-symbol {
   margin: 10px!important;
   width: 130px;
   padding: 6px 0;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   text-transform: uppercase;
   font-size: 13px;
   font-weight: 400;
@@ -12245,7 +12245,7 @@ form[id*=give-form] p.give-loading-text {
   display: block;
   margin: 0 auto;
   width: 130px;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   text-transform: uppercase;
   font-size: 13px;
   font-weight: 400;
@@ -12430,7 +12430,7 @@ form[id*=give-form] #give-final-total-wrap .give-donation-total-label {
   border-bottom: none;
 }
 .tm-cat-event-sb-widget .post-date {
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   text-align: center;
   float: left;
   margin: 5px 10px 0 0;
@@ -12596,7 +12596,7 @@ form[id*=give-form] #give-final-total-wrap .give-donation-total-label {
   margin: 0;
 }
 .tm-event-list .tm-event-list-info {
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   position: relative;
   z-index: 1002;
   margin-top: 30px;
@@ -12839,7 +12839,7 @@ tbody tr td .tribe-events-category-classes .tribe-events-month-event-title {
 /* Gallery page
  ========================================================================== */
 #tm-gallery-filter li > a {
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   background: none;
   text-transform: uppercase;
 }
@@ -13014,7 +13014,7 @@ ul.tm-donation-cat-box .tm-donation-cat-item .tm-give-widget-wrap {
   display: inline-block;
   width: 100%;
   font-size: 12px;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   border-top: 1px solid #cdd4e8;
   margin: 12px 0;
   color: #040405;
@@ -13079,7 +13079,7 @@ ul.products.list li.product img {
   border-radius: 4px;
   vertical-align: middle;
   display: inline-block;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   font-size: 13px;
   font-weight: 400;
   line-height: 22px;
@@ -13265,7 +13265,7 @@ table.shop_table thead {
   border-radius: 4px;
   vertical-align: middle;
   display: inline-block;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   font-size: 13px;
   font-weight: 400;
   line-height: 22px;
@@ -13303,7 +13303,7 @@ table.shop_table thead {
  ========================================================================== */
 /* main styles */
 .tm-error-page .tm-error-headline {
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   color: #fefefe;
   font-size: 314px;
   font-weight: 700;
@@ -13311,7 +13311,7 @@ table.shop_table thead {
   text-align: center;
 }
 .tm-error-page h2.uk-h3 {
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   color: #e2bf1d;
   font-size: 57px;
   font-weight: 700;
@@ -13320,7 +13320,7 @@ table.shop_table thead {
   margin-bottom: -30px;
 }
 .tm-error-page p {
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   color: #ffffff;
   font-size: 17px;
   font-weight: 400;
@@ -13329,7 +13329,7 @@ table.shop_table thead {
   text-transform: uppercase;
 }
 .tm-error-page .uk-button {
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   color: #ffffff;
   font-size: 13px;
   font-weight: 400;
@@ -13381,7 +13381,7 @@ table.shop_table thead {
   padding: 40px;
 }
 .tm-offline-page .uk-text-large {
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   color: #ffffff;
   font-size: 17px;
   font-weight: 400;
@@ -13391,7 +13391,7 @@ table.shop_table thead {
   margin: 30px 0 0 0;
 }
 .tm-offline-page p {
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   color: #ffffff;
   font-size: 14px;
   font-weight: 400;
@@ -13423,7 +13423,7 @@ table.shop_table thead {
 /* Coming Soon page
  ========================================================================== */
 .tm-comingsoon-page .tm-comingsoon-title {
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   color: #ffffff;
   font-size: 30px;
   font-weight: 700;
@@ -13431,7 +13431,7 @@ table.shop_table thead {
   text-align: center;
 }
 .tm-comingsoon-page .tm-comingsoon-msg {
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   color: #ffffff;
   font-size: 14px;
   font-weight: 400;
@@ -13507,7 +13507,7 @@ table.shop_table thead {
   line-height: 1;
 }
 #getting-started .tm-count-box .caption {
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   color: rgba(0, 0, 0, 0.3);
   font-size: 12px;
   font-weight: 400;
@@ -13587,7 +13587,7 @@ table.shop_table thead {
 }
 .cutechurch-countdown .cutechurch-digit {
   color: #30333f;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   font-size: 30px;
   font-weight: 400;
   line-height: 50px;
@@ -13615,7 +13615,7 @@ table.shop_table thead {
 .cutechurch-countdown .cutechurch-dash_title {
   opacity: 0.3;
   color: black;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   font-size: 12px;
   font-weight: 400;
   line-height: 20px;
@@ -13701,7 +13701,7 @@ table.shop_table thead {
 }
 .cutechurch-2-countdown .cutechurch-2-digit {
   color: #30333f;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   font-size: 30px;
   font-weight: 400;
   line-height: 50px;
@@ -13729,7 +13729,7 @@ table.shop_table thead {
 .cutechurch-2-countdown .cutechurch-2-dash_title {
   opacity: 0.3;
   color: black;
-  font-family: 'Montserrat';
+  font-family: 'PT Sans Narrow';
   font-size: 12px;
   font-weight: 400;
   line-height: 20px;

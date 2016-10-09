@@ -36,6 +36,10 @@ class ComposerStaticInit01cef6ce158a8c7ba54bafa02445e6ae
         array (
             'Monolog\\' => 8,
         ),
+        'L' => 
+        array (
+            'Liip\\ImagineBundle\\' => 19,
+        ),
         'I' => 
         array (
             'Incenteev\\ParameterHandler\\' => 27,
@@ -103,6 +107,10 @@ class ComposerStaticInit01cef6ce158a8c7ba54bafa02445e6ae
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
+        'Liip\\ImagineBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/liip/imagine-bundle',
+        ),
         'Incenteev\\ParameterHandler\\' => 
         array (
             0 => __DIR__ . '/..' . '/incenteev/composer-parameter-handler',
@@ -159,6 +167,13 @@ class ComposerStaticInit01cef6ce158a8c7ba54bafa02445e6ae
             'Michelf' => 
             array (
                 0 => __DIR__ . '/..' . '/michelf/php-markdown',
+            ),
+        ),
+        'I' => 
+        array (
+            'Imagine' => 
+            array (
+                0 => __DIR__ . '/..' . '/imagine/imagine/lib',
             ),
         ),
         'H' => 
