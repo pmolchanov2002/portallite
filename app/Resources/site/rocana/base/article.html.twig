@@ -8,9 +8,14 @@
 
 <div id="content" role="main">
 	{% if article.icon is not empty %}
-	<div class="uk-width-medium-1-1">
-		<img src="{{ article.icon.path | imagine_filter('articles') }}" alt="" />
-	</div>
+		{% set image = article.icon %}
+		{%if image.type.id == 1 %}
+			<div class="uk-responsive-width">
+				<img src="{{ article.icon.path | imagine_filter('articles') }}" alt="" />
+			</div>
+		{% elseif image.type.id == 5 %}
+            <iframe class="uk-responsive-width" src="{{ image.path }}?autoplay=0&amp;loop=1&amp;controls=1&amp;showinfo=1&amp;start=0&amp;vq=hd1080&amp;enablejsapi=1&amp;api=1&amp;player_id=sw-1&amp;enablejsapi=1&amp;api=1" allowfullscreen="" height="1080" width="1920"></iframe>
+		{% endif %}
 	{% endif %}
 
 	<div style="margin-top:10px;">{{ article.content|markdown }}</div>
@@ -19,12 +24,23 @@
 	<div>
 		<div>{{label}}</div>
 		<div>{% import '@site/base/docs.html.twig' as docs_macro %} {{
-			docs_macro.docs(article) }}</div>
+			docs_macro.docs(article) }}
+		</div>
 	</div>
 	{% endif %}
 
-	<div>{% import '@site/base/gallery.html.twig' as gallery_macro %}
-		{{ gallery_macro.gallery(article) }}</div>
+	<div>{% import '@site/base/images.html.twig' as images_macro %}
+		{{ images_macro.images(article) }}
+	</div>
+	
+	<div>{% import '@site/base/videos.html.twig' as videos_macro %}
+		{{ videos_macro.videos(article) }}
+	</div>
+	
+	<div>{% import '@site/base/audios.html.twig' as audios_macro %}
+		{{ audios_macro.audios(article) }}
+	</div>	
+	
 </div>
 
 {% endmacro %}

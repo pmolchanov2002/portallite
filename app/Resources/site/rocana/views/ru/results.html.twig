@@ -1,15 +1,13 @@
-{% extends '@site/base/ru/base.html.twig' %} 
+{% extends '@site/base/ru/base.html.twig' %}
 
 {% block title %}
-	Русская Православная Школа Сергия Радонежского при Фонде Толстого Нью Йорк.
-	{% for article in page.articles.slice(0,page.articlesPerPage) %}
+	{% for article in page.articles %}
 		{{ article.title }}
 	{% endfor %} 
 {% endblock %}
 
 {% block description %}
-	Русская Православная Школа Сергия Радонежского при Фонде Толстого Нью Йорк.
-	{% for article in page.articles.slice(0,page.articlesPerPage) %}
+	{% for article in page.articles.slice(0,page.articlesPerPage) %}	
 		{{ article.description|markdown|striptags }}
 	{% endfor %} 
 {% endblock %}
@@ -38,18 +36,18 @@
 					</h2>
 					<dd>
 						<address class="item_createdby">
-							Публикация: {{ article.author.firstName }} {{ article.author.lastName }}
+							Published by: {{ article.author.englishName }}
 						</address>
 					</dd>
 					<dd>
 						<time datetime="2015-05-01 19:45" class="item_published">
-							Дата: {{ article.created|date('m-d-Y') }} </time>
+							Date: {{ article.created|date('m-d-Y') }} </time>
 					</dd>
 				</dl>
 				<p>
 					{{ article.description|markdown }}
 				</p>
-				<a href="/page/{{ originalPage.id}}/{{ article.id}}" class="radial_but">Подробнее</a>
+				<a href="/page/{{ originalPage.id}}/{{ article.id}}" class="radial_but">More</a>
 			</div>
 		{% endfor %}
 	</div>

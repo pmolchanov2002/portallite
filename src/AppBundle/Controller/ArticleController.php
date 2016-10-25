@@ -45,7 +45,8 @@ class ArticleController extends Controller
             		'label' => 'Icon: ',
             		'query_builder' => function (EntityRepository $er) {
             		return $er->createQueryBuilder('p')
-            			->where('p.type = 1');
+            			->where('p.type = 1')
+            			->orWhere('p.type = 5');
             		}))
             ->add('description', 'markdown', array('label' => 'Description:'))
             ->add('content', 'markdown', array('label' => 'Body:'))
@@ -81,6 +82,28 @@ class ArticleController extends Controller
             			return $er->createQueryBuilder('p')
             			->where('p.type = 1')
             			->orderBy('p.id','DESC');
+            		}))
+            ->add('videos', 'entity', array(
+            		'multiple' => true,
+            		'expanded' => true,
+            		'class' => 'AppBundle:Media',
+            		'choice_label' => 'description',
+            		'label' => 'Video: ',
+            		'query_builder' => function (EntityRepository $er) {
+            		return $er->createQueryBuilder('p')
+            		->where('p.type = 5')
+            		->orderBy('p.id','DESC');
+            		}))
+            ->add('audios', 'entity', array(
+            		'multiple' => true,
+            		'expanded' => true,
+            		'class' => 'AppBundle:Media',
+            		'choice_label' => 'description',
+            		'label' => 'Audio: ',
+            		'query_builder' => function (EntityRepository $er) {
+            		return $er->createQueryBuilder('p')
+            		->where('p.type = 6')
+            		->orderBy('p.id','DESC');
             		}))
             ->add('documents', 'entity', array(
             		'multiple' => true,
@@ -140,7 +163,8 @@ class ArticleController extends Controller
             		'label' => 'Icon: ',
             		'query_builder' => function (EntityRepository $er) {
             			return $er->createQueryBuilder('p')
-            			->where('p.type = 1');
+            			->where('p.type = 1')
+            			->orWhere('p.type = 5');
             		}))
             ->add('description', 'markdown', array('label' => 'Description:'))
             ->add('content', 'markdown', array('label' => 'Body:'))
@@ -176,6 +200,28 @@ class ArticleController extends Controller
             		return $er->createQueryBuilder('p')
             		->where('p.type = 1')
             		->orderBy('p.id','DESC');
+           			}))
+           	->add('videos', 'entity', array(
+         			'multiple' => true,
+      				'expanded' => true,
+       				'class' => 'AppBundle:Media',
+           			'choice_label' => 'description',
+           			'label' => 'Video: ',
+           			'query_builder' => function (EntityRepository $er) {
+           			return $er->createQueryBuilder('p')
+           			->where('p.type = 5')
+           			->orderBy('p.id','DESC');
+           			}))
+           	->add('audios', 'entity', array(
+           			'multiple' => true,
+           			'expanded' => true,
+           			'class' => 'AppBundle:Media',
+           			'choice_label' => 'description',
+           			'label' => 'Audio: ',
+           			'query_builder' => function (EntityRepository $er) {
+           			return $er->createQueryBuilder('p')
+           			->where('p.type = 6')
+           			->orderBy('p.id','DESC');
            			}))
             ->add('documents', 'entity', array(
             		'multiple' => true,

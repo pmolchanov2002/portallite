@@ -105,6 +105,26 @@ class Article
      * @ORM\JoinColumn(name="IconId", referencedColumnName="id")
      **/
     protected $icon;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Media")
+     * @ORM\JoinTable(name="Article_Video",
+     *      joinColumns={@ORM\JoinColumn(name="ArticleId", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="MediaId", referencedColumnName="id")}
+     *      )
+     **/
+    protected $videos;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Media")
+     * @ORM\JoinTable(name="Article_Audio",
+     *      joinColumns={@ORM\JoinColumn(name="ArticleId", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="MediaId", referencedColumnName="id")}
+     *      )
+     **/
+    protected $audios;    
+    
+    
     /**
      * Constructor
      */

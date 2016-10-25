@@ -1,61 +1,113 @@
 {% extends '@site/base/ru/base.html.twig' %} 
 
-
 {% block title %}
-Школа Сергия Радонежского при Фонде Толстого.
-Где мы находимся.
 {% endblock %} 
 {% block description %}
-Школа Сергия Радонежского при Фонде Толстого. 
-Где мы находимся.
 {% endblock %}
 
 {% block body %}
-
 <!-- banner -->
 {% import '@site/base/banner.html.twig' as banner_macro %}			
 {{ banner_macro.banner(page) }}
 <!-- //banner -->
+<div class="uk-container uk-container-center">
+    <div class="uk-grid" data-uk-grid-match data-uk-grid-margin>
+        <div class="tm-main uk-width-medium-3-4 tm-middle">
+            <main class="tm-content">
+                <section>
+                    <div data-uk-slider class="">
+                        <div class="uk-slider-container post-gallery">
+                            <ul class="uk-slider uk-grid-width-medium-1-1">
+                            </ul>
+                            <a href="" class="tm-slidenav tm-post-gallery-previous" data-uk-slider-item="previous" draggable="false"><i class="uk-icon-angle-left"></i></a>
+                            <a href="" class="tm-slidenav tm-post-gallery-next" data-uk-slider-item="next" draggable="false"><i class="uk-icon-angle-right"></i></a>
+                        </div>
+                    </div>
+                    <div id="primary" class="site-content post-content">
+                        <div class="main-heading">
+                            <h1 class="tm-page-title">HOW TO FIND US</h1>
+                        </div>
+                        <div>
+{% for setting in settings %}
+	{% if setting.type.id == 12 %}
+		{{ setting.value }}
+	{% endif %}
+{% endfor %}                        
+                        </div>
+                        <!-- #content -->
+                    </div>
+                    <!-- #primary -->
+                </section>
+            </main>
+        </div>
+        <aside class="tm-sidebar-b uk-width-medium-1-4 tm-middle">
+            <div class="uk-panel widget_text">
+                <h3 class="uk-panel-title">
+{% for setting in settings %}
+	{% if setting.type.id == 3 %}
+		{{ setting.value }}
+	{% endif %}
+{% endfor %}
+</h3><i class="uk-icon-home">&nbsp;</i>
+{% for setting in settings %}
+	{% if setting.type.id == 6 %}
+		{{ setting.value }}
+	{% endif %}
+{% endfor %}
+                <br />
+                <i class="uk-icon-info-circle">&nbsp;</i>
+{% for setting in settings %}
+	{% if setting.type.id == 7 %}
+		{{ setting.value }}
+	{% endif %}
+{% endfor %}
+                <br />
+                <i class="uk-icon-phone-square">&nbsp;</i>
+{% for setting in settings %}
+	{% if setting.type.id == 5 %}
+		{{ setting.value }}
+	{% endif %}
+{% endfor %}
+                <br />
+                <i class="uk-icon-envelope">&nbsp;</i><a href="/mail">
+{% for setting in settings %}
+	{% if setting.type.id == 8 %}
+		{{ setting.value }}
+	{% endif %}
+{% endfor %}
+</a>
+                <br />
+            </div>
+            <div class="uk-panel widget_text">
+                <h3 class="uk-panel-title">Social icons</h3>
+                <ul class="social-icons">
+                    <li><a href="
+{% for setting in settings %}
+	{% if setting.type.id == 9 %}
+		{{ setting.value }}
+	{% endif %}
+{% endfor %}                    
+                    " target="_blank"><i class="uk-icon-facebook-f"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+</div>
 
-<!-- page content -->
-	<div class="features">
-	   <div class="container">
-	   	  <h1>Где мы находимся</h1>
-	   	  <div class="map">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3005.445757238272!2d-73.93369934866273!3d41.12479407918761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2c18b9893828f%3A0x365ed5f2e878176d!2s104+Lake+Rd%2C+Valley+Cottage%2C+NY+10989!5e0!3m2!1sen!2sin!4v1457666794337" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>		  <p>Наша школа находится на 12-ом съезде с трассы 287. 
-		  	Рядом со съездом расположен торговый комплес Palisades. 
-		  	На съезде надо повенуть направо и проехать по 303 шоссе до перекрестка с Lake Rd. 
-		  	На перекрестке повернуть направо и проехать до здания русской церкви на территории Фонда Толстого. 
-		  	Припарковаться можно перед церквью. 
-		  	Здание школы легко найти рядом с постройками Фонда Толстого.</p>
-		  <div class="wrapper">
-				<div class="col_1">
-					<i class="fa fa-home  icon2"></i>
-					<div class="box">
-						<p class="marTop9">104 Lake Rd.,<br>Valley Cottage, NY, 10989</p>
-					</div>
+<div class="tm-bottom-e-box tm-light-bg">
+    <section class="tm-bottom-e uk-grid tm-none-padding" data-uk-grid-match="{target:'> div > .uk-panel'}" data-uk-grid-margin>
+
+        <div class="uk-width-1-1">
+            <div class="uk-panel widget_text">
+                <div class="map-wrap">
+					<iframe class="uk-responsive-width" width="2000" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3005.445757238272!2d-73.93369934866273!3d41.12479407918761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2c18b9893828f%3A0x365ed5f2e878176d!2s104+Lake+Rd%2C+Valley+Cottage%2C+NY+10989!5e0!3m2!1sen!2sin!4v1457666794337" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 				</div>
-
-				<div class="col_2">
-					<i class="fa fa-phone  icon2"></i>
-					<div class="box">
-						<p class="marTop9">+1 (845) 267-8397</p>
-					</div>
-				</div>
-
-				<div class="col_2">
-					<i class="fa fa-envelope icon2"></i>
-					<div class="box">
-						<p class="m_6"><a href="/mail"><img src="/images/mail.png"></img></a></p>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-		 </div>							
-						
-	  </div>
-	</div>
-<!-- page content -->
-    
-
+            </div>
+        </div>
+    </section>
+</div>
 
 {% endblock %}
+
+

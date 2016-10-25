@@ -1,0 +1,5 @@
+@CHARSET "UTF-8";
+
+table.dataTable.nowrap td {
+    white-space: normal;
+}

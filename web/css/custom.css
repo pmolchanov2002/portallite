@@ -1,0 +1,42 @@
+@CHARSET "UTF-8";
+
+p, ul, ol, dl, blockquote, pre, address, fieldset, figure {
+      font: normal 1.5em 'PT Sans Narrow';
+}
+
+.uk-navbar-nav > li > a {
+    font-size: 0.7em;
+}
+
+.uk-dropdown {
+    font-size: 0.85em;
+}
+
+
+.uk-h1 {
+    font-size: 1.6em;	
+}
+
+.uk-h2 {
+    font-size: 1.4em;	
+}
+
+.uk-h3 {
+    font-size: 1.2em;	
+}
+
+.uk-accordion-title {
+    font-size: 1.2em;
+}
+
+h3.tm-panel-header {
+    font-size: 1.6em;
+}
+
+div.tm-grey-color {
+	font-size: 0.85em;
+}
+
+a.read-more {
+	font-size: 1.0em;
+}

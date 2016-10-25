@@ -10,7 +10,7 @@
  */
 html {
   /* 1 */
-  font: normal 15px / 23px 'PT Sans Narrow';
+  font: normal 1.5em / 23px 'PT Sans Narrow';
   /* 2 */
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;

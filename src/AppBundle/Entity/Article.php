@@ -105,6 +105,26 @@ class Article
      * @ORM\JoinColumn(name="IconId", referencedColumnName="id")
      **/
     protected $icon;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Media")
+     * @ORM\JoinTable(name="Article_Video",
+     *      joinColumns={@ORM\JoinColumn(name="ArticleId", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="MediaId", referencedColumnName="id")}
+     *      )
+     **/
+    protected $videos;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Media")
+     * @ORM\JoinTable(name="Article_Audio",
+     *      joinColumns={@ORM\JoinColumn(name="ArticleId", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="MediaId", referencedColumnName="id")}
+     *      )
+     **/
+    protected $audios;    
+    
+    
     /**
      * Constructor
      */
@@ -430,5 +450,71 @@ class Article
     public function getIcon()
     {
         return $this->icon;
+    }
+
+    /**
+     * Add videos
+     *
+     * @param \AppBundle\Entity\Media $videos
+     * @return Article
+     */
+    public function addVideo(\AppBundle\Entity\Media $videos)
+    {
+        $this->videos[] = $videos;
+
+        return $this;
+    }
+
+    /**
+     * Remove videos
+     *
+     * @param \AppBundle\Entity\Media $videos
+     */
+    public function removeVideo(\AppBundle\Entity\Media $videos)
+    {
+        $this->videos->removeElement($videos);
+    }
+
+    /**
+     * Get videos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVideos()
+    {
+        return $this->videos;
+    }
+
+    /**
+     * Add audios
+     *
+     * @param \AppBundle\Entity\Media $audios
+     * @return Article
+     */
+    public function addAudio(\AppBundle\Entity\Media $audios)
+    {
+        $this->audios[] = $audios;
+
+        return $this;
+    }
+
+    /**
+     * Remove audios
+     *
+     * @param \AppBundle\Entity\Media $audios
+     */
+    public function removeAudio(\AppBundle\Entity\Media $audios)
+    {
+        $this->audios->removeElement($audios);
+    }
+
+    /**
+     * Get audios
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAudios()
+    {
+        return $this->audios;
     }
 }

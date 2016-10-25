@@ -1,19 +1,19 @@
-{% extends '@site/base/ru/base.html.twig' %} 
+{% extends '@site/base/ru/base.html.twig' %}
 
 {% block title %}
-	Русская Православная Школа Сергия Радонежского при Фонде Толстого Нью Йорк.
-	{% for article in page.articles.slice(0,page.articlesPerPage) %}
+	Russian Othodox St. Serguis Assembly & Learning Center at the Tolstoy Foundation, New York.
+	{% for article in page.articles %}
 		{{ article.title }}
 	{% endfor %} 
 {% endblock %}
 
 {% block description %}
-	Русская Православная Школа Сергия Радонежского при Фонде Толстого Нью Йорк.
-	{% for article in page.articles.slice(0,page.articlesPerPage) %}
+	Russian Othodox Learning Center at the Tolstoy Foundation, New York.
+	{% for article in page.articles.slice(0,page.articlesPerPage) %}	
 		{{ article.description|markdown|striptags }}
 	{% endfor %} 
 {% endblock %}
- 
+
 {% block body %}
 
 
@@ -22,38 +22,49 @@
 {{ banner_macro.banner(page) }}
 <!-- //banner -->
 
-
-
-<div class="features">
-	<div class="container">
-		<h1>{{ page.title }}</h1>
-		<p style="text-align:center;">{{ page.subTitle }} </p>
+<div class="uk-container uk-container-center">
+    <div class="uk-grid" data-uk-grid-match data-uk-grid-margin>
+        <div class="tm-main uk-width-medium-4-4 tm-middle">
+            <main class="tm-content">
+                <section>
+                    <div id="primary" class="site-content">
+                        <div id="content" role="main">
+                            <h2>{{ page.title }}</h2>
+                            <ul class="tm-category-posts-list">
 		
-		{% for article in page.articles.slice(0,page.articlesPerPage) %}
-			<div class="blog_box1">
-				<dl class="item_info_dl">
-					<h2>
-						<a href="/page/{{ page.id}}/{{ article.id}}">{{ article.title }}</a>
-					</h2>
-					<dd>
-						<address class="item_createdby">
-							Публикация: {{ article.author.firstName }} {{ article.author.lastName }}
-						</address>
-					</dd>
-					<dd>
-						<time datetime="2015-05-01 19:45" class="item_published">
-							Дата: {{ article.created|date('m-d-Y') }} </time>
-					</dd>
-				</dl>
-				{% if article.icon is not empty %}
-					<img src="{{ article.icon.path }}" class="img-responsive" alt=""/>
-				{% endif %}
-				<p>
-					{{ article.description|markdown }}
-				</p>
-				<a href="/page/{{ page.id}}/{{ article.id}}" class="radial_but">Подробнее</a>
-			</div>
-		{% endfor %}
+							{% for article in page.articles.slice(0,page.articlesPerPage) %}
+		
+                                <li class="tm-post-list-block clearfix" style="padding: 20px;">
+									{% if article.icon is not empty %}
+										{% set image = article.icon %}
+										{%if image.type.id == 1 %}
+											<div class="uk-responsive-width">
+												<img src="{{ article.icon.path | imagine_filter('articles') }}" alt="" />
+											</div>
+										{% elseif image.type.id == 5 %}
+								            <iframe class="uk-responsive-width" src="{{ image.path }}?autoplay=0&amp;loop=1&amp;controls=1&amp;showinfo=1&amp;start=0&amp;vq=hd1080&amp;enablejsapi=1&amp;api=1&amp;player_id=sw-1&amp;enablejsapi=1&amp;api=1" allowfullscreen="" height="1080" width="1920"></iframe>
+										{% endif %}
+									{% endif %}   
+
+                                    <div class="">
+                                        <h3 class="tm-panel-header"><a href="/page/{{ page.id}}/{{ article.id}}">{{ article.title }}</a></h3>
+                                        <div class="tm-grey-color">
+                                            {{ article.created|date('m-d-Y') }}
+                                        </div>
+                                        <div class="line"></div>
+                                        <div>{{ article.description|markdown }}</div>
+                                        <a href="/page/{{ page.id}}/{{ article.id}}" class="read-more">read more</a>
+                                    </div>
+                                </li>		
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</section>
+		</main>
 	</div>
-</div>
+	</div>
+	</div>
+	
+
 {% endblock %}

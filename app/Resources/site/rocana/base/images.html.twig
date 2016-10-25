@@ -1,0 +1,32 @@
+{% macro images(article) %}
+
+	{% if article.images is not empty %}
+	
+    <div class="uk-width-1-1">
+        <div class="uk-panel CuteImageGallery" >
+            <div class="uk-margin">
+				<div class="uk-grid-width-small-1-2 uk-grid-width-medium-1-3 uk-grid-width-large-1-4" data-uk-grid="{controls: '#tm-gallery-filter', animation: 'uk-animation-fade, uk-animation-slide-left'}">
+				    {% for image in article.images %}
+				        <div class="uk-panel">
+				            <figure class="uk-overlay uk-overlay-hover">
+				                <img class="uk-overlay-scale" src="{{ image.path | imagine_filter('medialibrary') }}" alt="">
+				            </figure>
+				            <div class="uk-position-cover uk-flex uk-flex-center uk-flex-bottom">
+				                <div class="tm-my-overlay uk-width-1-1">
+				                    <p></p>
+				                </div>
+				            </div>
+				            <a class="uk-position-cover" 
+				                   data-uk-lightbox="{group:'gallery-group'}" 
+				                   data-lightbox-type="image" 
+				                   href="{{ image.path | imagine_filter('articles') }}"></a>
+				        </div>
+				    {% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	{% endif %}
+
+{% endmacro %}

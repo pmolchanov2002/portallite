@@ -40,6 +40,8 @@ class MediaController extends Controller
 
         if ($form->isValid()) {
             $media = $form->getData();
+            $media->setPath(str_replace("//www.youtube.com/watch?v=","//www.youtube.com/embed/",$media->getPath()));
+            $media->setPath(str_replace("//youtu.be","//www.youtube.com/embed",$media->getPath()));
             $em = $this->getDoctrine()->getManager();
             $em->persist($media);
             $em->flush();
@@ -122,6 +124,8 @@ class MediaController extends Controller
 
         if ($form->isValid()) {
             $media = $form->getData();
+            $media->setPath(str_replace("//www.youtube.com/watch?v=","//www.youtube.com/embed/",$media->getPath()));
+            $media->setPath(str_replace("//youtu.be","//www.youtube.com/embed",$media->getPath()));
             $em = $this->getDoctrine()->getManager();
             $em->persist($media);
             $em->flush();
