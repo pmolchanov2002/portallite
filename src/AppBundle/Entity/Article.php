@@ -38,7 +38,7 @@ class Article
     protected $content;
     
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(name="Created", type="datetime")
      */
     protected $created;
     

@@ -25,8 +25,10 @@ class ArticleController extends Controller
     public function create(Request $request)
     {
         $article = new Article();
+        $article->setCreated(new \DateTime("now"));
         $form = $this->createFormBuilder($article)
             ->add('title', 'text', array('label' => 'Title:'))
+            ->add('created', 'date', array('label' => 'Date:'))
             ->add('author', 'entity', array(
             		'multiple' => false,
             		'class' => 'AppBundle:User',
@@ -145,6 +147,7 @@ class ArticleController extends Controller
         }
         $form = $this->createFormBuilder($article)
             ->add('title', 'text', array('label' => 'Title:'))
+            ->add('created', 'date', array('label' => 'Date:'))
             ->add('author', 'entity', array(
             		'multiple' => false,
             		'class' => 'AppBundle:User',

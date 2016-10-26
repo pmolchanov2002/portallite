@@ -46,7 +46,7 @@ class Page
      *      joinColumns={@ORM\JoinColumn(name="PageId", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="ArticleId", referencedColumnName="id")}
      *      )
-     * @ORM\OrderBy({"id" = "DESC"})
+     * @ORM\OrderBy({"created" = "DESC"})
      **/
     protected $articles;
     
