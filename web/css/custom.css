@@ -1,5 +1,7 @@
 @CHARSET "UTF-8";
 
+
+
 p, ul, ol, dl, blockquote, pre, address, fieldset, figure {
       font: normal 1.5em 'PT Sans Narrow';
 }
@@ -13,15 +15,15 @@ p, ul, ol, dl, blockquote, pre, address, fieldset, figure {
 }
 
 
-.uk-h1 {
+h1, .uk-h1 {
     font-size: 1.6em;	
 }
 
-.uk-h2 {
+h2, .uk-h2 {
     font-size: 1.4em;	
 }
 
-.uk-h3 {
+h3, .uk-h3 {
     font-size: 1.2em;	
 }
 
@@ -39,4 +41,9 @@ div.tm-grey-color {
 
 a.read-more {
 	font-size: 1.0em;
+}
+
+ul.footer-links > li {
+    font-size: 0.9em;
+    line-height: 25px;
 }
