@@ -91,6 +91,10 @@ class Page
         $this->banners = new \Doctrine\Common\Collections\ArrayCollection();
         $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
     }
+    
+    public function clearArticles() {
+    	$this->articles = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Set id
