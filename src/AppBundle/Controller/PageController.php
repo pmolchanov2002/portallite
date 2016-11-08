@@ -37,7 +37,12 @@ class PageController extends Controller
        				'multiple' => false,
       				'class' => 'AppBundle:PageType',
             		'choice_label' => 'name',
-            		'label' => 'Type: '))
+            		'label' => 'Type: ',
+            		'query_builder' => function (EntityRepository $er) {
+	            		return $er->createQueryBuilder('a')
+	            		->orderBy('a.name','ASC');
+            		}
+            ))
             ->add('articlesPerPage', 'integer', array('label' => '# max articles:'))
             ->add('banner', 'entity', array(
             		'multiple' => false,
@@ -85,7 +90,12 @@ class PageController extends Controller
        				'multiple' => false,
       				'class' => 'AppBundle:PageType',
             		'choice_label' => 'name',
-            		'label' => 'Type: '))
+            		'label' => 'Type: ',
+            		'query_builder' => function (EntityRepository $er) {
+	            		return $er->createQueryBuilder('a')
+	            		->orderBy('a.name','ASC');
+            		}
+            ))
             ->add('articlesPerPage', 'integer', array('label' => '# max articles:'))
             ->add('banner', 'entity', array(
             		'multiple' => false,
