@@ -1,12 +1,22 @@
 {% extends '@site/base/ru/base.html.twig' %} 
 {% block title %}
-Школа Сергия Радонежского при Фонде Толстого.
-Страница не найдена.
-{% endblock %} 
-{% block description %}
-Школа Сергия Радонежского при Фонде Толстого. 
-Страница не найдена.
+	{% for setting in settings %}
+		{% if setting.type.id == 1 %}
+			{{ setting.value }}
+		{% endif %}
+	{% endfor %}
+	- Страница не найдена.
 {% endblock %}
+
+{% block description %}
+	{% for setting in settings %}
+		{% if setting.type.id == 1 %}
+			{{ setting.value }}
+		{% endif %}
+	{% endfor %}
+	- Страница не найдена.
+{% endblock %}
+
 {% block body %}
 
 <!-- page content -->

@@ -1,17 +1,27 @@
 {% extends '@site/base/ru/base.html.twig' %}
 
+
 {% block title %}
+	{% for setting in settings %}
+		{% if setting.type.id == 1 %}
+			{{ setting.value }}
+		{% endif %}
+	{% endfor %}
 	{% for article in page.articles %}
 		{{ article.title }}
 	{% endfor %} 
 {% endblock %}
 
 {% block description %}
+	{% for setting in settings %}
+		{% if setting.type.id == 1 %}
+			{{ setting.value }}
+		{% endif %}
+	{% endfor %}
 	{% for article in page.articles.slice(0,page.articlesPerPage) %}	
 		{{ article.description|markdown|striptags }}
 	{% endfor %} 
 {% endblock %}
-
 {% block body %}
 
 

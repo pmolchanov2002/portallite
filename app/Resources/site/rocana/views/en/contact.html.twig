@@ -1,8 +1,21 @@
 {% extends '@site/base/en/base.html.twig' %} 
 
 {% block title %}
-{% endblock %} 
+	{% for setting in settings %}
+		{% if setting.type.id == 1 %}
+			{{ setting.value }}
+		{% endif %}
+	{% endfor %}
+	- Contact us.
+{% endblock %}
+
 {% block description %}
+	{% for setting in settings %}
+		{% if setting.type.id == 1 %}
+			{{ setting.value }}
+		{% endif %}
+	{% endfor %}
+	- Contact us.
 {% endblock %}
 
 {% block body %}

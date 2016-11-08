@@ -1,14 +1,22 @@
 {% extends '@site/base/en/base.html.twig' %}
 
 {% block title %}
-	Russian Othodox St. Serguis Assembly & Learning Center at the Tolstoy Foundation, New York.
+	{% for setting in settings %}
+		{% if setting.type.id == 1 %}
+			{{ setting.value }}
+		{% endif %}
+	{% endfor %}
 	{% for article in page.articles %}
 		{{ article.title }}
 	{% endfor %} 
 {% endblock %}
 
 {% block description %}
-	Russian Othodox Learning Center at the Tolstoy Foundation, New York.
+	{% for setting in settings %}
+		{% if setting.type.id == 1 %}
+			{{ setting.value }}
+		{% endif %}
+	{% endfor %}
 	{% for article in page.articles.slice(0,page.articlesPerPage) %}	
 		{{ article.description|markdown|striptags }}
 	{% endfor %} 
@@ -62,7 +70,7 @@
 				</div>
 			</section>
 		</main>
-	</div>
+	</div>	
 	</div>
 	</div>
 	

@@ -1,12 +1,21 @@
 {% extends '@site/base/en/base.html.twig' %} 
 
 {% block title %}
-St. Serguis Assembly & Learning Center at the Tolstoy Foundation.
-Page is not found.
-{% endblock %} 
+	{% for setting in settings %}
+		{% if setting.type.id == 1 %}
+			{{ setting.value }}
+		{% endif %}
+	{% endfor %}
+	- Contact us.
+{% endblock %}
+
 {% block description %}
-St. Serguis Assembly & Learning Center at the Tolstoy Foundation.
-Page is not found.
+	{% for setting in settings %}
+		{% if setting.type.id == 1 %}
+			{{ setting.value }}
+		{% endif %}
+	{% endfor %}
+	- Contact us.
 {% endblock %}
 
 {% block body %}

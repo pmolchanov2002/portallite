@@ -1,9 +1,25 @@
 {% extends '@site/base/en/base.html.twig' %}
 
 {% block title %}
+	{% for setting in settings %}
+		{% if setting.type.id == 1 %}
+			{{ setting.value }}
+		{% endif %}
+	{% endfor %}
 	{% for faq in page.faqs %}
 		{{ faq.title }}
 	{% endfor %} 
+{% endblock %}
+
+{% block description %}
+	{% for setting in settings %}
+		{% if setting.type.id == 1 %}
+			{{ setting.value }}
+		{% endif %}
+	{% endfor %}
+	{% for faq in page.faqs %}
+		{{ faq.title }}
+	{% endfor %}
 {% endblock %}
 
 {% block body %}

@@ -1,8 +1,21 @@
 {% extends '@site/base/ru/base.html.twig' %} 
 
 {% block title %}
-{% endblock %} 
+	{% for setting in settings %}
+		{% if setting.type.id == 1 %}
+			{{ setting.value }}
+		{% endif %}
+	{% endfor %}
+	- Как с нами связаться.
+{% endblock %}
+
 {% block description %}
+	{% for setting in settings %}
+		{% if setting.type.id == 1 %}
+			{{ setting.value }}
+		{% endif %}
+	{% endfor %}
+	- Как с нами связаться.
 {% endblock %}
 
 {% block body %}
@@ -25,7 +38,7 @@
                     </div>
                     <div id="primary" class="site-content post-content">
                         <div class="main-heading">
-                            <h1 class="tm-page-title">HOW TO FIND US</h1>
+                            <h1 class="tm-page-title">Как к нам проехать</h1>
                         </div>
                         <div>
 {% for setting in settings %}
