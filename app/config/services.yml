@@ -19,3 +19,7 @@ services:
         public:    false
         tags:
             - { name: twig.extension }
+    PageService:
+        class: AppBundle\Service\PageService
+        arguments: 
+            entityManager: "@doctrine.orm.entity_manager"

@@ -1,8 +1,12 @@
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
     
-app:
-    resource: "@AppBundle/Controller/"
+admin:
+    resource: "@AppBundle/Controller/Admin"
+    type:     annotation
+
+site:
+    resource: "@AppBundle/Controller/Site"
     type:     annotation
 
 _security_logout:

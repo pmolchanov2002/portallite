@@ -1,6 +1,6 @@
 <?php
 // src/AppBundle/Controller/SecurityController.php
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\Admin;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
