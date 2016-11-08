@@ -31,6 +31,8 @@ class Page
     /**
      * @ORM\ManyToOne(targetEntity="PageType")
      * @ORM\JoinColumn(name="PageTypeId", referencedColumnName="id")
+     * 
+     * @ORM\OrderBy({"name" = "ASC"})
      **/
     protected $type;
     
