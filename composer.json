@@ -26,7 +26,8 @@
         "ornj/markdown-bundle": "dev-master",
         "kartik-v/bootstrap-fileinput": "@dev",
         "gregwar/image-bundle": "^2.1",
-        "liip/imagine-bundle": "^1.6"
+        "liip/imagine-bundle": "^1.6",
+        "beberlei/DoctrineExtensions": "^1.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

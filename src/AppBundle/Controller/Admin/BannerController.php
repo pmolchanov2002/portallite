@@ -114,7 +114,7 @@ class BannerController extends Controller
     }
 
      /**
-     * @Route("/admin/web/banner")
+     * @Route("/admin/web/banner", name="app_banner_display")
      */       
     public function display() {
         $banners = $this->getDoctrine()

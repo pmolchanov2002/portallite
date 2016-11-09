@@ -23,5 +23,6 @@ return array(
     'Liip\\ImagineBundle\\' => array($vendorDir . '/liip/imagine-bundle'),
     'Incenteev\\ParameterHandler\\' => array($vendorDir . '/incenteev/composer-parameter-handler'),
     'Doctrine\\Bundle\\DoctrineBundle\\' => array($vendorDir . '/doctrine/doctrine-bundle'),
+    'DoctrineExtensions\\' => array($vendorDir . '/beberlei/DoctrineExtensions/src'),
     '' => array($baseDir . '/src'),
 );

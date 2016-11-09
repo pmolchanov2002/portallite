@@ -1,7 +1,7 @@
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
     
-admin:
+app:
     resource: "@AppBundle/Controller/Admin"
     type:     annotation
 

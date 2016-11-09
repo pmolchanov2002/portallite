@@ -94,7 +94,19 @@ swiftmailer:
     # web_dir: %kernel.root_dir%/../../public_html
     # cache_dir:  images_cache
 
+
+
 liip_imagine:
+
+#    loaders:
+#        default:
+#            filesystem:
+#                data_root: /public_html/test2
+#    resolvers:
+#        default:
+#          web_path:
+#            web_root: "%kernel.root_dir%/../../public_html/test2"
+#
     resolvers:
         default:
             web_path: ~

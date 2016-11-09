@@ -109,7 +109,7 @@ class FaqController extends Controller
     }
 
      /**
-     * @Route("/admin/web/faq")
+     * @Route("/admin/web/faq", name="app_faq_display")
      */       
     public function display() {
         $faqs = $this->getDoctrine()

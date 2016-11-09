@@ -132,7 +132,7 @@ class EventController extends Controller
     }
 
      /**
-     * @Route("/admin/web/event")
+     * @Route("/admin/web/event", name="app_event_display")
      */       
     public function display() {
         $events = $this->getDoctrine()

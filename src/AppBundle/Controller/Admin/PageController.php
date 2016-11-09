@@ -138,7 +138,7 @@ class PageController extends Controller
     }
 
      /**
-     * @Route("/admin/web/page")
+     * @Route("/admin/web/page", name="app_page_display")
      */       
     public function display() {
         $pages = $this->getDoctrine()

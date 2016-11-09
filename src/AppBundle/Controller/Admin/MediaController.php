@@ -154,7 +154,7 @@ class MediaController extends Controller
     }
 
      /**
-     * @Route("/admin/web/media")
+     * @Route("/admin/web/media", name="app_media_display")
      */       
     public function display() {
         $medias = $this->getDoctrine()

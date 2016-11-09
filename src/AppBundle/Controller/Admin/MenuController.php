@@ -165,7 +165,7 @@ class MenuController extends Controller
     }
 
      /**
-     * @Route("/admin/web/menu")
+     * @Route("/admin/web/menu", name="app_menu_display")
      */       
     public function display() {
         $menus = $this->getDoctrine()

@@ -140,7 +140,7 @@ class UserController extends Controller
     }
 
      /**
-     * @Route("/admin/user")
+     * @Route("/admin/user", name="app_user_display")
      */       
     public function display() {
         $users = $this->getDoctrine()

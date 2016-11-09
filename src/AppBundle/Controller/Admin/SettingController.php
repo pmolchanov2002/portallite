@@ -110,7 +110,7 @@ class SettingController extends Controller
     }
 
      /**
-     * @Route("/admin/web/setting")
+     * @Route("/admin/web/setting", name="app_setting_display")
      */       
     public function display() {
         $settings = $this->getDoctrine()

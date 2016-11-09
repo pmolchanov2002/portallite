@@ -272,7 +272,7 @@ class ArticleController extends Controller
     }
 
      /**
-     * @Route("/admin/web/article")
+     * @Route("/admin/web/article", name="app_article_display")
      */       
     public function display() {
         $articles = $this->getDoctrine()
