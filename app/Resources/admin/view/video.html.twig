@@ -1,0 +1,47 @@
+{# app/Resources/views/period.html.twig #}
+{% extends 'admin/view/base-admin.html.twig' %}
+
+{% block pageTitle %}Video{% endblock %}
+{% block title %}Video{% endblock %}
+{% block script %}
+	$(document).ready(function() {
+	    $('#results').DataTable({
+       		"order": [[ 0, "desc" ]]
+	    });
+	    $('.delete_row').click(function(){
+    		return confirm("Are you sure you want to delete?");
+		});
+	} );
+{% endblock %}
+
+{% block body %}
+    <div style="margin-bottom:10px;">
+    	<a class="btn btn-default" href="/admin/web/video/create" role="button">Add a video from YouTube</a>
+	</div>
+	<table id="results" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+            	<th>Id</th>
+            	<th width="120">Preview</th>
+                <th>Description</th>
+                <th>Path</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+	    {% for media in medias %}
+	    	<tr>
+	    		<td data-sort="{{ media.id }}">{{ media.id }}</td>
+	    		<td>
+	        	<iframe src="{{ media.path }}" width="200"></iframe>
+	        	</td>
+	        	<td>{{ media.description }}</td>
+	        	<td><a href="{{ media.path }}" target="_blank">{{ media.path }}</a></td>
+	        	<td width="10"><a href='/admin/web/video/edit/{{ media.id }}'>Edit</a></td>
+	        	<td class="delete_row" width="10"><a href='/admin/web/video/delete/{{ media.id }}'>Delete</a></td>
+	        </tr>
+	    {% endfor %}
+    	</tbody>        
+    </table>
+{% endblock %}

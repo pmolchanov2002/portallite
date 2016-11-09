@@ -1,0 +1,46 @@
+{# app/Resources/views/period.html.twig #}
+{% extends 'admin/view/base-admin.html.twig' %}
+
+{% block pageTitle %}Documents{% endblock %}
+{% block title %}Documents{% endblock %}
+{% block script %}
+	$(document).ready(function() {
+	    $('#results').DataTable({
+       		"order": [[ 0, "desc" ]]
+	    });
+	    $('.delete_row').click(function(){
+    		return confirm("Are you sure you want to delete?");
+		});
+	} );
+{% endblock %}
+
+{% block body %}
+    <div style="margin-bottom:10px;">
+    	<a class="btn btn-default" href="/admin/web/doc/create" role="button">Add a document on the web</a>
+    	<a class="btn btn-default" href="/admin/web/doc/upload" role="button">Upload a document file</a>
+	</div>
+	<table id="results" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+            	<th>Id</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Path</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+	    {% for media in medias %}
+	    	<tr>
+	    		<td data-sort="{{ media.id }}">{{ media.id }}</td>
+	        	<td>{{ media.description }}</td>
+	        	<td>{{ media.type.name | default("Not assigned") }}</td>
+	        	<td><a href="{{ media.path }}" target="_blank">{{ media.path }}</a></td>
+	        	<td width="10"><a href='/admin/web/doc/edit/{{ media.id }}'>Edit</a></td>
+	        	<td class="delete_row" width="10"><a href='/admin/web/doc/delete/{{ media.id }}'>Delete</a></td>
+	        </tr>
+	    {% endfor %}
+    	</tbody>        
+    </table>
+{% endblock %}

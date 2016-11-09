@@ -13,13 +13,13 @@ use AppBundle\Entity\Media;
 
 use Doctrine\ORM\EntityRepository;
 
-class MediaController extends Controller
+class VideoController extends Controller
 {
 
-    private $displayRoute = 'app_media_display';
+    private $displayRoute = 'app_video_display';
 
     /**
-     * @Route("/admin/web/media/create")
+     * @Route("/admin/web/video/create")
      */
     public function create(Request $request)
     {
@@ -28,11 +28,6 @@ class MediaController extends Controller
             ->add('description', 'text', array('label' => 'Description:'))
             ->add('englishName', 'text', array('label' => 'English:'))
             ->add('path', 'text', array('label' => 'URL:'))
-            ->add('type', 'entity', array(
-            		'multiple' => false,
-            		'class' => 'AppBundle:MediaType',
-            		'choice_label' => 'name',
-            		'label' => 'Type: '))
             ->add('save', 'submit', array('label' => 'Create'))
             ->getForm();
 
@@ -43,18 +38,20 @@ class MediaController extends Controller
             $media->setPath(str_replace("//www.youtube.com/watch?v=","//www.youtube.com/embed/",$media->getPath()));
             $media->setPath(str_replace("//youtu.be","//www.youtube.com/embed",$media->getPath()));
             $em = $this->getDoctrine()->getManager();
+            $mediaType = $em->getRepository('AppBundle:MediaType')->findOneById(5);
+            $media->setType($mediaType);
             $em->persist($media);
             $em->flush();
             return $this->redirectToRoute($this->displayRoute);
         }    
 
-        return $this->render('admin/form/media.html.twig', array(
+        return $this->render('admin/form/video.html.twig', array(
             'form' => $form->createView(),
         ));
     }
     
     /**
-     * @Route("/admin/web/media/upload")
+     * @Route("/admin/web/video/upload")
      */
     public function upload(Request $request)
     {
@@ -65,13 +62,8 @@ class MediaController extends Controller
     	->add('path', 'file', array(
     			'label' => 'File:'
     	))
-    	->add('type', 'entity', array(
-    			'multiple' => false,
-    			'class' => 'AppBundle:MediaType',
-    			'choice_label' => 'name',
-    			'label' => 'Type: '))
-    			->add('save', 'submit', array('label' => 'Create'))
-    			->getForm();
+    	->add('save', 'submit', array('label' => 'Create'))
+    	->getForm();
     
     	$form->handleRequest($request);
     
@@ -89,18 +81,20 @@ class MediaController extends Controller
     		$media->setPath("/uploads/".$fileName);
     		
     		$em = $this->getDoctrine()->getManager();
+    		$mediaType = $em->getRepository('AppBundle:MediaType')->findOneById(5);
+    		$media->setType($mediaType);
     		$em->persist($media);
     		$em->flush();
     		return $this->redirectToRoute($this->displayRoute);
    		}
     
-    	return $this->render('admin/form/media.html.twig', array(
+    	return $this->render('admin/form/video.html.twig', array(
    				'form' => $form->createView(),
     	));
     }
 
     /**
-     * @Route("/admin/web/media/edit/{id}")
+     * @Route("/admin/web/video/edit/{id}")
      * @ParamConverter("media", class="AppBundle:Media")     
      */
     public function edit($media, Request $request)
@@ -112,11 +106,6 @@ class MediaController extends Controller
             ->add('description', 'text', array('label' => 'Description:'))
             ->add('englishName', 'text', array('label' => 'English:'))
             ->add('path', 'text', array('label' => 'URL:'))
-            ->add('type', 'entity', array(
-            		'multiple' => false,
-            		'class' => 'AppBundle:MediaType',
-            		'choice_label' => 'name',
-            		'label' => 'Type: '))
             ->add('save', 'submit', array('label' => 'Save'))
             ->getForm();
 
@@ -127,18 +116,20 @@ class MediaController extends Controller
             $media->setPath(str_replace("//www.youtube.com/watch?v=","//www.youtube.com/embed/",$media->getPath()));
             $media->setPath(str_replace("//youtu.be","//www.youtube.com/embed",$media->getPath()));
             $em = $this->getDoctrine()->getManager();
+            $mediaType = $em->getRepository('AppBundle:MediaType')->findOneById(5);
+            $media->setType($mediaType);
             $em->persist($media);
             $em->flush();
             return $this->redirectToRoute($this->displayRoute);
         }    
 
-        return $this->render('admin/form/media.html.twig', array(
+        return $this->render('admin/form/video.html.twig', array(
             'form' => $form->createView(),
         ));
     }
 
      /**
-     * @Route("/admin/web/media/delete/{id}")
+     * @Route("/admin/web/video/delete/{id}")
      * @ParamConverter("media", class="AppBundle:Media")
      */
     public function delete($media)
@@ -154,12 +145,17 @@ class MediaController extends Controller
     }
 
      /**
-     * @Route("/admin/web/media", name="app_media_display")
+     * @Route("/admin/web/video", name="app_video_display")
      */       
     public function display() {
         $medias = $this->getDoctrine()
         ->getRepository('AppBundle:Media')
-        ->findAll([], ['id' => 'ASC']);
-        return $this->render('admin/view/media.html.twig',  array('medias' => $medias));
+        ->createQueryBuilder('m')
+        ->join("m.type","t")
+        ->where("t.id = 5")
+        ->orderBy("m.id", "DESC")
+        ->getQuery()
+        ->getResult();
+        return $this->render('admin/view/video.html.twig',  array('medias' => $medias));
     }
 }
