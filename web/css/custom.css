@@ -3,11 +3,11 @@
 
 
 p, ul, ol, dl, blockquote, pre, address, fieldset, figure {
-      font: normal 1.5em 'PT Sans Narrow';
+      font: normal 1.1em 'PT Sans Narrow';
 }
 
 .uk-navbar-nav > li > a {
-    font-size: 0.7em;
+    font-size: 0.9em;
 }
 
 .uk-dropdown {
@@ -29,6 +29,7 @@ h3, .uk-h3 {
 
 .uk-accordion-title {
     font-size: 1.2em;
+    line-height: initial;
 }
 
 h3.tm-panel-header {
@@ -47,3 +48,8 @@ ul.footer-links > li {
     font-size: 0.9em;
     line-height: 25px;
 }
+
+.uk-dropdown li a {
+    font-size:0.8em;
+}
+
