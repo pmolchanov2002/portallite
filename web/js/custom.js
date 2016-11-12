@@ -7,9 +7,61 @@ jQuery(document).ready(function () {
         return false;
     });
     
+    magic();
+    
     tm_countDown();
 
 });
+
+function magic() {
+    "use strict";
+    // process the form
+    jQuery('#subscribe').on('submit', function(e) {
+        e.preventDefault();
+
+        // get the form data
+        // there are many ways to get this data using jQuery (you can use the class or id also)
+        var formData = {
+            'address'              : jQuery('input[name=address]').val(),
+        };
+
+        // process the form
+        jQuery.ajax({
+            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url         : '/subscribe', // the url where we want to POST
+            data        : formData, // our data object
+            dataType    : 'json', // what type of data do we expect back from the server
+            encode      : true,
+            success : function(data) {
+
+                // log data to the console so we can see
+               if(data.success) {
+            	   if(data.language == 'en') {
+            		   alert("You subscribed to newsletters successfully");
+            	   }
+            	   if(data.language == 'ru') {
+            		   alert("Вы успешно подписались на рассылку новостей по e-mail");
+            	   }
+               } else {
+             	   if(data.language == 'en') {
+            		   alert("Subscription to e-mail failed. Please try again.");
+            	   }
+            	   if(data.language == 'ru') {
+            		   alert("Произошла ошибка при подписке на рассылку. Попробуйте еще раз.");
+            	   }
+               }
+
+                // here we will handle errors and validation messages
+            },
+            error: function(data) {
+    	    	alert("Subscription to e-mail failed. Please try again.");
+    	    }
+        });
+        return false;
+
+    });
+
+}
 
 function tm_countDown() {
     "use strict";
