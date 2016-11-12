@@ -30,6 +30,7 @@
                 <th>Language</th>
                 <th>Page</th>
                 <th>Created</th>
+                <th>Email</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -45,6 +46,7 @@
 	        		{% endfor %}
 	        	</td>
 	        	<td>{{ article.created|date("m/d/Y") }}</td>
+	        	<td><a href='/admin/mail/article/{{ article.id }}'>Email article</a></td>
 	        	<td width="10"><a href='/admin/web/article/edit/{{ article.id }}'>Edit</a></td>
 	        	<td class="delete_row" width="10"><a href='/admin/web/article/delete/{{ article.id }}'>Delete</a></td>
 	        </tr>
