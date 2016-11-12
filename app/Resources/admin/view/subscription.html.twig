@@ -1,0 +1,39 @@
+{# app/Resources/views/period.html.twig #}
+{% extends 'admin/view/base-admin.html.twig' %}
+
+{% block pageTitle %}Subscriptions{% endblock %}
+{% block title %}Subscriptions{% endblock %}
+{% block script %}
+	$(document).ready(function() {
+	    $('#results').DataTable({
+	    	paging: false
+	    });
+	    $('.delete_row').click(function(){
+    		return confirm("Are you sure you want to delete?");
+		});
+	} );
+{% endblock %}
+
+{% block body %}
+    <div style="margin-bottom:10px;">
+    	<a class="btn btn-default" href="/admin/web/subscription/create" role="button">New subscription</a>
+	</div>
+	<table id="results" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Address</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+	    {% for subscription in subscriptions %}
+	    	<tr>
+	        	<td>{{ subscription.address }}</td>
+	        	<td width="10"><a href='/admin/web/subscription/edit/{{ subscription.id }}'>Edit</a></td>
+	        	<td class="delete_row" width="10"><a href='/admin/web/subscription/delete/{{ subscription.id }}'>Delete</a></td>
+	        </tr>
+	    {% endfor %}
+    	</tbody>        
+    </table>
+{% endblock %}
