@@ -51,6 +51,15 @@ class Media
      * @Assert\NotBlank()
      */
     protected $englishName;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Tag")
+     * @ORM\JoinTable(name="Media_Tag",
+     *      joinColumns={@ORM\JoinColumn(name="MediaId", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="TagId", referencedColumnName="id")}
+     *      )
+     **/
+    protected $tags;
 
     /**
      * Get id

@@ -51,6 +51,15 @@ class Media
      * @Assert\NotBlank()
      */
     protected $englishName;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Tag")
+     * @ORM\JoinTable(name="Media_Tag",
+     *      joinColumns={@ORM\JoinColumn(name="MediaId", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="TagId", referencedColumnName="id")}
+     *      )
+     **/
+    protected $tags;
 
     /**
      * Get id
@@ -198,5 +207,45 @@ class Media
     public function getEnglishName()
     {
         return $this->englishName;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add tags
+     *
+     * @param \AppBundle\Entity\Tag $tags
+     * @return Media
+     */
+    public function addTag(\AppBundle\Entity\Tag $tags)
+    {
+        $this->tags[] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \AppBundle\Entity\Tag $tags
+     */
+    public function removeTag(\AppBundle\Entity\Tag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }
