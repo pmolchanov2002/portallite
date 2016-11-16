@@ -25,8 +25,8 @@ class AudioController extends Controller
     {
         $media = new Media();
         $form = $this->createFormBuilder($media)
-            ->add('description', 'text', array('label' => 'Description:'))
-            ->add('englishName', 'text', array('label' => 'English:'))
+            ->add('description', 'text', array('label' => 'Russian description:'))
+            ->add('englishName', 'text', array('label' => 'English description:'))
             ->add('path', 'text', array('label' => 'URL:'))
             ->add('save', 'submit', array('label' => 'Create'))
             ->getForm();
@@ -55,8 +55,8 @@ class AudioController extends Controller
     {
     	$media = new Media();
     	$form = $this->createFormBuilder($media)
-    	->add('description', 'text', array('label' => 'Description:'))
-    	->add('englishName', 'text', array('label' => 'English:'))
+    	->add('description', 'text', array('label' => 'Russian description:'))
+    	->add('englishName', 'text', array('label' => 'English description:'))
     	->add('path', 'file', array(
     			'label' => 'File:'
     	))
@@ -71,11 +71,10 @@ class AudioController extends Controller
     		print_r($file);
     		$fileName = md5(uniqid()).'.'.$file->guessExtension();
     		
-    		$uploadDir = $this->container->getParameter('kernel.root_dir').'/../../public_html/test2/uploads';
-    		//$uploadDir = $this->container->getParameter('kernel.root_dir').'/../web/uploads';
-    		$file->move($uploadDir, $fileName);
-    		
-    		$media->setPath("/uploads/".$fileName);
+    		$uploadPath = $this->getParameter("upload_path");
+    		$file->move($uploadPath, $fileName);
+    		$uploadDir = $this->getParameter("upload_dir");
+    		$media->setPath($uploadDir.'/'.$fileName);
     		
     		$em = $this->getDoctrine()->getManager();
     		$mediaType = $em->getRepository('AppBundle:MediaType')->findOneById(6);
@@ -100,8 +99,8 @@ class AudioController extends Controller
             return new Response("Media not found");
         }
         $form = $this->createFormBuilder($media)
-            ->add('description', 'text', array('label' => 'Description:'))
-            ->add('englishName', 'text', array('label' => 'English:'))
+            ->add('description', 'text', array('label' => 'Russian description:'))
+            ->add('englishName', 'text', array('label' => 'English description:'))
             ->add('path', 'text', array('label' => 'URL:'))
             ->add('save', 'submit', array('label' => 'Save'))
             ->getForm();

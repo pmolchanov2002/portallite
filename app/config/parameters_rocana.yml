@@ -11,3 +11,6 @@ parameters:
     mailer_password: null
     secret: 11e657ae4e33fe3f0a0efe7ff59b4d1999a97d53
     site: rocana
+    web_root: "%kernel.root_dir%/../web"
+    upload_dir: "/uploads"
+    upload_path: "%web_root%/%upload_dir%"

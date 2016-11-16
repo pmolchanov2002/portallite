@@ -25,8 +25,8 @@ class VideoController extends Controller
     {
         $media = new Media();
         $form = $this->createFormBuilder($media)
-            ->add('description', 'text', array('label' => 'Description:'))
-            ->add('englishName', 'text', array('label' => 'English:'))
+            ->add('description', 'text', array('label' => 'Russian description:'))
+            ->add('englishName', 'text', array('label' => 'English description:'))
             ->add('path', 'text', array('label' => 'URL:'))
             ->add('save', 'submit', array('label' => 'Create'))
             ->getForm();
@@ -49,49 +49,6 @@ class VideoController extends Controller
             'form' => $form->createView(),
         ));
     }
-    
-    /**
-     * @Route("/admin/web/video/upload")
-     */
-    public function upload(Request $request)
-    {
-    	$media = new Media();
-    	$form = $this->createFormBuilder($media)
-    	->add('description', 'text', array('label' => 'Description:'))
-    	->add('englishName', 'text', array('label' => 'English:'))
-    	->add('path', 'file', array(
-    			'label' => 'File:'
-    	))
-    	->add('save', 'submit', array('label' => 'Create'))
-    	->getForm();
-    
-    	$form->handleRequest($request);
-    
-    	if ($form->isValid()) {
-    		$media = $form->getData();
-    		$file = $media->getPath();
-    		print_r($file);
-    		$fileName = md5(uniqid()).'.'.$file->guessExtension();
-    		
-    		$uploadDir = $this->container->getParameter('kernel.root_dir').'/../../public_html/test2/uploads';
-    		//$uploadDir = $this->container->getParameter('kernel.root_dir').'/../web/uploads';
-    		$file->move($uploadDir, $fileName);
-    		
-    		//$media->setPath($request->getSchemeAndHttpHost()."/uploads/".$fileName);
-    		$media->setPath("/uploads/".$fileName);
-    		
-    		$em = $this->getDoctrine()->getManager();
-    		$mediaType = $em->getRepository('AppBundle:MediaType')->findOneById(5);
-    		$media->setType($mediaType);
-    		$em->persist($media);
-    		$em->flush();
-    		return $this->redirectToRoute($this->displayRoute);
-   		}
-    
-    	return $this->render('admin/form/video.html.twig', array(
-   				'form' => $form->createView(),
-    	));
-    }
 
     /**
      * @Route("/admin/web/video/edit/{id}")
@@ -103,8 +60,8 @@ class VideoController extends Controller
             return new Response("Media not found");
         }
         $form = $this->createFormBuilder($media)
-            ->add('description', 'text', array('label' => 'Description:'))
-            ->add('englishName', 'text', array('label' => 'English:'))
+            ->add('description', 'text', array('label' => 'Russian description:'))
+            ->add('englishName', 'text', array('label' => 'English description:'))
             ->add('path', 'text', array('label' => 'URL:'))
             ->add('save', 'submit', array('label' => 'Save'))
             ->getForm();

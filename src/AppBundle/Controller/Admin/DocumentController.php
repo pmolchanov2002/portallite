@@ -25,8 +25,8 @@ class DocumentController extends Controller
     {
         $media = new Media();
         $form = $this->createFormBuilder($media)
-            ->add('description', 'text', array('label' => 'Description:'))
-            ->add('englishName', 'text', array('label' => 'English:'))
+            ->add('description', 'text', array('label' => 'Russian description:'))
+            ->add('englishName', 'text', array('label' => 'English description:'))
             ->add('path', 'text', array('label' => 'URL:'))
             ->add('type', 'entity', array(
             		'multiple' => false,
@@ -47,8 +47,6 @@ class DocumentController extends Controller
 
         if ($form->isValid()) {
             $media = $form->getData();
-            $media->setPath(str_replace("//www.youtube.com/watch?v=","//www.youtube.com/embed/",$media->getPath()));
-            $media->setPath(str_replace("//youtu.be","//www.youtube.com/embed",$media->getPath()));
             $em = $this->getDoctrine()->getManager();
             $em->persist($media);
             $em->flush();
@@ -67,8 +65,8 @@ class DocumentController extends Controller
     {
     	$media = new Media();
     	$form = $this->createFormBuilder($media)
-    	->add('description', 'text', array('label' => 'Description:'))
-    	->add('englishName', 'text', array('label' => 'English:'))
+    	->add('description', 'text', array('label' => 'Russian description:'))
+    	->add('englishName', 'text', array('label' => 'English description:'))
     	->add('path', 'file', array(
     			'label' => 'File:'
     	))
@@ -95,12 +93,10 @@ class DocumentController extends Controller
     		print_r($file);
     		$fileName = md5(uniqid()).'.'.$file->guessExtension();
     		
-    		$uploadDir = $this->container->getParameter('kernel.root_dir').'/../../public_html/test2/uploads';
-    		//$uploadDir = $this->container->getParameter('kernel.root_dir').'/../web/uploads';
-    		$file->move($uploadDir, $fileName);
-    		
-    		//$media->setPath($request->getSchemeAndHttpHost()."/uploads/".$fileName);
-    		$media->setPath("/uploads/".$fileName);
+    		$uploadPath = $this->getParameter("upload_path");
+    		$file->move($uploadPath, $fileName);
+    		$uploadDir = $this->getParameter("upload_dir");
+    		$media->setPath($uploadDir.'/'.$fileName);
     		
     		$em = $this->getDoctrine()->getManager();
     		$em->persist($media);
@@ -123,8 +119,8 @@ class DocumentController extends Controller
             return new Response("Media not found");
         }
         $form = $this->createFormBuilder($media)
-            ->add('description', 'text', array('label' => 'Description:'))
-            ->add('englishName', 'text', array('label' => 'English:'))
+            ->add('description', 'text', array('label' => 'Russian description:'))
+            ->add('englishName', 'text', array('label' => 'English description:'))
             ->add('path', 'text', array('label' => 'URL:'))
             ->add('type', 'entity', array(
             		'multiple' => false,
