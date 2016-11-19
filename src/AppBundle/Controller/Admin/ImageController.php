@@ -28,6 +28,17 @@ class ImageController extends Controller
         $form = $this->createFormBuilder($media)
             ->add('description', 'text', array('label' => 'Russian description:'))
             ->add('englishName', 'text', array('label' => 'English description:'))
+            ->add('tag', 'entity', array(
+            		'multiple' => true,
+            		'expanded' => true,
+            		'class' => 'AppBundle:Media',
+            		'choice_label' => 'description',
+            		'label' => 'Images/Video: ',
+            		'query_builder' => function (EntityRepository $er) {
+            		return $er->createQueryBuilder('m')
+            		->orderBy('m.id','DESC');
+            		}
+            		))
             ->add('path', 'text', array('label' => 'URL:'))
             ->add('save', 'submit', array('label' => 'Create'))
             ->getForm();
