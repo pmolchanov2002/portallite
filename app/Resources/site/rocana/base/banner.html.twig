@@ -9,8 +9,8 @@
 					<div class="uk-panel top-slider-width CuteChurch">        
 			            <div class="slider-module">
 			            	<div class="uk-slidenav-position" data-uk-slideshow="{height: 'auto', animation: 'fade', duration: '', autoplay: true, autoplayInterval: '4000', videoautoplay: false, videomute: false, kenburns: false}">
-		{% if banner.media|length == 1 %}
-			{% set image = banner.media[0] %}
+		{% if banner.mediaRefs|length == 1 %}
+			{% set image = banner.mediaRefs[0].media %}
 			<ul class="uk-slideshow uk-overlay-active">		
                 <li aria-hidden="false" class="uk-cover uk-height-viewport  tm-wrap uk-active">
                  {%if image.type.id == 1 %}
@@ -42,9 +42,10 @@
 				{% endif %}
 				</li>
 			</ul>
-		{% elseif banner.media|length > 1 %}
+		{% elseif banner.mediaRefs|length > 1 %}
 			<ul class="uk-slideshow uk-overlay-active">
-				{% for image in banner.media %}
+				{% for imageRef in banner.mediaRefs %}
+				{% set image = imageRef.media %}
 				{% if loop.first %}
                 	<li aria-hidden="false" class="uk-cover uk-height-viewport  tm-wrap uk-active">
                 {% else %}
@@ -76,7 +77,7 @@
 	        <a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next"></a>
 			
 			<ul class="uk-dotnav uk-dotnav-contrast uk-position-bottom uk-flex-center">
-			{% for image in banner.media %}
+			{% for image in banner.mediaRefs %}
 				<li data-uk-slideshow-item="{{loop.index0}}"><a href="">{{loop.index0}}</a></li>
 			{% endfor %}
 			</ul>

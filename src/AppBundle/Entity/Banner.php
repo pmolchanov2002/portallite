@@ -5,6 +5,8 @@ namespace AppBundle\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+
+use AppBundle\Entity\BannerMediaRef;
 /**
  * @ORM\Entity
  * @ORM\Table(name="Banner")
@@ -31,6 +33,12 @@ class Banner
     protected $name;
     
     /**
+     * @ORM\OneToMany(targetEntity="BannerMediaRef", mappedBy="banner", cascade={"persist"})
+     * @ORM\OrderBy({"ordinal" = "ASC"})
+     **/
+    protected $mediaRefs;
+    
+    /**
      * @ORM\ManyToMany(targetEntity="Media")
      * @ORM\JoinTable(name="Banner_Media",
      *      joinColumns={@ORM\JoinColumn(name="BannerId", referencedColumnName="id")},
@@ -44,13 +52,25 @@ class Banner
      * @ORM\JoinColumn(name="BannerId", referencedColumnName="id")
      **/
     protected $pages;
+ 
+    /**
+     * Get media
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function clearMedia()
+    {
+    	$this->media =  new \Doctrine\Common\Collections\ArrayCollection();
+    }
     
     /**
      * Constructor
      */
     public function __construct()
     {
+        $this->mediaRefs = new \Doctrine\Common\Collections\ArrayCollection();
         $this->media = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->pages = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -110,26 +130,36 @@ class Banner
     }
 
     /**
-     * Set page
+     * Add mediaRefs
      *
-     * @param \AppBundle\Entity\Page $page
+     * @param \AppBundle\Entity\BannerMediaRef $mediaRefs
      * @return Banner
      */
-    public function setPage(\AppBundle\Entity\Page $page = null)
+    public function addMediaRef(\AppBundle\Entity\BannerMediaRef $mediaRefs)
     {
-        $this->page = $page;
+        $this->mediaRefs[] = $mediaRefs;
 
         return $this;
     }
 
     /**
-     * Get page
+     * Remove mediaRefs
      *
-     * @return \AppBundle\Entity\Page 
+     * @param \AppBundle\Entity\BannerMediaRef $mediaRefs
      */
-    public function getPage()
+    public function removeMediaRef(\AppBundle\Entity\BannerMediaRef $mediaRefs)
     {
-        return $this->page;
+        $this->mediaRefs->removeElement($mediaRefs);
+    }
+
+    /**
+     * Get mediaRefs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMediaRefs()
+    {
+        return $this->mediaRefs;
     }
 
     /**

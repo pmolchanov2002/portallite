@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Banner;
 
 use Doctrine\ORM\EntityRepository;
+use AppBundle\Entity\BannerMediaRef;
 
 class BannerController extends Controller
 {
@@ -48,6 +49,16 @@ class BannerController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($banner);
             $em->flush();
+            
+            //Recalculating media order in the banner
+            $em->refresh($banner);
+            $ordinal = 1;
+            foreach($banner->getMediaRefs() as $mediaRef) {
+            	$mediaRef->setOrdinal($ordinal);
+            	$em->persist($mediaRef);
+            	$em->flush();
+            	$ordinal++;
+            }
             return $this->redirectToRoute($this->displayRoute);
         }    
 
@@ -89,6 +100,16 @@ class BannerController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($banner);
             $em->flush();
+            
+            //Recalculating media order in the banner
+            $em->refresh($banner);
+            $ordinal = 1;
+            foreach($banner->getMediaRefs() as $mediaRef) {
+            	$mediaRef->setOrdinal($ordinal);
+            	$em->persist($mediaRef);
+            	$em->flush();
+            	$ordinal++;
+            }
             return $this->redirectToRoute($this->displayRoute);
         }    
 
@@ -112,7 +133,71 @@ class BannerController extends Controller
         //return new Response("Class was deleted");
         return $this->redirectToRoute($this->displayRoute);
     }
+    
+    /**
+     * @Route("/admin/web/banner/{id}/media/up/{ordinal}")
+     * @ParamConverter("banner", class="AppBundle:Banner")
+     */
+    public function up($banner, $ordinal)
+    {    	
+    	$previous = null;
+    	$current = null;
+    	foreach($banner->getMediaRefs() as $mediaRef) {
+    		if($mediaRef->getOrdinal() == $ordinal - 1) {
+    			$previous = $mediaRef;
+    		}
+    		if($mediaRef->getOrdinal() == $ordinal) {
+    			$current = $mediaRef;
+    		}
+    	}
+    	
+    	if($previous == null || $current == null) {
+    		throw new \LogicException("Please edit banner and save it before reorder media");	
+    	}
+    	
+    	$current->setOrdinal($previous->getOrdinal());
+    	$previous->setOrdinal($ordinal);
+    	
+    	$em = $this->getDoctrine()->getManager();
+    	$em->merge($current);
+    	$em->merge($previous);
+    	$em->flush();
 
+    	return $this->redirectToRoute($this->displayRoute);
+    }
+
+    /**
+     * @Route("/admin/web/banner/{id}/media/down/{ordinal}")
+     * @ParamConverter("banner", class="AppBundle:Banner")
+     */
+    public function down($banner, $ordinal)
+    {
+    	$previous = null;
+    	$current = null;
+    	foreach($banner->getMediaRefs() as $mediaRef) {
+    		if($mediaRef->getOrdinal() == $ordinal + 1) {
+    			$previous = $mediaRef;
+    		}
+    		if($mediaRef->getOrdinal() == $ordinal) {
+    			$current = $mediaRef;
+    		}
+    	}
+    	 
+    	if($previous == null || $current == null) {
+    		throw new \LogicException("Please edit banner and save it before reorder media");
+    	}
+    	 
+    	$current->setOrdinal($previous->getOrdinal());
+    	$previous->setOrdinal($ordinal);
+    	 
+    	$em = $this->getDoctrine()->getManager();
+    	$em->merge($current);
+    	$em->merge($previous);
+    	$em->flush();
+    
+    	return $this->redirectToRoute($this->displayRoute);
+    }
+    
      /**
      * @Route("/admin/web/banner", name="app_banner_display")
      */       

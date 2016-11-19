@@ -34,8 +34,11 @@
 	        	<td data-sort="{{banner.id}}">{{ banner.name }}</td>
 	        	<td>{{ banner.description }}</td>
 	        	<td>
-	        		{% for media in banner.media %}
-	        			{{ media.description | default("No description") }}<br/>
+	        		{% for mediaRef in banner.mediaRefs %}
+	        			{{ mediaRef.media.description | default("No description") }}
+	        			<a href="/admin/web/banner/{{ banner.id }}/media/up/{{ mediaRef.ordinal }}">Up</a>
+	        			<a href="/admin/web/banner/{{ banner.id }}/media/down/{{ mediaRef.ordinal }}">Down</a>
+	        			<br/>
 	        		{% endfor %}
 				</td>
 	        	<td width="10"><a href='/admin/web/banner/edit/{{ banner.id }}'>Edit</a></td>
