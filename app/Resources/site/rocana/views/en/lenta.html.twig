@@ -40,7 +40,7 @@
                             <h2>{{ page.title }}</h2>
                             <ul class="tm-category-posts-list">
 		
-							{% for article in page.articles.slice(0,page.articlesPerPage) %}
+							{% for article in page.articles.slice(page.articlesPerPage*currentPage,page.articlesPerPage*(currentPage+1)) %}
 		
                                 <li class="tm-post-list-block clearfix" style="padding: 20px;">
 									{% if article.icon is not empty %}
@@ -67,6 +67,14 @@
 							{% endfor %}
 						</ul>
 					</div>
+					<div class="navigation">
+					   {% if currentPage > 0 %}
+					   <a href="{{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}?currentPage={{currentPage - 1 }}">&laquo; Previous Page</a> 
+                       {% endif %}
+                       {% if page.articles|length > page.articlesPerPage*(currentPage+1) %}
+                       <a href="{{ path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) }}?currentPage={{currentPage + 1 }}">Next Page &raquo;</a> 
+                       {% endif %}
+                    </div>
 				</div>
 			</section>
 		</main>
