@@ -14,9 +14,22 @@
 
 {% block script %}
 	$(document).ready(function() {
-	    $('.lists').DataTable({
-        paging: true
+	    var table = $('.lists').DataTable({
+        	paging: true
     	});
+    	
+		// Iterate over all checkboxes in the table
+		$("[name='form']").on("submit",function(){
+			var form = this;      
+			table.$('input, checkbox').each(function(i,e) {
+				var nHidden = document.createElement( 'input' );
+				nHidden.type = 'checkbox';
+				nHidden.name = e.name;
+				nHidden.value = e.value;
+				nHidden.checked = e.checked;
+				form.appendChild( nHidden );
+			});
+		});
     });
 {% endblock %}
 
