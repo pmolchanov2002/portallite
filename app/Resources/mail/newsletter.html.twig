@@ -1,0 +1,17 @@
+{# app/Resources/mail/newsletter.html.twig #}
+<html>
+<head>
+<title>Rocana newsletter</title>
+</head>
+<body>
+{% for article in articles %}
+	<div><a href="http://www.rocana.org/home.{{article.language.code}}/{{ article.id }}">{{ article.title }}</a></div>
+	<div>{{ article.created|date('m-d-Y') }}</div>
+	<div>{{ article.description|markdown|striptags }}</div>
+	<div><a href="http://www.rocana.org/home.{{article.language.code}}/{{ article.id }}">Read more...</a></div>
+	<div></div>
+	<div></div>
+	<div></div>
+{% endfor %}
+</body>
+</html>

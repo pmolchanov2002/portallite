@@ -13,6 +13,7 @@ class ArchiveController extends Controller
 	 */
 	public function displayArchive($pageId, $month, $year, Request $request)
 	{
+		$currentPage = $request->query->get('currentPage');
     	$pageService = $this->get('PageService');
     	$site = $this->getParameter('site');
     	$em = $this->getDoctrine ()->getManager();
@@ -38,7 +39,8 @@ class ArchiveController extends Controller
     			'months' => $pageService->months,
     			'lang' => $lang,
     			'month' => $month,
-    			'year' => $year
+    			'year' => $year,
+    			'currentPage' => $currentPage
     	);
     	
     	$result = $pageService->findArticlesInArchive($page, $month, $year);

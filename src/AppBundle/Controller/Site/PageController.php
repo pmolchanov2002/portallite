@@ -22,6 +22,7 @@ class PageController extends Controller
      */
     public function displayPage($pageId, Request $request)
     {
+    	$currentPage = $request->query->get('currentPage');
     	$pageService = $this->get('PageService');
     	$site = $this->getParameter('site');
     	$em = $this->getDoctrine ()->getManager();
@@ -46,7 +47,8 @@ class PageController extends Controller
     			'archive' => $pageService->getArticleArchive($page),
     			'months' => $pageService->months,
     			'lang' => $lang,
-    			'articleId' => 0
+    			'articleId' => 0,
+    			'currentPage' => $currentPage
     	);
     	
     	$searchString = $request->query->get('s');
