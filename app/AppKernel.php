@@ -5,6 +5,12 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
+	public function __construct($environment, $debug) {
+		parent::__construct($environment, $debug);
+		// get rid of Warning: date_default_timezone_get(): It is not safe to rely on the system's timezone
+		date_default_timezone_set( 'America/New_York' );
+	}
+	
     public function registerBundles()
     {
         $bundles = array(
@@ -16,7 +22,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-        	new Ornj\Bundle\MarkdownBundle\OrnjMarkdownBundle(),
+        	//new Ornj\Bundle\MarkdownBundle\OrnjMarkdownBundle(),
         	new Liip\ImagineBundle\LiipImagineBundle(),
             new AppBundle\AppBundle(),
         );

@@ -114,7 +114,11 @@
         <div class="uk-width-1-1">
             <div class="uk-panel widget_text">
                 <div class="map-wrap">
-					<iframe class="uk-responsive-width" width="2000" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3005.445757238272!2d-73.93369934866273!3d41.12479407918761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2c18b9893828f%3A0x365ed5f2e878176d!2s104+Lake+Rd%2C+Valley+Cottage%2C+NY+10989!5e0!3m2!1sen!2sin!4v1457666794337" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+					<iframe class="uk-responsive-width" width="2000" src="{% for setting in settings %}
+	{% if setting.type.id == 11 %}
+		{{ setting.value }}
+	{% endif %}
+{% endfor %}" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 				</div>
             </div>
         </div>

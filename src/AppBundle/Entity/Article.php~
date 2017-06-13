@@ -38,7 +38,7 @@ class Article
     protected $content;
     
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(name="Created", type="datetime")
      */
     protected $created;
     
@@ -450,5 +450,71 @@ class Article
     public function getIcon()
     {
         return $this->icon;
+    }
+
+    /**
+     * Add videos
+     *
+     * @param \AppBundle\Entity\Media $videos
+     * @return Article
+     */
+    public function addVideo(\AppBundle\Entity\Media $videos)
+    {
+        $this->videos[] = $videos;
+
+        return $this;
+    }
+
+    /**
+     * Remove videos
+     *
+     * @param \AppBundle\Entity\Media $videos
+     */
+    public function removeVideo(\AppBundle\Entity\Media $videos)
+    {
+        $this->videos->removeElement($videos);
+    }
+
+    /**
+     * Get videos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVideos()
+    {
+        return $this->videos;
+    }
+
+    /**
+     * Add audios
+     *
+     * @param \AppBundle\Entity\Media $audios
+     * @return Article
+     */
+    public function addAudio(\AppBundle\Entity\Media $audios)
+    {
+        $this->audios[] = $audios;
+
+        return $this;
+    }
+
+    /**
+     * Remove audios
+     *
+     * @param \AppBundle\Entity\Media $audios
+     */
+    public function removeAudio(\AppBundle\Entity\Media $audios)
+    {
+        $this->audios->removeElement($audios);
+    }
+
+    /**
+     * Get audios
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAudios()
+    {
+        return $this->audios;
     }
 }

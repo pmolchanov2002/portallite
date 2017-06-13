@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
- * @ORM\Table(name="Tag")
+ * @ORM\Table(name="Subscription")
  */
 class Subscription
 {
@@ -21,8 +21,42 @@ class Subscription
      /**
      * @ORM\Column(unique=true)
      * @Assert\NotBlank()
+     * @Assert\Email
      */
     protected $address;
     
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set address
+     *
+     * @param string $address
+     * @return Subscription
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string 
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
 }

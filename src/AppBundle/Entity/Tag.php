@@ -31,8 +31,15 @@ class Tag
      *      inverseJoinColumns={@ORM\JoinColumn(name="MediaId", referencedColumnName="id")}
      *      )
      **/
-    protected $medias;
+    protected $media;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->media = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -48,7 +55,7 @@ class Tag
      * Set name
      *
      * @param string $name
-     * @return MenuType
+     * @return Tag
      */
     public function setName($name)
     {
@@ -66,44 +73,37 @@ class Tag
     {
         return $this->name;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->medias = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
-     * Add medias
+     * Add media
      *
-     * @param \AppBundle\Entity\Media $medias
+     * @param \AppBundle\Entity\Media $media
      * @return Tag
      */
-    public function addMedia(\AppBundle\Entity\Media $medias)
+    public function addMedia(\AppBundle\Entity\Media $media)
     {
-        $this->medias[] = $medias;
+        $this->media[] = $media;
 
         return $this;
     }
 
     /**
-     * Remove medias
+     * Remove media
      *
-     * @param \AppBundle\Entity\Media $medias
+     * @param \AppBundle\Entity\Media $media
      */
-    public function removeMedia(\AppBundle\Entity\Media $medias)
+    public function removeMedia(\AppBundle\Entity\Media $media)
     {
-        $this->medias->removeElement($medias);
+        $this->media->removeElement($media);
     }
 
     /**
-     * Get medias
+     * Get media
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getMedias()
+    public function getMedia()
     {
-        return $this->medias;
+        return $this->media;
     }
 }

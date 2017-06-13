@@ -167,7 +167,7 @@ class BannerController extends Controller
     }
 
     /**
-     * @Route("/admin/web/banner/{id}/media/down/{ordinal}")
+     * @Route("/admin/web/banner/{id}/media/up/{ordinal}")
      * @ParamConverter("banner", class="AppBundle:Banner")
      */
     public function down($banner, $ordinal)
