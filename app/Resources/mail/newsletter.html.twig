@@ -5,13 +5,11 @@
 </head>
 <body>
 {% for article in articles %}
-	<div><a href="http://www.rocana.org/home.{{article.language.code}}/{{ article.id }}">{{ article.title }}</a></div>
+	<div><a href="http://www.rocana.org/page/home.{{article.language.code}}/{{ article.id }}">{{ article.title }}</a></div>
 	<div>{{ article.created|date('m-d-Y') }}</div>
 	<div>{{ article.description|markdown|striptags }}</div>
-	<div><a href="http://www.rocana.org/home.{{article.language.code}}/{{ article.id }}">Read more...</a></div>
-	<div></div>
-	<div></div>
-	<div></div>
+	<div><a href="http://www.rocana.org/page/home.{{article.language.code}}/{{ article.id }}">Read more...</a></div>
+	<p>&nbsp;</p>
 {% endfor %}
 </body>
 </html>

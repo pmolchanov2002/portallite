@@ -27,7 +27,7 @@ class NewsletterCommand extends ContainerAwareCommand
 		$this->em = $this->getContainer()->get('doctrine')->getManager();
 		
 		$date = new \DateTime();
-		$date->modify('-80 days');
+		$date->modify('-7 days');
 		
 		$articles = $this->em
 		->getRepository('AppBundle:Article')
@@ -42,17 +42,18 @@ class NewsletterCommand extends ContainerAwareCommand
 			$subscriber->setAddress("pmolchanov2002@gmail.com");
 			array_push($subscribers, $subscriber);
 	
+			$subscriber = new Subscription();
+			$subscriber->setAddress("letmish@aol.com");
+			array_push($subscribers, $subscriber);			
+			
 // 			$subscribers = $this->em
 // 			->getRepository('AppBundle:Subscription')
 // 			->createQueryBuilder('s')
 // 			->getQuery()->execute();		
-			$output->writeln("Start");
 			foreach($subscribers as $subscriber) {
-				$output->writeln("Send to:".$subscriber->getAddress());
 				$body = $this->sendEmail($subscriber, $articles);
-				$output->writeln($body);
+				//$output->writeln($body);
 			}
-			$output->writeln("Finish");
 		}
 		
 		return;
@@ -67,10 +68,11 @@ class NewsletterCommand extends ContainerAwareCommand
 		);
 		$message = \Swift_Message::newInstance()
 		->setSubject('www.rocana.org')
-		->setFrom('letmish@aol.com')
+		->setFrom('info@rocana.org')
 		->setTo($subscriber->getAddress())
 		->setBody($body,'text/html');
-		//$this->get('mailer')->send($message);
+		
+		$this->getContainer()->get('mailer')->send($message);
 		return $body;
 	}
 }
