@@ -22,7 +22,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-        	//new Ornj\Bundle\MarkdownBundle\OrnjMarkdownBundle(),
+        	new Ornj\Bundle\MarkdownBundle\OrnjMarkdownBundle(),
         	new Liip\ImagineBundle\LiipImagineBundle(),
             new AppBundle\AppBundle(),
         );
