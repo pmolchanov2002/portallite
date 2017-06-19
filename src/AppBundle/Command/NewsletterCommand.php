@@ -36,21 +36,18 @@ class NewsletterCommand extends ContainerAwareCommand
 		->setParameter('date', $date)
 		->getQuery()->execute();
 		
+		$output->writeln("Articles to send:".count($articles));
 		if(count($articles) != 0) {
-			$subscribers = array();
-			$subscriber = new Subscription();
-			$subscriber->setAddress("pmolchanov2002@gmail.com");
-			array_push($subscribers, $subscriber);
+// 			$subscribers = array();
+// 			$subscriber = new Subscription();
+// 			$subscriber->setAddress("pmolchanov2002@gmail.com");
+// 			array_push($subscribers, $subscriber);
 	
-			$subscriber = new Subscription();
-			$subscriber->setAddress("letmish@aol.com");
-			array_push($subscribers, $subscriber);			
-			
-// 			$subscribers = $this->em
-// 			->getRepository('AppBundle:Subscription')
-// 			->createQueryBuilder('s')
-// 			->getQuery()->execute();		
+ 			$subscribers = $this->em
+ 			->getRepository('AppBundle:Subscription')
+			->findAll();
 			foreach($subscribers as $subscriber) {
+				//$output->writeln("send to:".$subscriber);
 				$body = $this->sendEmail($subscriber, $articles);
 				//$output->writeln($body);
 			}
@@ -71,8 +68,9 @@ class NewsletterCommand extends ContainerAwareCommand
 		->setFrom('info@rocana.org')
 		->setTo($subscriber->getAddress())
 		->setBody($body,'text/html');
-		
-		$this->getContainer()->get('mailer')->send($message);
+
+		\Swift_Mailer::newInstance(\Swift_MailTransport::newInstance())->send($message);
+		//print($this->getContainer()->get('mailer')->send($message));
 		return $body;
 	}
 }
