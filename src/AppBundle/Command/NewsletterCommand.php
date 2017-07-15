@@ -33,6 +33,7 @@ class NewsletterCommand extends ContainerAwareCommand
 		->getRepository('AppBundle:Article')
 		->createQueryBuilder('a')
 		->where('a.created > :date')
+		->orderBy('a.created','desc')
 		->setParameter('date', $date)
 		->getQuery()->execute();
 		
