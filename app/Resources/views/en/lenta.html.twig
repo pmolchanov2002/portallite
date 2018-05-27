@@ -46,8 +46,14 @@
 					</dd>
 				</dl>
 				{% if article.icon is not empty %}
-					<img src="{{ article.icon.path }}" class="img-responsive" alt=""/>
-				{% endif %}
+					{% if article.icon.type.id != 5 %}
+						<img src="{{ article.icon.path }}" class="img-responsive" alt=""/>
+					{% elseif article.icon.type.id == 5 %}
+						<div class="videocontainer">
+							<iframe src="{{ article.icon.path }}?autoplay=0&amp;loop=1&amp;controls=1&amp;showinfo=1&amp;start=0&amp;vq=hd1080&amp;enablejsapi=1&amp;api=1&amp;player_id=sw-1&amp;enablejsapi=1&amp;rel=0" allowfullscreen=""></iframe>
+						</div>					
+					{% endif %}
+				{% endif %}				
 				<p>
 					{{ article.description|markdown }}
 				</p>
