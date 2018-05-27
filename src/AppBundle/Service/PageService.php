@@ -23,7 +23,8 @@ class PageService {
 			4 => 'schedule',
 			5 => 'results',
 			6 => 'faq',
-			7 => 'archive'
+			7 => 'archive',
+			8 => 'gallery'
 	);
 	
 	public $months = array (
