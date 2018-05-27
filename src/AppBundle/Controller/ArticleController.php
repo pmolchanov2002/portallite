@@ -45,7 +45,7 @@ class ArticleController extends Controller
             		'label' => 'Icon: ',
             		'query_builder' => function (EntityRepository $er) {
             		return $er->createQueryBuilder('p')
-            			->where('p.type = 1');
+            			->where('p.type = 1 or p.type = 5');
             		}))
             ->add('description', 'markdown', array('label' => 'Description:'))
             ->add('content', 'markdown', array('label' => 'Body:'))
@@ -140,7 +140,7 @@ class ArticleController extends Controller
             		'label' => 'Icon: ',
             		'query_builder' => function (EntityRepository $er) {
             			return $er->createQueryBuilder('p')
-            			->where('p.type = 1');
+            			->where('p.type = 1 or p.type = 5');
             		}))
             ->add('description', 'markdown', array('label' => 'Description:'))
             ->add('content', 'markdown', array('label' => 'Body:'))
