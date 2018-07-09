@@ -1,0 +1,18 @@
+{# app/Resources/views/forms/period.html.twig #}
+{% extends 'base-admin.html.twig' %}
+{% block pageTitle %}Event Type{% endblock %}
+{% block title %}Event Type{% endblock %}
+
+{% block head %}
+	<link rel="stylesheet" href="/css/bootstrap-markdown.min.css" type="text/css" media="all" />
+	<script type="text/javascript" src="/js/bootbox.js"></script>
+	<script type="text/javascript" src="/js/to-markdown.js"></script>
+	<script type="text/javascript" src="/js/markdown.js"></script>
+	<script type="text/javascript" src="/js/bootstrap-markdown.js"></script>
+{% endblock %}
+
+{% block body %}
+	{{ form_start(form) }}
+	{{ form_widget(form) }}
+	{{ form_end(form) }}
+{% endblock %}

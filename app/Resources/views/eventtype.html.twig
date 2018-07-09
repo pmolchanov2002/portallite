@@ -1,0 +1,42 @@
+{# app/Resources/views/period.html.twig #}
+{% extends 'base-admin.html.twig' %}
+
+{% block pageTitle %}Event Type{% endblock %}
+{% block title %}Event Type{% endblock %}
+{% block script %}
+	$(document).ready(function() {
+	    $('#results').DataTable({
+	    	order: [{0, 'desc'}],
+	    	paging: false
+	    });
+	    $('.delete_row').click(function(){
+    		return confirm("Are you sure you want to delete?");
+		});
+	} );
+{% endblock %}
+
+{% block body %}
+    <div style="margin-bottom:10px;">
+    	<a class="btn btn-default" href="/admin/web/eventtype/create" role="button">New web-site event type</a>
+	</div>
+	<table id="results" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>English Title</th>
+                <th>Russian Title</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+	    {% for eventtype in eventTypes %}
+	    	<tr>
+	        	<td>{{ eventtype.enTitle }}</td>
+	        	<td>{{ eventtype.ruTitle }}</td>
+	        	<td width="10"><a href='/admin/web/eventtype/edit/{{ eventtype.id }}'>Edit</a></td>
+	        	<td class="delete_row" width="10"><a href='/admin/web/eventtype/delete/{{ eventtype.id }}'>Delete</a></td>
+	        </tr>
+	    {% endfor %}
+    	</tbody>        
+    </table>
+{% endblock %}

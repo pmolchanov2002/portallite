@@ -29,6 +29,16 @@
 		<h1>{{ page.title }}</h1>
 		<p style="text-align:center;">{{ page.subTitle }} </p>
 		
+{% if page.id == 'home.ru' %}
+		<h3>Предстоящие события:</h3>
+	      	<div>
+	   	  		{% for event in events %}
+	   	  			{% import 'base/event.html.twig' as event_macro %}
+	   	  			{{ event_macro.event(event, lang) }}
+	   	  		{% endfor %}
+	   		</div>
+{% endif %}		
+		
 		{% for article in page.articles.slice(0,page.articlesPerPage) %}
 			<div class="blog_box1">
 				<dl class="item_info_dl">

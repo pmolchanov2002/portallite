@@ -18,43 +18,29 @@ class Event
      */
     protected $id;
 
-     /**
-     * @ORM\Column(unique=true)
-     * @Assert\NotBlank()
-     */
-    protected $name;
-    
     /**
-     * @ORM\ManyToOne(targetEntity="Language")
-     * @ORM\JoinColumn(name="Lang", referencedColumnName="code")
+     * @ORM\ManyToOne(targetEntity="EventType")
+     * @ORM\JoinColumn(name="EventTypeId", referencedColumnName="id")
      **/
-    protected $language;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="Status")
-     * @ORM\JoinColumn(name="Status", referencedColumnName="code")
-     **/
-    protected $status;   
-    
-    /**
-     * @ORM\Column(name="SortOrder")
-     * @Assert\NotBlank()
-     */
-    protected $sortOrder;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="Page")
-     * @ORM\JoinColumn(name="PageId", referencedColumnName="id")
-     **/
-    protected $page;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="Article")
-     * @ORM\JoinColumn(name="ArticleId", referencedColumnName="id")
-     **/
-    protected $article;
+    protected $type;
 
-
+    /**
+     * @ORM\ManyToOne(targetEntity="Year")
+     * @ORM\JoinColumn(name="YearId", referencedColumnName="id")
+     **/
+    protected $year;
+    
+    /**
+     * @ORM\Column(name="EventDate", type="datetime")
+     */
+    protected $eventDate;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Media")
+     * @ORM\JoinColumn(name="IconId", referencedColumnName="id")
+     **/
+    protected $icon;
+    
 
     /**
      * Get id
@@ -66,141 +52,96 @@ class Event
         return $this->id;
     }
 
+
     /**
-     * Set name
+     * Set type
      *
-     * @param string $name
+     * @param \AppBundle\Entity\EventType $type
      * @return Event
      */
-    public function setName($name)
+    public function setType(\AppBundle\Entity\EventType $type = null)
     {
-        $this->name = $name;
+        $this->type = $type;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get type
      *
-     * @return string 
+     * @return \AppBundle\Entity\EventType 
      */
-    public function getName()
+    public function getType()
     {
-        return $this->name;
+        return $this->type;
     }
 
     /**
-     * Set sortOrder
+     * Set year
      *
-     * @param string $sortOrder
+     * @param \AppBundle\Entity\Year $year
      * @return Event
      */
-    public function setSortOrder($sortOrder)
+    public function setYear(\AppBundle\Entity\Year $year = null)
     {
-        $this->sortOrder = $sortOrder;
+        $this->year = $year;
 
         return $this;
     }
 
     /**
-     * Get sortOrder
+     * Get year
      *
-     * @return string 
+     * @return \AppBundle\Entity\Year 
      */
-    public function getSortOrder()
+    public function getYear()
     {
-        return $this->sortOrder;
+        return $this->year;
     }
 
     /**
-     * Set language
+     * Set icon
      *
-     * @param \AppBundle\Entity\Language $language
+     * @param \AppBundle\Entity\Media $icon
      * @return Event
      */
-    public function setLanguage(\AppBundle\Entity\Language $language = null)
+    public function setIcon(\AppBundle\Entity\Media $icon = null)
     {
-        $this->language = $language;
+        $this->icon = $icon;
 
         return $this;
     }
 
     /**
-     * Get language
+     * Get icon
      *
-     * @return \AppBundle\Entity\Language 
+     * @return \AppBundle\Entity\Media 
      */
-    public function getLanguage()
+    public function getIcon()
     {
-        return $this->language;
+        return $this->icon;
     }
 
     /**
-     * Set status
+     * Set eventDate
      *
-     * @param \AppBundle\Entity\Status $status
+     * @param \DateTime $eventDate
      * @return Event
      */
-    public function setStatus(\AppBundle\Entity\Status $status = null)
+    public function setEventDate($eventDate)
     {
-        $this->status = $status;
+        $this->eventDate = $eventDate;
 
         return $this;
     }
 
     /**
-     * Get status
+     * Get eventDate
      *
-     * @return \AppBundle\Entity\Status 
+     * @return \DateTime 
      */
-    public function getStatus()
+    public function getEventDate()
     {
-        return $this->status;
-    }
-
-    /**
-     * Set page
-     *
-     * @param \AppBundle\Entity\Page $page
-     * @return Event
-     */
-    public function setPage(\AppBundle\Entity\Page $page = null)
-    {
-        $this->page = $page;
-
-        return $this;
-    }
-
-    /**
-     * Get page
-     *
-     * @return \AppBundle\Entity\Page 
-     */
-    public function getPage()
-    {
-        return $this->page;
-    }
-
-    /**
-     * Set article
-     *
-     * @param \AppBundle\Entity\Article $article
-     * @return Event
-     */
-    public function setArticle(\AppBundle\Entity\Article $article = null)
-    {
-        $this->article = $article;
-
-        return $this;
-    }
-
-    /**
-     * Get article
-     *
-     * @return \AppBundle\Entity\Article 
-     */
-    public function getArticle()
-    {
-        return $this->article;
+        return $this->eventDate;
     }
 }

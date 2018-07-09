@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
         	new Ensepar\Html2pdfBundle\EnseparHtml2pdfBundle(),
         	new Ornj\Bundle\MarkdownBundle\OrnjMarkdownBundle(),
+//        	new DMS\Bundle\TwigExtensionBundle\DMSTwigExtensionBundle(),
             new AppBundle\AppBundle(),
         );
 

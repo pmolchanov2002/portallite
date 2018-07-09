@@ -107,25 +107,28 @@
 	 color: #FFF;
 	 position:relative;
 }
-.cal1 .clndr .clndr-table tr .day.today:after {
-	content: '';
-	position: absolute;
-	left: 14px;
-	bottom: -6px;
-	border-left: 6px solid rgba(0, 0, 0, 0);
-	border-right: 6px solid rgba(0, 0, 0, 0);
-	border-top: 6px solid #f1b458;
+
+.cal1 .clndr .clndr-table tr .day.event {
+  	 background:#3947f1;
+	 color: #FFF;
+	 position:relative;
 }
+
+
 .cal1 .clndr .clndr-table tr .day.today:hover {
+  	color: #FFF;
+  	background:#2f374c;
+}
+.cal1 .clndr .clndr-table tr .day.event:hover {
   	color: #FFF;
   	background:#2f374c;
 }
 .cal1 .clndr .clndr-table tr .day:hover{
 	color: #FFF;
-  	background:#f1b458;
+  	background:#2f374c;
 }
 .cal1 .clndr .clndr-table tr .day.today.event {
-     background:#4fc1e9;
+     background:#27e927;
 	 color: #FFF;
 }
 .day.today.event:hover{

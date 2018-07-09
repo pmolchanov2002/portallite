@@ -23,7 +23,9 @@
         "ensepar/html2pdf-bundle" : "dev-master",
         "aptoma/twig-markdown": "^2.0",
         "michelf/php-markdown": "~1.3",
-        "ornj/markdown-bundle": "dev-master"
+        "ornj/markdown-bundle": "dev-master",
+        "dms/twig-extension-bundle": "^2.1",
+        "symfony/intl": "2.7"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

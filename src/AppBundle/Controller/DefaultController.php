@@ -49,8 +49,8 @@ class DefaultController extends Controller
     public function errorPage(Request $request) {
     	$lang = $request->getPreferredLanguage(array('en', 'ru'));
     	$parameters = array(
+    			'lang' => $lang,
     			'menus' => $this->loadMenu($lang),
-    			'events' => $this->loadEvents($lang)
     	);
     	return $this->render('views/'.$lang.'/error.html.twig', $parameters);
     }
@@ -96,8 +96,9 @@ class DefaultController extends Controller
     	
     	$parameters = array(
     			'menus' => $this->loadMenu($lang),
-    			'events' => $this->loadEvents($lang),
     			'page' => $page,
+    			'lang' => $lang,
+    			'events' => $this->loadEvents(3),
     			'articleId' => 0
     	);
     	
@@ -132,12 +133,26 @@ class DefaultController extends Controller
     	
     	$parameters = array(
     		'menus' => $this->loadMenu($lang),
-    		'events' => $this->loadEvents($lang),
     		'page' => $page,
+    		'lang' => $lang,
     		'articleId' => $articleId
     	);
     	 
     	return $this->render('views/'.$lang.'/'.$pageType.'.html.twig', $parameters);
+    }
+    
+    /**
+     * @Route("/events.{lang}", name="events")
+     */
+    public function displayEvents($lang)
+    {
+    	$parameters = array(
+    			'menus' => $this->loadMenu($lang),
+    			'lang' => $lang,
+    			'events' => $this->loadEvents(100),
+    	);
+    
+    	return $this->render('views/'.$lang.'/events.html.twig', $parameters);
     }
  
     private function loadMenu($lang) {
@@ -155,14 +170,18 @@ class DefaultController extends Controller
     	return $menus;
     }
     
-    private function loadEvents($lang) {
+    private function loadEvents($limit) {
     	$em = $this->getDoctrine ()->getManager();
     
     	$q = $em->getRepository ( 'AppBundle:Event' )
-    	->createQueryBuilder ( 'm' )
-    	->where('m.language = :lang')
-    	->setParameter ( "lang", $lang )
-    	->orderBy('m.sortOrder', 'ASC');
+    	->createQueryBuilder ( 'e' )
+    	->join('e.year', 'y')
+    	->where('y.active=true')
+	   	->andWhere('e.eventDate > :now')
+    	->orderBy('e.eventDate', 'ASC')
+    	->setParameter('now', new \DateTime('now'))
+    	->setMaxResults($limit);
+    	
     	 
     	$events = $q->getQuery ()->execute();
     	 

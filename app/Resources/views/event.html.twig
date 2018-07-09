@@ -23,10 +23,8 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Language</th>
-                <th>Page</th>
-                <th>Article</th>
-                <th>Status</th>
+                <th>Date</th>
+                <th>Icon</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -34,11 +32,9 @@
         <tbody>
 	    {% for event in events %}
 	    	<tr>
-	        	<td>{{ event.name }}</td>
-	        	<td>{{ event.language.name }}</td>
-	        	<td>{{ event.page.id | default("Not assigned") }}</td>
-	        	<td>{{ event.article.title | default("Not assigned") }}</td>
-	        	<td>{{ event.status.name }}</td>
+	        	<td>{{ event.type.enTitle }}</td>
+	        	<td>{{ event.eventDate|date('l, M d, Y H:i') }}</td>
+	        	<td>{{ event.icon.path|default("Not assigned") }}</td>
 	        	<td width="10"><a href='/admin/web/event/edit/{{ event.id }}'>Edit</a></td>
 	        	<td class="delete_row" width="10"><a href='/admin/web/event/delete/{{ event.id }}'>Delete</a></td>
 	        </tr>

@@ -18,23 +18,28 @@ class Event
      */
     protected $id;
 
-     /**
-     * @ORM\Column(unique=true)
-     * @Assert\NotBlank()
+    /**
+     * @ORM\ManyToOne(targetEntity="EventType")
+     * @ORM\JoinColumn(name="EventTypeId", referencedColumnName="id")
+     **/
+    protected $type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Year")
+     * @ORM\JoinColumn(name="YearId", referencedColumnName="id")
+     **/
+    protected $year;
+    
+    /**
+     * @ORM\Column(type="datetime")
      */
-    protected $name;
+    protected $eventDate;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Language")
-     * @ORM\JoinColumn(name="Lang", referencedColumnName="code")
+     * @ORM\ManyToOne(targetEntity="Media")
+     * @ORM\JoinColumn(name="IconId", referencedColumnName="id")
      **/
-    protected $language;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="Status")
-     * @ORM\JoinColumn(name="Status", referencedColumnName="code")
-     **/
-    protected $status;   
+    protected $icon;
     
     /**
      * @ORM\Column(name="SortOrder")
@@ -42,19 +47,6 @@ class Event
      */
     protected $sortOrder;
     
-    /**
-     * @ORM\ManyToOne(targetEntity="Page")
-     * @ORM\JoinColumn(name="PageId", referencedColumnName="id")
-     **/
-    protected $page;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="Article")
-     * @ORM\JoinColumn(name="ArticleId", referencedColumnName="id")
-     **/
-    protected $article;
-
-
 
     /**
      * Get id
@@ -64,29 +56,6 @@ class Event
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Event
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
@@ -113,94 +82,71 @@ class Event
     }
 
     /**
-     * Set language
+     * Set type
      *
-     * @param \AppBundle\Entity\Language $language
+     * @param \AppBundle\Entity\EventType $type
      * @return Event
      */
-    public function setLanguage(\AppBundle\Entity\Language $language = null)
+    public function setType(\AppBundle\Entity\EventType $type = null)
     {
-        $this->language = $language;
+        $this->type = $type;
 
         return $this;
     }
 
     /**
-     * Get language
+     * Get type
      *
-     * @return \AppBundle\Entity\Language 
+     * @return \AppBundle\Entity\EventType 
      */
-    public function getLanguage()
+    public function getType()
     {
-        return $this->language;
+        return $this->type;
     }
 
     /**
-     * Set status
+     * Set year
      *
-     * @param \AppBundle\Entity\Status $status
+     * @param \AppBundle\Entity\Year $year
      * @return Event
      */
-    public function setStatus(\AppBundle\Entity\Status $status = null)
+    public function setYear(\AppBundle\Entity\Year $year = null)
     {
-        $this->status = $status;
+        $this->year = $year;
 
         return $this;
     }
 
     /**
-     * Get status
+     * Get year
      *
-     * @return \AppBundle\Entity\Status 
+     * @return \AppBundle\Entity\Year 
      */
-    public function getStatus()
+    public function getYear()
     {
-        return $this->status;
+        return $this->year;
     }
 
     /**
-     * Set page
+     * Set icon
      *
-     * @param \AppBundle\Entity\Page $page
+     * @param \AppBundle\Entity\Media $icon
      * @return Event
      */
-    public function setPage(\AppBundle\Entity\Page $page = null)
+    public function setIcon(\AppBundle\Entity\Media $icon = null)
     {
-        $this->page = $page;
+        $this->icon = $icon;
 
         return $this;
     }
 
     /**
-     * Get page
+     * Get icon
      *
-     * @return \AppBundle\Entity\Page 
+     * @return \AppBundle\Entity\Media 
      */
-    public function getPage()
+    public function getIcon()
     {
-        return $this->page;
-    }
-
-    /**
-     * Set article
-     *
-     * @param \AppBundle\Entity\Article $article
-     * @return Event
-     */
-    public function setArticle(\AppBundle\Entity\Article $article = null)
-    {
-        $this->article = $article;
-
-        return $this;
-    }
-
-    /**
-     * Get article
-     *
-     * @return \AppBundle\Entity\Article 
-     */
-    public function getArticle()
-    {
-        return $this->article;
+        return $this->icon;
     }
 }

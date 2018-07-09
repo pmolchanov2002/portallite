@@ -25,29 +25,22 @@ class EventController extends Controller
     {
         $event = new Event();
         $form = $this->createFormBuilder($event)
-            ->add('name', 'text', array('label' => 'Name:'))
-      		->add('language', 'entity', array(
-            		'multiple' => false,
-            		'class' => 'AppBundle:Language',
-            		'choice_label' => 'nativeName',
-            		'label' => 'Language: '))
-            ->add('page', 'entity', array(
-            		'multiple' => false,
-            		'class' => 'AppBundle:Page',
-            		'choice_label' => 'id',
-            		'label' => 'Page: '))
-            ->add('article', 'entity', array(
-            		'multiple' => false,
-            		'class' => 'AppBundle:Article',
-            		'choice_label' => 'title',
-            		'required' => false,
-            		'label' => 'Article: '))
-            ->add('status', 'entity', array(
-            		'multiple' => false,
-            		'class' => 'AppBundle:Status',
-            		'choice_label' => 'name',
-            		'label' => 'Status: '))
-            ->add('sortOrder', 'integer', array('label' => 'Sort order:'))            
+        	->add('type', 'entity', array(
+        		'multiple' => false,
+        		'class' => 'AppBundle:EventType',
+        		'choice_label' => 'enTitle',
+        		'label' => 'Type: '))
+        	->add('eventDate', 'datetime', array('label' => 'Date:'))
+        	->add('icon', 'entity', array(
+        				'multiple' => false,
+        				'required' => false,
+        				'class' => 'AppBundle:Media',
+        				'choice_label' => 'description',
+        				'label' => 'Icon: ',
+        				'query_builder' => function (EntityRepository $er) {
+        				return $er->createQueryBuilder('p')
+        				->where('p.type = 1 or p.type = 5');
+        				}))         
             ->add('save', 'submit', array('label' => 'Create'))
             ->getForm();
 
@@ -76,29 +69,22 @@ class EventController extends Controller
             return new Response("Event not found");
         }
         $form = $this->createFormBuilder($event)
-            ->add('name', 'text', array('label' => 'Name:'))
-      		->add('language', 'entity', array(
-            		'multiple' => false,
-            		'class' => 'AppBundle:Language',
-            		'choice_label' => 'nativeName',
-            		'label' => 'Language: '))
-            ->add('page', 'entity', array(
-            		'multiple' => false,
-            		'class' => 'AppBundle:Page',
-            		'choice_label' => 'id',
-            		'label' => 'Page: '))
-            ->add('article', 'entity', array(
-            		'multiple' => false,
-            		'class' => 'AppBundle:Article',
-            		'choice_label' => 'title',
-            		'required' => false,
-            		'label' => 'Article: '))
-            ->add('status', 'entity', array(
-            		'multiple' => false,
-            		'class' => 'AppBundle:Status',
-            		'choice_label' => 'name',
-            		'label' => 'Status: '))
-            ->add('sortOrder', 'integer', array('label' => 'Sort order:'))  
+        	->add('type', 'entity', array(
+        		'multiple' => false,
+        		'class' => 'AppBundle:EventType',
+        		'choice_label' => 'enTitle',
+        		'label' => 'Type: '))
+        	->add('eventDate', 'datetime', array('label' => 'Date:'))
+        	->add('icon', 'entity', array(
+        				'multiple' => false,
+        				'required' => false,
+        				'class' => 'AppBundle:Media',
+        				'choice_label' => 'description',
+        				'label' => 'Icon: ',
+        				'query_builder' => function (EntityRepository $er) {
+        				return $er->createQueryBuilder('p')
+        				->where('p.type = 1 or p.type = 5');
+        				}))
             ->add('save', 'submit', array('label' => 'Save'))
             ->getForm();
 

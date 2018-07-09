@@ -1,11 +1,34 @@
-{% macro event(events) %}
-	{% for event in events %}
-		<li>
-			{% if event.article is not empty %}
-				<a href="/page/{{ event.page.id }}/{{ event.article.id }}">{{ event.name }}</a>
-			{% else %}
-				<a href="/page/{{ event.page.id }}">{{ event.name }}</a>
-			{% endif %}
-		</li>
-	{% endfor %}
+{% macro event(event, lang) %}
+		   <div class="event-page">
+	       	 <div class="row">	       	 
+	       	 	<div class="col-xs-4 col-sm-4">
+	       	 	  {% if event.icon is not empty %}
+	       	 	  <div class="event-img">
+	       	 		<img src="{{ event.icon.path }}" class="img-responsive" alt="{{ event.icon.description }}"/>
+	       	 		<div class="over-image"></div>
+	       	 	  </div>
+	       	 	  {% endif %}
+	       	 	</div>
+	       	 	
+	       	 	<div class="col-xs-8 col-sm-8 event-desc">
+	       	 	
+	       	 	    {% if lang == 'en' %}
+	       	 	    	<h2>{{ event.type.enTitle }}</h2>
+	       	 	    {% else %}
+	       	 	        <h2>{{ event.type.ruTitle }}</h2>
+	       	 	    {% endif %}
+	       	 	    <div class="event-info-text">
+	       	 		   <div class="event-info-middle">
+			       	 	    {% if lang == 'en' %}
+			       	 	    	<h4 style="display:inline;">{{ event.type.enDescription }}</h4>
+			       	 	    {% else %}
+			       	 	        <h4 style="display:inline;">{{ event.type.ruDescription }}</h4>
+			       	 	    {% endif %}
+	       	 		   </div>
+	       	 	    </div>
+	       	 	    <div class="event-info-text" style="margin-top:10px;">{{ event.eventDate|date('l, M d, Y') }}</div>
+			       	<div class="event-info-text">{{ event.eventDate|date('H:i') }}</div>
+	       	  </div>
+	       	</div>
+		  </div>
 {% endmacro %}

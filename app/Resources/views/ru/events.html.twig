@@ -1,0 +1,167 @@
+{% extends 'base/ru/base.html.twig' %} 
+
+{% block title %}
+	Русская Православная Школа Сергия Радонежского при Фонде Толстого Нью Йорк. События.
+{% endblock %}
+
+{% block description %}
+	Русская Православная Школа Сергия Радонежского при Фонде Толстого Нью Йорк. События.
+{% endblock %}
+
+{% block script %}
+<!----Calender -------->
+  <link rel="stylesheet" href="/css/clndr.css" type="text/css" />
+  <script src="/js/underscore-min.js" type="text/javascript"></script>
+  <script src= "/js/moment-2.2.1.js" type="text/javascript"></script>
+  <script src="/js/clndr.min.js" type="text/javascript"></script>
+  <script>
+  $(document).ready( function() {
+
+    // assuming you've got the appropriate language files,
+    // clndr will respect whatever moment's language is set to.
+    moment.lang('ru');
+
+    // here's some magic to make sure the dates are happening this month.
+    var thisMonth = moment().format('YYYY-MM');
+
+    var eventArray = [];
+    {% for event in events %}
+  		eventArray.push({ date: '{{ event.eventDate|date("Y-m-d") }}', title: '{{ event.type.ruTitle }}', url:'http://google.com' });
+  	{% endfor %}
+
+    $('.cal1').clndr({
+    	  events: eventArray
+    });
+  });
+  </script>
+{% endblock %}
+
+{% block body %}
+
+
+<!-- page content -->
+	   <div class="container">
+	   	  <h1>События</h1>
+	      <div class="col-md-8 detail">
+	   	  		{% for event in events %}
+	   	  			{% import 'base/event.html.twig' as event_macro %}
+	   	  			{{ event_macro.event(event, lang) }}
+	   	  		{% endfor %}
+	   	</div>
+	   	  <div class="col-md-4">
+		<div class="cal1 cal_2">
+			<div class="clndr">
+				<div class="clndr-controls">
+					<div class="clndr-control-button">
+						<p class="clndr-previous-button">пред</p>
+					</div>
+					<div class="month">Сентябрь 2015</div>
+					<div class="clndr-control-button rightalign">
+						<p class="clndr-next-button">далее</p>
+					</div>
+				</div>
+				<table class="clndr-table" border="0" cellspacing="0"
+					cellpadding="0">
+					<thead>
+						<tr class="header-days">
+							<td class="header-day">В</td>
+							<td class="header-day">П</td>
+							<td class="header-day">В</td>
+							<td class="header-day">С</td>
+							<td class="header-day">Ч</td>
+							<td class="header-day">П</td>
+							<td class="header-day">С</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td
+								class="day past adjacent-month last-month calendar-day-2015-08-30"><div
+									class="day-contents">30</div></td>
+							<td
+								class="day past adjacent-month last-month calendar-day-2015-08-31"><div
+									class="day-contents">31</div></td>
+							<td class="day today calendar-day-2015-09-01"><div
+									class="day-contents">1</div></td>
+							<td class="day calendar-day-2015-09-02"><div
+									class="day-contents">2</div></td>
+							<td class="day calendar-day-2015-09-03"><div
+									class="day-contents">3</div></td>
+							<td class="day calendar-day-2015-09-04"><div
+									class="day-contents">4</div></td>
+							<td class="day calendar-day-2015-09-05"><div
+									class="day-contents">5</div></td>
+						</tr>
+						<tr>
+							<td class="day calendar-day-2015-09-06"><div
+									class="day-contents">6</div></td>
+							<td class="day calendar-day-2015-09-07"><div
+									class="day-contents">7</div></td>
+							<td class="day calendar-day-2015-09-08"><div
+									class="day-contents">8</div></td>
+							<td class="day calendar-day-2015-09-09"><div
+									class="day-contents">9</div></td>
+							<td class="day event calendar-day-2015-09-10"><div
+									class="day-contents">10</div></td>
+							<td class="day event calendar-day-2015-09-11"><div
+									class="day-contents">11</div></td>
+							<td class="day event calendar-day-2015-09-12"><div
+									class="day-contents">12</div></td>
+						</tr>
+						<tr>
+							<td class="day event calendar-day-2015-09-13"><div
+									class="day-contents">13</div></td>
+							<td class="day event calendar-day-2015-09-14"><div
+									class="day-contents">14</div></td>
+							<td class="day calendar-day-2015-09-15"><div
+									class="day-contents">15</div></td>
+							<td class="day calendar-day-2015-09-16"><div
+									class="day-contents">16</div></td>
+							<td class="day calendar-day-2015-09-17"><div
+									class="day-contents">17</div></td>
+							<td class="day calendar-day-2015-09-18"><div
+									class="day-contents">18</div></td>
+							<td class="day calendar-day-2015-09-19"><div
+									class="day-contents">19</div></td>
+						</tr>
+						<tr>
+							<td class="day calendar-day-2015-09-20"><div
+									class="day-contents">20</div></td>
+							<td class="day event calendar-day-2015-09-21"><div
+									class="day-contents">21</div></td>
+							<td class="day event calendar-day-2015-09-22"><div
+									class="day-contents">22</div></td>
+							<td class="day event calendar-day-2015-09-23"><div
+									class="day-contents">23</div></td>
+							<td class="day calendar-day-2015-09-24"><div
+									class="day-contents">24</div></td>
+							<td class="day calendar-day-2015-09-25"><div
+									class="day-contents">25</div></td>
+							<td class="day calendar-day-2015-09-26"><div
+									class="day-contents">26</div></td>
+						</tr>
+						<tr>
+							<td class="day calendar-day-2015-09-27"><div
+									class="day-contents">27</div></td>
+							<td class="day calendar-day-2015-09-28"><div
+									class="day-contents">28</div></td>
+							<td class="day calendar-day-2015-09-29"><div
+									class="day-contents">29</div></td>
+							<td class="day calendar-day-2015-09-30"><div
+									class="day-contents">30</div></td>
+							<td class="day adjacent-month next-month calendar-day-2015-10-01"><div
+									class="day-contents">1</div></td>
+							<td class="day adjacent-month next-month calendar-day-2015-10-02"><div
+									class="day-contents">2</div></td>
+							<td class="day adjacent-month next-month calendar-day-2015-10-03"><div
+									class="day-contents">3</div></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	 </div>
+<!-- page content -->
+
+{% endblock %}
