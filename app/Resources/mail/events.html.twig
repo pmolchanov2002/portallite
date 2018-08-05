@@ -1,0 +1,27 @@
+{# app/Resources/mail/newsletter.html.twig #}
+<html>
+<head>
+<title>{{ event.type.enTitle }} / {{ event.type.ruTitle }}</title>
+</head>
+<body>
+
+    <div>Дамы и господа,</div>
+    <div></div>
+    <div>Скоро в нашей школе состоятся следующие события: </div>
+	<div></div>
+	<div>{{ event.type.ruTitle }}</div>
+	<div>{{ event.eventDate|date('l, M d, Y H:i') }}</div>
+	<div>{{ event.type.ruDescription|markdown|striptags }}</div>
+	<p>&nbsp;</p>
+	<div></div>
+	<div>Ladies and gentelmen,</div>
+	<div></div>
+	<div>Following events will be happening at our school soon:</div>
+	<div></div>
+	<div>{{ event.type.enTitle }}</div>
+	<div>{{ event.eventDate|date('l, M d, Y H:i') }}</div>
+	<div>{{ event.type.enDescription|markdown|striptags }}</div>
+	<p>&nbsp;</p>
+		
+</body>
+</html>

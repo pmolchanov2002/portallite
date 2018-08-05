@@ -49,6 +49,17 @@ class User implements UserInterface, \Serializable
      * @Assert\NotBlank()
      */
     protected $englishName;
+    
+    /**
+     * @ORM\Column(type="string", length=50)
+     * @Assert\Email
+     */
+    protected $email;
+    
+    /**
+     * @ORM\Column(name="Active", type="boolean")
+     */
+    protected $active;
 
     public function __toString() {
         return $this->lastName.' '.$this->firstName;
@@ -173,6 +184,54 @@ class User implements UserInterface, \Serializable
     {
         return $this->lastName;
     }
+    
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return User
+     */
+    public function setEmail($email)
+    {
+    	$this->email = $email;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+    	return $this->email;
+    }
+    
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return User
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+    
+    
     /**
      * Constructor
      */

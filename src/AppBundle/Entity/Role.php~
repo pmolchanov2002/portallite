@@ -46,6 +46,15 @@ class Role implements RoleInterface
      *      )
      **/
     protected $users;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="User")
+     * @ORM\JoinTable(name="EventType_Role",
+     *      joinColumns={@ORM\JoinColumn(name="RoleId", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="EventTypeId", referencedColumnName="id")}
+     *      )
+     **/
+    protected $eventTypes;
 
     /**
      * Get id

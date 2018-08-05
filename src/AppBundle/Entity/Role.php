@@ -46,6 +46,15 @@ class Role implements RoleInterface
      *      )
      **/
     protected $users;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="EventType")
+     * @ORM\JoinTable(name="EventType_Role",
+     *      joinColumns={@ORM\JoinColumn(name="RoleId", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="EventTypeId", referencedColumnName="id")}
+     *      )
+     **/
+    protected $eventTypes;
 
     /**
      * Get id
@@ -177,6 +186,7 @@ class Role implements RoleInterface
     public function __construct()
     {
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->eventTypes = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -210,5 +220,38 @@ class Role implements RoleInterface
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Add eventTypes
+     *
+     * @param \AppBundle\Entity\User $eventTypes
+     * @return Role
+     */
+    public function addEventType(\AppBundle\Entity\User $eventTypes)
+    {
+        $this->eventTypes[] = $eventTypes;
+
+        return $this;
+    }
+
+    /**
+     * Remove eventTypes
+     *
+     * @param \AppBundle\Entity\User $eventTypes
+     */
+    public function removeEventType(\AppBundle\Entity\User $eventTypes)
+    {
+        $this->eventTypes->removeElement($eventTypes);
+    }
+
+    /**
+     * Get eventTypes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEventTypes()
+    {
+        return $this->eventTypes;
     }
 }

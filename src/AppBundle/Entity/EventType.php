@@ -41,6 +41,56 @@ class EventType
      * @Assert\NotBlank()
      */
     protected $ruDescription;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Role")
+     * @ORM\JoinTable(name="EventType_Role",
+     *      joinColumns={@ORM\JoinColumn(name="EventTypeId", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="RoleId", referencedColumnName="id")}
+     *      )
+     **/
+    protected $roles;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+    	$this->roles = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add roles
+     *
+     * @param \AppBundle\Entity\Role $roles
+     * @return User
+     */
+    public function addRole(\AppBundle\Entity\Role $roles)
+    {
+    	$this->roles[] = $roles;
+    
+    	return $this;
+    }
+    
+    /**
+     * Remove roles
+     *
+     * @param \AppBundle\Entity\Role $roles
+     */
+    public function removeRole(\AppBundle\Entity\Role $roles)
+    {
+    	$this->roles->removeElement($roles);
+    }
+    
+    /**
+     * Get roles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRoles()
+    {
+    	return $this->roles->toArray();;
+    }
 
 
     /**

@@ -28,7 +28,14 @@ class EventTypeController extends Controller
         	->add('enTitle', 'text', array('label' => 'English Title:'))
         	->add('ruTitle', 'text', array('label' => 'Russian Title:'))
         	->add('enDescription', 'markdown', array('label' => 'English Description:'))
-        	->add('ruDescription', 'markdown', array('label' => 'Russian Description:'))    
+        	->add('ruDescription', 'markdown', array('label' => 'Russian Description:'))
+        	->add('roles', 'entity', array(
+        			'multiple' => true,
+        			'expanded' => true,
+        			'class' => 'AppBundle:Role',
+        			'choice_label' => 'name',
+        			'label' => 'Roles: '
+        	))
             ->add('save', 'submit', array('label' => 'Create'))
             ->getForm();
 
@@ -61,6 +68,13 @@ class EventTypeController extends Controller
         	->add('ruTitle', 'text', array('label' => 'Russian Title:'))
         	->add('enDescription', 'markdown', array('label' => 'English Description:'))
         	->add('ruDescription', 'markdown', array('label' => 'Russian Description:'))
+        	->add('roles', 'entity', array(
+        			'multiple' => true,
+        			'expanded' => true,
+        			'class' => 'AppBundle:Role',
+        			'choice_label' => 'name',
+        			'label' => 'Roles: '
+        	))
             ->add('save', 'submit', array('label' => 'Save'))
             ->getForm();
 
