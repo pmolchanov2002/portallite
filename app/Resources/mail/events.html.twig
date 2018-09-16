@@ -6,21 +6,21 @@
 <body>
 
     <div>Дамы и господа,</div>
-    <div></div>
+    <div>&nbsp;</div>
     <div>Скоро в нашей школе состоятся следующие события: </div>
-	<div></div>
-	<div>{{ event.type.ruTitle }}</div>
-	<div>{{ event.eventDate|date('l, M d, Y H:i') }}</div>
-	<div>{{ event.type.ruDescription|markdown|striptags }}</div>
+	<div>&nbsp;</div>
+	<div><b>{{ event.type.ruTitle }}</b></div>
+	<div><i>{{ event.eventDate|date('l, M d, Y H:i') }}</i></div>
+	<div>{{ event.type.ruDescription|markdown }}</div>
 	<p>&nbsp;</p>
-	<div></div>
+	<div>&nbsp;</div>
 	<div>Ladies and gentelmen,</div>
-	<div></div>
+	<div>&nbsp;</div>
 	<div>Following events will be happening at our school soon:</div>
-	<div></div>
-	<div>{{ event.type.enTitle }}</div>
-	<div>{{ event.eventDate|date('l, M d, Y H:i') }}</div>
-	<div>{{ event.type.enDescription|markdown|striptags }}</div>
+	<div>&nbsp;</div>
+	<div><b>{{ event.type.enTitle }}</b></div>
+	<div><i>{{ event.eventDate|date('l, M d, Y H:i') }}</i></div>
+	<div>{{ event.type.enDescription|markdown }}</div>
 	<p>&nbsp;</p>
 		
 </body>

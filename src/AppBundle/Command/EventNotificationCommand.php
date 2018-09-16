@@ -22,7 +22,7 @@ class EventNotificationCommand extends ContainerAwareCommand
 	
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
-		$this->sendEvents("+20 days", "+50 days", 'St. Sergius School Next week: ', $input, $output);
+		$this->sendEvents("+6 days", "+7 days", 'Next week: ', $input, $output);
 		$this->sendEvents("+1 days", "+2 days", 'Tomorrow: ', $input, $output);
 	}
 	
@@ -62,15 +62,15 @@ class EventNotificationCommand extends ContainerAwareCommand
 				
 				$users = $query->execute();			
 				
-				$users = array();
-				$user = new User();
-				$user->setEmail("pmolchanov2002@gmail.com");
-				array_push($users, $user);
+				// $users = array();
+				// $user = new User();
+				// $user->setEmail("pmolchanov2002@gmail.com");
+				// array_push($users, $user);
 				
 				foreach($users as $user) {
 					$output->writeln("send to:".$user->getEmail());
 					$body = $this->sendEmail($user, $event, $titlePrefix);
-					$output->writeln($body);
+					//$output->writeln($body);
 				}
 			}
 		}		
@@ -89,7 +89,7 @@ class EventNotificationCommand extends ContainerAwareCommand
 		->setTo($user->getEmail())
 		->setBody($body,'text/html');
 
-		//\Swift_Mailer::newInstance(\Swift_MailTransport::newInstance())->send($message);
+		\Swift_Mailer::newInstance(\Swift_MailTransport::newInstance())->send($message);
 		//print($this->getContainer()->get('mailer')->send($message));
 		return $body;
 	}
