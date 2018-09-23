@@ -61,6 +61,16 @@ class User implements UserInterface, \Serializable
      */
     protected $active;
 
+    /**
+     * @ORM\Column(name="HomePhone", type="string", length=45)
+     */
+    protected $homePhone; 
+
+    /**
+     * @ORM\Column(name="MobilePhone", type="string", length=45)
+     */
+    protected $mobilePhone; 
+
     public function __toString() {
         return $this->lastName.' '.$this->firstName;
     }
@@ -231,6 +241,53 @@ class User implements UserInterface, \Serializable
         return $this->active;
     }
     
+     /**
+     * Set homePhone
+     *
+     * @param string $homePhone
+     * @return User
+     */
+    public function setHomePhone($homePhone)
+    {
+        $this->homePhone = $homePhone;
+
+        return $this;
+    }
+
+    /**
+     * Get homePhone
+     *
+     * @return string 
+     */
+    public function getHomePhone()
+    {
+        return $this->homePhone;
+    }
+   
+
+    /**
+     * Set mobilePhone
+     *
+     * @param string $mobilePhone
+     * @return User
+     */
+    public function setMobilePhone($mobilePhone)
+    {
+        $this->mobilePhone = $mobilePhone;
+
+        return $this;
+    }
+
+    /**
+     * Get mobilePhone
+     *
+     * @return string 
+     */
+    public function getMobilePhone()
+    {
+        return $this->mobilePhone;
+    }
+
     
     /**
      * Constructor

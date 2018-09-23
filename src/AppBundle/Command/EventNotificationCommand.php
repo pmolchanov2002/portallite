@@ -65,11 +65,15 @@ class EventNotificationCommand extends ContainerAwareCommand
 				// $users = array();
 				// $user = new User();
 				// $user->setEmail("pmolchanov2002@gmail.com");
+				// $user->setMobilePhone("845 553 0997");
 				// array_push($users, $user);
 				
 				foreach($users as $user) {
 					$output->writeln("send to:".$user->getEmail());
 					$body = $this->sendEmail($user, $event, $titlePrefix);
+					if($user->getActive()) {
+						// $body = $this->sendSms($user, $event, $titlePrefix);
+					}
 					//$output->writeln($body);
 				}
 			}
@@ -92,5 +96,33 @@ class EventNotificationCommand extends ContainerAwareCommand
 		\Swift_Mailer::newInstance(\Swift_MailTransport::newInstance())->send($message);
 		//print($this->getContainer()->get('mailer')->send($message));
 		return $body;
+	}
+
+	private function sendSms($user, $event, $titlePrefix) {
+		print("Phone: ".$user->getMobilePhone());
+		if(!empty($user->getMobilePhone())) {
+			$gateways = array(
+				//"@mymetropcs.com",
+				"@tmomail.net",
+				"@vtext.com",
+				"@txt.att.net"
+				//"@messaging.sprintpcs.com"
+			);
+			foreach($gateways as $gateway) {
+				$body = $event->getType()->getEnTitle().' on '.$event->getEventDate()->format('l, F j, Y \a\t h:i a');
+				$re = "/[-\s\(\)\{\}\[\]\+]+/";
+				$str = $user->getMobilePhone();
+
+				$phoneEmail = preg_replace($re, "", $str).$gateway;
+				$message = \Swift_Message::newInstance()
+				->setSubject("St.Sergius Learning Center")
+				->setFrom('administration@stsergiuslc.com')
+				->setTo($phoneEmail)
+				->setBody($body);
+				print("Phone: ".$phoneEmail.", Body:".$body);
+
+				\Swift_Mailer::newInstance(\Swift_MailTransport::newInstance())->send($message);
+		    }
+		}
 	}
 }
