@@ -4,8 +4,9 @@
 		<div class="col-xs-4 col-sm-4">
 			{% if event.icon is not empty %}
 			<div class="event-img">
-			<img src="{{ event.icon.path }}" class="img-responsive" alt="{{ event.icon.description }}"/>
-			<div class="over-image"></div>
+				<img src="{{ event.icon.path }}" class="img-responsive" alt="{{ event.icon.description }}"></img>
+				<div class="over-image">
+				</div>
 			</div>
 			{% endif %}
 		</div>
@@ -16,16 +17,19 @@
 			{% else %}
 				<h2>{{ event.type.ruTitle }}</h2>
 			{% endif %}
-			<div class="event-info-text" style="margin-top:10px;">{{ event.eventDate|date('l, M d, Y') }}</div>
-				<div class="event-info-text">{{ event.eventDate|date('H:i') }}</div>
-				<div class="event-info-text">
-					<div class="event-info-middle">
-						{% if lang == 'en' %}
-							<h4 style="display:inline;">{{ event.type.enDescription|markdown }}</h4>
-						{% else %}
-							<h4 style="display:inline;">{{ event.type.ruDescription|markdown }}</h4>
-						{% endif %}
-					</div>
+			<div class="event-info-text" style="margin-top:10px;">
+				{{ event.eventDate|date('l, M d, Y') }}
+			</div>
+			<div class="event-info-text">
+				{{ event.eventDate|date('H:i') }}
+			</div>
+			<div class="event-info-text">
+				<div class="event-info-middle">
+					{% if lang == 'en' %}
+						<h4 style="display:inline;">{{ event.type.enDescription|markdown }}</h4>
+					{% else %}
+						<h4 style="display:inline;">{{ event.type.ruDescription|markdown }}</h4>
+					{% endif %}
 				</div>
 			</div>
 		</div>
