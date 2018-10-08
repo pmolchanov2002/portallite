@@ -14,4 +14,4 @@ Code is HTML5 complient and was checked against HTML5 standard specifications. N
 
 ## Demo
 
-#http://www.stsergiuslc.com
+http://www.stsergiuslc.com
