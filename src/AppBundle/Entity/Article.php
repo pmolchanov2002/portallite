@@ -79,6 +79,7 @@ class Article
      *      joinColumns={@ORM\JoinColumn(name="ArticleId", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="MediaId", referencedColumnName="id")}
      *      )
+     * @ORM\OrderBy({"englishName" = "ASC"})
      **/
     protected $images;
     
@@ -88,6 +89,8 @@ class Article
      *      joinColumns={@ORM\JoinColumn(name="ArticleId", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="MediaId", referencedColumnName="id")}
      *      )
+     *  @ORM\OrderBy({"englishName" = "ASC"})
+     * 
      **/
     protected $documents;
     
